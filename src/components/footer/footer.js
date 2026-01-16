@@ -38,7 +38,7 @@ const FooterComponent = () => {
                     <a href="https://adviserinfo.sec.gov/firm/summary/333157" target="_blank" rel="noopener noreferrer">
                         https://adviserinfo.sec.gov/firm/summary/333157
                     </a>{" "}
-                    or contact us at (415) 805-8682.
+                    or contact us at (415) 450-6556.
                 </p>
             </div>
         </div>
