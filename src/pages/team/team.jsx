@@ -206,11 +206,11 @@ const Team = () => {
                                     <li>Education: Providence College (BS)</li>
                                 </ul>
 
-                                <h3>Chief Investment Officer:<span style={{ fontFamily: 'GTMI' }}> Chris Workman, CFA</span> </h3>
+                                {/* <h3>Chief Investment Officer:<span style={{ fontFamily: 'GTMI' }}> Chris Workman, CFA</span> </h3>
                                 <ul>
                                     <li>25 years experience: Michael Dell Family Office (MSD Capital), Campfire Capital, KKR, Goldman Sachs, Alpine Investors, US Army</li>
                                     <li>Education: Princeton University (AB, cum laude), University of Michigan Law School &amp; Ross School of Business (JD/MBA)</li>
-                                </ul>
+                                </ul> */}
                                 <h3>Chief Planning Officer: <span style={{ fontFamily: 'GTMI' }}>Jim Machinchick, CFP, CPWA </span></h3>
                                 <ul>
                                     <li>17 years experience: Lake Street Advisors, Fidelity Investments</li>
