@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Inflection Capital Management — Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Marketing and informational website for **Inflection Capital Management**, a Silicon Valley-based wealth management and family office firm serving ultra-high-net-worth families.
 
-## Available Scripts
+The site is a React single-page application with multi-page routing, GSAP scroll animations, a video hero, D3 service visualization, and EmailJS contact integration. It is deployed on Netlify via the `main` branch.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Documentation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Document | Description |
+|---|---|
+| [Tech Stack](docs/TECH_STACK.md) | Frameworks, libraries, and tooling |
+| [Architecture](docs/ARCHITECTURE.md) | Folder structure and component overview |
+| [Development Guide](docs/DEVELOPMENT.md) | Local setup, scripts, and git workflow |
+| [Branch Guide](docs/BRANCHES.md) | Branch structure and contribution conventions |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Quick Start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+cd inflection-website
+npm install --legacy-peer-deps
+npm start
+```
 
-### `npm run build`
+App runs at `http://localhost:3000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> `--legacy-peer-deps` is required due to dependency conflicts between GSAP, React 18, and certain older packages. Always use this flag when installing.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Pages
 
-### `npm run eject`
+| Route | File | Description |
+|---|---|---|
+| `/` | `src/pages/App.js` | Home — hero video, mission, pillars, carousel, contact |
+| `/services` | `src/pages/services/services.jsx` | Interactive D3 service category visualization |
+| `/team` | `src/pages/team/team.jsx` | Team member bios and headshots |
+| `/privacy-policy` | `src/pages/privacyPolicy/privacy.js` | Privacy policy |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Hosted on **Netlify**. Every merge to `main` triggers an automatic production build.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Build command: `npm run build`
+- Publish directory: `build/`
+- Config: `netlify.toml`
