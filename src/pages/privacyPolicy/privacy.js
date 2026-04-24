@@ -11,7 +11,8 @@ function PrivacyPolicy() {
                 <p>
                     Maintaining the trust and confidence of our clients is a high priority. That is why we want you to understand how we protect
                     your privacy when we collect and use information about you, and the steps that we take to safeguard that information. This
-                    notice is provided to you on behalf of Inflection Capital Management, LLC.
+                    notice is provided to you on behalf of Inflection Capital Management, LLC ("Inflection"), also doing business as The
+                    Oglethorpe Collective, LLC ("TOC-23").
                 </p>
 
                 <h2>Information We Collect:</h2>
@@ -32,8 +33,8 @@ function PrivacyPolicy() {
 
                 <h2>Categories of Information We Disclose:</h2>
                 <p>
-                    We may disclose all information that we collect. Inflection Capital Management, LLC and its affiliates do not sell customer lists
-                    and will not sell your name to telemarketers.
+                    We may disclose all information that we collect. Inflection and its affiliates do not sell customer lists and will not sell
+                    your name to telemarketers.
                 </p>
 
                 <h2>Categories of Parties to Whom We Disclose:</h2>
@@ -41,10 +42,9 @@ function PrivacyPolicy() {
                     We will not disclose information regarding you or your account with us, except under the following circumstances:
                 </p>
                 <ul>
-                    <li>To your authorized Investment Advisor Representative and his or her manager;</li>
                     <li>
-                        Inflection Capital Management, LLC may permit Investment Advisor Representatives that terminate their affiliation with
-                        Inflection Capital Management, LLC to make copies of their client files.
+                        To your authorized Investment Advisor Representative and his or her manager. Inflection may permit Investment Advisor
+                        Representatives that terminate their affiliation with Inflection to make copies of their client files.
                     </li>
                     <li>
                         To establish or maintain an account with a third party, such as a clearing broker/dealer, investment company, or insurance
@@ -54,7 +54,7 @@ function PrivacyPolicy() {
                     <li>To your attorney, accountant, trustee or anyone else who represents you in a fiduciary capacity;</li>
                     <li>To our attorneys, accountants or auditors; and</li>
                     <li>
-                        To government entities or other third parties in response to subpoenas or other legal processes as required by law or to
+                        To government entities or other third parties in response to subpoenas or other legal process as required by law or to
                         comply with regulatory inquiries.
                     </li>
                 </ul>
@@ -69,7 +69,7 @@ function PrivacyPolicy() {
                     <li>To process your requests such as securities purchases and sales;</li>
                     <li>
                         To establish or maintain an account with an unaffiliated third party, such as a clearing broker-dealer providing services
-                        to you and/or Inflection Capital Management, LLC;
+                        to you and/or Inflection;
                     </li>
                     <li>To service your accounts, such as by issuing checks and account statements;</li>
                     <li>To comply with Federal, State, and Self-Regulatory Organization requirements; and</li>
@@ -97,17 +97,17 @@ function PrivacyPolicy() {
 
                 <h2>Complaint Notification:</h2>
                 <p>
-                    Please direct complaints to: Inflection Capital Management, LLC, 1 Sansome Street, Suite 3500, San Francisco, CA 94104,
-                    (513) 693-4886.
+                    Please direct complaints to: Inflection Capital Management, LLC, 1 Sansome Street, Suite 1400, San Francisco, CA 94104,
+                    (415) 450-6556.
                 </p>
 
                 <h2>Changes to this Privacy Policy:</h2>
                 <p>
                     If we make any substantial changes in the way we use or disseminate confidential information, we will notify you. If you have any
-                    questions concerning this Privacy Policy, please write to: Inflection Capital Management, LLC, 1 Sansome Street, Suite 3500, San
-                    Francisco, CA 94104, (513) 693-4886.
+                    questions concerning this Privacy Policy, please write to: Inflection Capital Management, LLC, 1 Sansome Street, Suite 1400, San
+                    Francisco, CA 94104, (415) 450-6556.
                 </p>
-                <p className="footer-text">September 2024</p>
+                <p className="footer-text">March 2026</p>
             </div>
             <FooterComponent />
         </>
