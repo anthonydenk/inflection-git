@@ -5,12 +5,9 @@ import ScrollTrigger from "../components/gsap-premium/src/ScrollTrigger";
 import { SplitText } from '../components/gsap-premium/src/SplitText';
 // internal
 import './App.css';
-import backgroundVideo from '../assets/InflectionGradientBG.mp4';
 import FooterComponent from '../components/footer/footer';
 import HeaderComponent from '../components/header/header';
-import backgroundjpg from '../assets/BG2.jpg';
 import bottomParalax from '../assets/mainInfo/paralaxBottom.png';
-import homePageHeader from '../assets/homePageHeader.svg';
 import wordmark from '../assets/wordmark.svg';
 // import poi1 from '../assets/mainInfo/portfolio/poi1.png';
 // import poi2 from '../assets/mainInfo/portfolio/poi2.png';
@@ -21,19 +18,12 @@ import ContactForm from '../components/contact/contact';
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 function App() {
-  const [showContent, setshowContent] = useState(() => {
-    // Check sessionStorage on initial render
-    return sessionStorage.getItem("hasEntered") === "true";
-  });
-  const [lowPower, setLowPower] = useState(false)
-  const [fadeOut, setFadeOut] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   // const [activeSection, setActiveSection] = useState(null);
   const [isImageLoaded, setImageLoaded] = useState(false);
   const [smoother, setSmoother] = useState(null);
 
   const contactPageRef = useRef(null);
-  const sectionRef = useRef(null); // Reference for the whole section
   const headlineRef = useRef(null); // Reference for the main headline
   const paragraphRef = useRef(null); // Reference for the paragraph
   const theWysRef = useRef(null);
@@ -41,29 +31,8 @@ function App() {
 
   const aboutUsRef = useRef(null);
 
-  const [shouldFadeIn, setShouldFadeIn] = useState(false);
-
   const handleImageLoad = () => {
     setImageLoaded(true);
-  };
-
-  useEffect(() => {
-    if (showContent) {
-      // Wait for the next frame to add the fade-in class
-      requestAnimationFrame(() => {
-        setShouldFadeIn(true);
-      });
-    }
-  }, [showContent]);
-
-  const handleButtonClick = () => {
-    setFadeOut(true); // Trigger fade-out animation
-    console.log("handling session storage")
-    sessionStorage.setItem("hasEntered", "true");
-    console.log(sessionStorage.getItem("hasEntered"))
-    setTimeout(() => {
-      setshowContent(true);
-    }, 1000);
   };
 
   const useHideUnimportantErrors = () => {
@@ -115,7 +84,6 @@ function App() {
 
   // paralax
   useEffect(() => {
-    if (!showContent) return;
     ScrollTrigger.refresh(); // Ensure triggers are recalibrated
 
     const initializeParallax = () => {
@@ -153,28 +121,7 @@ function App() {
 
     // Delay to allow rendering
     setTimeout(initializeParallax, 100);
-  }, [showContent, isMobile]);
-
-  // low power useEffect
-  useEffect(() => {
-
-    const videoElement = document.getElementById("background-video");
-    if (!videoElement) return;
-
-    setTimeout(() => {
-      const attemptPlay = async () => {
-        try {
-          await videoElement.play();
-          setLowPower(false);
-        } catch (error) {
-          console.log(error);
-          setLowPower(true);
-        }
-      };
-      attemptPlay()
-    }, 1000)
-
-  }, []);
+  }, [isMobile]);
 
   // smoothscroll useEffect
   useEffect(() => {
@@ -205,7 +152,7 @@ function App() {
 
     window.addEventListener("resize", handleResize);
 
-    if (showContent && contactPageRef.current) {
+    if (contactPageRef.current) {
 
       // Animate the contact page
       gsap.fromTo(
@@ -228,57 +175,21 @@ function App() {
       newSmoother.kill(); // Clean up the smoother instance on component unmount
       window.removeEventListener("resize", handleResize);
     };
-  }, [showContent, isMobile]);
+  }, [isMobile]);
 
 
   // story gsap
   useEffect(() => {
-    if (!showContent) return;
     let splitHeadline;
     let splitParagraph;
-    const isReturnVisit = sessionStorage.getItem("hasEntered") === "true";
 
     const animateSplitText = () => {
       splitHeadline = new SplitText(headlineRef.current, { type: "words,chars" });
       splitParagraph = new SplitText(paragraphRef.current, { type: "lines,words", linesClass: "split-line" });
 
-      if (isReturnVisit) {
-        // Set elements directly to their end state
-        gsap.set(".story-text", { opacity: 1, y: 0 });
-        gsap.set(splitHeadline.chars, { opacity: 1, y: 0 });
-        gsap.set(splitParagraph.lines, { opacity: 1, y: 0 });
-      } else {
-        // Animate as normal for first visit
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-          }
-        });
-
-        tl.from(".story-text", {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: "power2.out",
-        })
-          .from(splitHeadline.chars, {
-            opacity: 0,
-            y: 20,
-            stagger: 0.05,
-            duration: 0.6,
-            ease: "power2.out",
-          })
-          .from(splitParagraph.lines, {
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power2.out",
-          });
-      }
+      gsap.set(".story-text", { opacity: 1, y: 0 });
+      gsap.set(splitHeadline.chars, { opacity: 1, y: 0 });
+      gsap.set(splitParagraph.lines, { opacity: 1, y: 0 });
     };
 
     document.fonts.ready
@@ -289,7 +200,7 @@ function App() {
       if (splitHeadline) splitHeadline.revert();
       if (splitParagraph) splitParagraph.revert();
     };
-  }, [showContent]);
+  }, []);
 
   // description animations on profiles
   useEffect(() => {
@@ -351,52 +262,15 @@ function App() {
         section.removeEventListener("mouseleave", handleMouseLeave);
       };
     });
-  }, [showContent]);
+  }, []);
 
   // the Wys useEffect
   useEffect(() => {
-    if (!showContent || !theWysRef.current) return;
-    const isReturnVisit = sessionStorage.getItem("hasEntered") === "true";
-    const isMobile = window.innerWidth <= 768;
+    if (!theWysRef.current) return;
 
-    if (isReturnVisit) {
-      // Set elements directly to their end state
-      const sections = theWysRef.current.querySelectorAll(".why, .what, .how");
-      gsap.set(sections, { y: 0, opacity: 1 });
-    } else if (isMobile) {
-      // Original mobile animations for first visit
-      ['why', 'what', 'how'].forEach(className => {
-        gsap.from(theWysRef.current.querySelector(`.${className}`), {
-          y: 50,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: theWysRef.current.querySelector(`.${className}`),
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none none",
-          }
-        });
-      });
-    } else {
-      // Original desktop animations for first visit
-      const sections = theWysRef.current.querySelectorAll(".why, .what, .how");
-      gsap.from(sections, {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.3,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: theWysRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
-  }, [showContent]);
+    const sections = theWysRef.current.querySelectorAll(".why, .what, .how");
+    gsap.set(sections, { y: 0, opacity: 1 });
+  }, []);
 
   // const toggleDescription = (sectionId) => {
   //   setActiveSection((prevSection) => {
@@ -433,48 +307,14 @@ function App() {
   return (
     <>
 
-      {showContent && (
-        <header className="fixed-header">
-          <HeaderComponent smoother={smoother} />
-        </header>
-      )}
+      <header className="fixed-header">
+        <HeaderComponent smoother={smoother} />
+      </header>
       {!isMobile ? (<>
         <div id="smooth-wrapper">
           <div id="smooth-content">
             <div className="App">
-              {!showContent && (
-                <>
-                  <div className={`intro-content-container ${fadeOut ? 'fade-out' : ''}`}>
-                    {lowPower ? (
-                      <img
-                        className="video-bg"
-                        src={backgroundjpg}
-                        alt="Background"
-                      />
-                    ) : (
-                      <video
-                        id='background-video'
-                        className="video-bg"
-                        autoPlay loop muted playsInline>
-                        <source src={backgroundVideo} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    )}
-                    <div className="bg-noise" style={{ opacity: '1' }}></div>
-                    <div className={`content-container ${fadeOut ? 'fade-out' : ''}`}>
-                      <div className="App-content">
-                        <img src={homePageHeader} width={'30%'} height={'auto'} alt='HomeHeader' />
-                        <button onClick={handleButtonClick} className="nav-link">
-                          Enter Now
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
-              {showContent && (
-                <>
-                  <div className={`main-content ${shouldFadeIn ? 'fade-in' : ''}`} id="smooth-content">
+              <div className="main-content fade-in" id="smooth-content">
                     <div className="paralax-section" style={{ position: 'relative', overflow: 'hidden' }}>
                       <div className="wordmark">
                         <img src={wordmark} alt="Inflection Wordmark" />
@@ -627,8 +467,6 @@ function App() {
                       <FooterComponent />
                     </div>
                   </div>
-                </>
-              )}
             </div>
           </div>
         </div>
@@ -636,39 +474,7 @@ function App() {
       ) : (
         <>
           <div className="App">
-            {!showContent && (
-              <>
-                <div className={`intro-content-container ${fadeOut ? 'fade-out' : ''}`}>
-                  {lowPower ? (
-                    <img
-                      className="video-bg"
-                      src={backgroundjpg}
-                      alt="Background"
-                    />
-                  ) : (
-                    <video
-                      id='background-video'
-                      className="video-bg"
-                      autoPlay loop muted playsInline preload="auto">
-                      <source src={backgroundVideo} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  )}
-                  <div className="bg-noise" style={{ opacity: '1' }}></div>
-                  <div className={`content-container ${fadeOut ? 'fade-out' : ''}`}>
-                    <div className="App-content">
-                      <img src={homePageHeader} width={'30%'} height={'auto'} alt='HomeHeader' />
-                      <button onClick={handleButtonClick} className="nav-link">
-                        Enter Now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-            {showContent && (
-              <>
-                <div className={`main-content ${shouldFadeIn ? 'fade-in' : ''}`} id="smooth-content">
+            <div className="main-content fade-in" id="smooth-content">
                   <div className="paralax-section" style={{ position: 'relative', overflow: 'hidden' }}>
                     <div className="wordmark">
                       <img src={wordmark} alt="Inflection Wordmark" />
@@ -819,8 +625,6 @@ function App() {
                     <FooterComponent />
                   </div>
                 </div>
-              </>
-            )}
           </div>
         </>
       )}
