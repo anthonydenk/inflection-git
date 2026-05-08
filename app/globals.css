@@ -1,0 +1,61 @@
+@import "../src/index.css";
+@import "../src/legacyPages/App.css";
+@import "../src/components/header/header.css";
+@import "../src/components/carosel/carousel.css";
+@import "../src/components/contact/contact.css";
+@import "../src/components/footer/footer.css";
+@import "../src/components/profiles/PorfolioSection.css";
+@import "../src/legacyPages/services/services.css";
+@import "../src/legacyPages/team/team.css";
+@import "../src/legacyPages/privacyPolicy/privacy.css";
+
+a.header-nav-link,
+a.mobile-menu-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  color: #08241c;
+  background: #f7faf8;
+  text-align: center;
+}
+
+.not-found-page h1 {
+  margin: 0;
+  font-family: "GTMI";
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
+.not-found-page p {
+  max-width: 36rem;
+  margin: 0;
+}
+
+.not-found-page nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}

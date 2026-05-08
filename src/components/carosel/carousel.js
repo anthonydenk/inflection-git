@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import "./carousel.css"; // Import your styles
 import leftArrow from '../../assets/mainInfo/carousel/leftArrow.svg';
 import rightArrow from '../../assets/mainInfo/carousel/rightArrow.svg';
 import beach from '../../assets/mainInfo/carousel/beach_copy.jpg';
@@ -11,6 +12,7 @@ import { useSwipeable } from "react-swipeable";
 import ScrollSmoother from "../../components/gsap-premium/src/ScrollSmoother";
 import ScrollTrigger from "../../components/gsap-premium/src/ScrollTrigger";
 import { SplitText } from '../../components/gsap-premium/src/SplitText';
+import { assetSrc } from "../../utils/assetSource";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
@@ -26,6 +28,7 @@ const Carousel = () => {
     const slides = useMemo(() => [
         {
             image: beach,
+            imageAlt: "Coastal water and sand representing the Inflection client experience",
             title: (
                 <>
                     The Inflection  <span style={{ fontFamily: 'GTMI' }}>Client Experience</span>
@@ -35,6 +38,7 @@ const Carousel = () => {
         },
         {
             image: bridge,
+            imageAlt: "Suspension bridge representing modern wealth planning",
             title: (
                 <>
                     Built for  <span style={{ fontFamily: 'GTMI' }}>Modern Wealth</span>
@@ -44,6 +48,7 @@ const Carousel = () => {
         },
         {
             image: farm,
+            imageAlt: "Open farmland representing investment philosophy and long-term stewardship",
             title: (
                 <>
                     Investment<span style={{ fontFamily: 'GTMI' }}>Philosophy</span>
@@ -53,6 +58,7 @@ const Carousel = () => {
         },
         {
             image: Abstraction,
+            imageAlt: "Abstract green background representing alignment of ownership",
             title: (
                 <>
                     Alignment of <span style={{ fontFamily: 'GTMI' }}>Ownership</span>
@@ -76,7 +82,7 @@ const Carousel = () => {
         const preloadImage = (src) => {
             if (!src) return;
             const img = new Image();
-            img.src = src;
+            img.src = assetSrc(src);
         };
 
         const prevSlideIndex = (currentSlide - 1 + slides.length) % slides.length;
@@ -178,7 +184,7 @@ const Carousel = () => {
                         key={index}
                         className={`carousel-slide ${currentSlide === index ? "active" : ""}`}
                     >
-                        <img src={slide.image} alt={slide.title} className="carousel-image" />
+                        <img src={assetSrc(slide.image)} alt={slide.imageAlt} className="carousel-image" />
                         {index === currentSlide && (
                             <div className="carousel-text">
                                 <h2 ref={(el) => (headlineRefs.current[index] = el)}>{slide.title}</h2>
@@ -192,10 +198,10 @@ const Carousel = () => {
             {!isMobile && (
                 <>
                     <button className="carousel-arrow left-arrow" onClick={handlePrev}>
-                        <img src={leftArrow} alt="Previous Slide" className="arrow-icon" />
+                        <img src={assetSrc(leftArrow)} alt="Previous Slide" className="arrow-icon" />
                     </button>
                     <button className="carousel-arrow right-arrow" onClick={handleNext}>
-                        <img src={rightArrow} alt="Next Slide" className="arrow-icon" />
+                        <img src={assetSrc(rightArrow)} alt="Next Slide" className="arrow-icon" />
                     </button>
                 </>
             )}

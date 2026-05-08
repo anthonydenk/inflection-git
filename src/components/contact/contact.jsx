@@ -1,17 +1,20 @@
+"use client";
+
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import './contact.css';
 
 const ContactForm = () => {
     const [statusMessage, setStatusMessage] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event?.preventDefault();
+
         // Collect form data manually
         const formData = {
-            name: document.querySelector('[name="name"]').value,
-            phoneNumber: document.querySelector('[name="phoneNumber"]').value,
-            email: document.querySelector('[name="email"]').value,
-            message: document.querySelector('[name="message"]').value,
+            name: document.querySelector('[name="name"]')?.value,
+            phoneNumber: document.querySelector('[name="phoneNumber"]')?.value,
+            email: document.querySelector('[name="email"]')?.value,
+            message: document.querySelector('[name="message"]')?.value,
         };
 
         if (!formData.name || !formData.email || !formData.message) {

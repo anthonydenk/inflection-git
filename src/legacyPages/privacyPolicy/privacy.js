@@ -1,5 +1,4 @@
 import React from "react";
-import './privacy.css';
 import FooterComponent from "../../components/footer/footer";
 
 function PrivacyPolicy() {

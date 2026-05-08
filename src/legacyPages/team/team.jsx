@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './team.css';
+"use client";
 
+import React, { useEffect, useState } from 'react';
 import HeaderComponent from '../../components/header/header';
 import FooterComponent from '../../components/footer/footer';
 import justin from '../../assets/mainInfo/portfolio/poi1.png';
@@ -8,6 +8,7 @@ import katie from '../../assets/mainInfo/portfolio/poi2.png';
 import patrick from '../../assets/mainInfo/portfolio/patrickHayes.jpg';
 import sophia from '../../assets/mainInfo/portfolio/SOPHIA.jpg';
 import Yvonne from '../../assets/mainInfo/portfolio/Yvonne2.jpg';
+import { assetSrc } from "../../utils/assetSource";
 const people = [
     {
         name: 'Justin Kunz',
@@ -90,7 +91,7 @@ const TeamCard = ({ person, isMobile, activeSection, toggleDescription }) => {
     return (
         <article className={`team-card ${sectionId}-container`} aria-label={`${person.name} — ${person.title}`}>
             <div className="team-card__media">
-                <img src={person.headshot} alt={`${person.name} headshot`} loading="lazy" />
+                <img src={assetSrc(person.headshot)} alt={`${person.name} headshot`} loading="lazy" />
             </div>
 
             <div className="team-card__footer">

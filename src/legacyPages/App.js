@@ -1,10 +1,11 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import ScrollSmoother from "../components/gsap-premium/src/ScrollSmoother";
 import ScrollTrigger from "../components/gsap-premium/src/ScrollTrigger";
 import { SplitText } from '../components/gsap-premium/src/SplitText';
 // internal
-import './App.css';
 import FooterComponent from '../components/footer/footer';
 import HeaderComponent from '../components/header/header';
 import bottomParalax from '../assets/mainInfo/paralaxBottom.png';
@@ -14,8 +15,11 @@ import wordmark from '../assets/wordmark.svg';
 import logoWhite from '../assets/logos/logoWhite.png';
 import Carousel from '../components/carosel/carousel';
 import ContactForm from '../components/contact/contact';
+import { assetSrc } from "../utils/assetSource";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+}
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -78,7 +82,7 @@ function App() {
 
   useEffect(() => {
     const img = new Image();
-    img.src = bottomParalax;
+    img.src = assetSrc(bottomParalax);
     img.onload = () => setImageLoaded(true);
   }, []);
 
@@ -317,14 +321,15 @@ function App() {
               <div className="main-content fade-in" id="smooth-content">
                     <div className="paralax-section" style={{ position: 'relative', overflow: 'hidden' }}>
                       <div className="wordmark">
-                        <img src={wordmark} alt="Inflection Wordmark" />
+                        <h1 className="sr-only">Inflection Capital Management</h1>
+                        <img src={assetSrc(wordmark)} alt="Inflection Wordmark" />
                       </div>
                     </div>
                     <div className='main-content-container'>
                       {/* Combined Background */}
                       <div className={`combined-bg-wrapper ${isImageLoaded ? "loaded" : ""}`}>
                         <img
-                          src={bottomParalax} // Replace with your image path
+                          src={assetSrc(bottomParalax)} // Replace with your image path
                           alt="Parallax Background"
                           className="combined-bg-img"
                           onLoad={handleImageLoad}
@@ -333,7 +338,7 @@ function App() {
                       <div className="story-of-page" id='about' ref={aboutUsRef}>
                         <div className='storyInflec'>
                           <div className='story-image'>
-                            <img src={logoWhite} alt='story' />
+                            <img src={assetSrc(logoWhite)} alt='story' />
                           </div>
                           <div className='story-text' ref={storyTextRef}>
                             <h1 ref={headlineRef}>
@@ -477,13 +482,14 @@ function App() {
             <div className="main-content fade-in" id="smooth-content">
                   <div className="paralax-section" style={{ position: 'relative', overflow: 'hidden' }}>
                     <div className="wordmark">
-                      <img src={wordmark} alt="Inflection Wordmark" />
+                      <h1 className="sr-only">Inflection Capital Management</h1>
+                      <img src={assetSrc(wordmark)} alt="Inflection Wordmark" />
                     </div>
                   </div>
                   <div className='main-content-container'>
                     <div className={`combined-bg-wrapper ${isImageLoaded ? "loaded" : ""}`}>
                       <img
-                        src={bottomParalax} // Replace with your image path
+                        src={assetSrc(bottomParalax)} // Replace with your image path
                         alt="Parallax Background"
                         className="combined-bg-img"
                         onLoad={handleImageLoad}
@@ -492,7 +498,7 @@ function App() {
                     <div className="story-of-page" id='about' ref={aboutUsRef}>
                       <div className='storyInflec'>
                         <div className='story-image'>
-                          <img src={logoWhite} alt='story' />
+                          <img src={assetSrc(logoWhite)} alt='story' />
                         </div>
                         <div className='story-text'>
                           <h1 ref={headlineRef}>

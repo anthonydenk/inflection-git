@@ -85,6 +85,38 @@ html {
     position: relative;
 }
 
+.services-static-content {
+    width: min(1100px, 88vw);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    padding: 0 0 5rem;
+}
+
+.services-static-item {
+    border-top: 1px solid rgba(197, 230, 225, 0.35);
+    padding-top: 1.25rem;
+}
+
+.services-static-item h2 {
+    margin: 0 0 0.75rem;
+    color: #c5e6e1;
+    font-family: "GTMI";
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.services-static-item ul {
+    margin: 0;
+    padding-left: 1.15rem;
+}
+
+.services-static-item li {
+    margin: 0.35rem 0;
+    color: #75b2b2;
+    font-family: "RoobertoR";
+    line-height: 1.45;
+}
+
 .info-text {
     color: #c5e6e1;
     font-family: "RoobertoR";
@@ -292,5 +324,11 @@ html {
     .accordion-content p {
         transform: translateY(-10px);
         opacity: 0;
+    }
+
+    .services-static-content {
+        grid-template-columns: 1fr;
+        width: 80%;
+        padding-top: 2rem;
     }
 }

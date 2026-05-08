@@ -1,12 +1,13 @@
 import React from 'react'
-import PDFdisc1 from './ADVpt4.pdf';
-import PDFdisc2 from './CRSForm2.pdf';
-import './footer.css';
 import bg from '../../assets/footerbg.jpg'
+import { assetSrc } from "../../utils/assetSource";
+
+const PDFdisc1 = "/documents/ADVpt4.pdf";
+const PDFdisc2 = "/documents/CRSForm2.pdf";
 
 const FooterComponent = () => {
     return (
-        <div className="footer-section" style={{ backgroundImage: `url(${bg})` }}>
+        <div className="footer-section" style={{ backgroundImage: `url(${assetSrc(bg)})` }}>
             <div className="footer-row">
                 <p>Disclosure: </p>
                 <div className='pdf-container'>

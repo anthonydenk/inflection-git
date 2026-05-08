@@ -1,6 +1,7 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import "./services.css";
 import HeaderComponent from "../../components/header/header"; // Import HeaderComponent
 import FooterComponent from "../../components/footer/footer";
 import ContactForm from "../../components/contact/contact";
@@ -534,6 +535,19 @@ const ServicesChart = () => {
                 ) : (
                     <div className="chart-container" ref={chartRef}></div> // Keep the pie chart for larger screens
                 )}
+
+                <section className="services-static-content" aria-label="Family office service details">
+                    {dataSet.map((item) => (
+                        <article key={item.legendLabel} className="services-static-item">
+                            <h2>{item.legendLabel.replace(/\n/g, " ")}</h2>
+                            <ul>
+                                {item.info.map((point) => (
+                                    <li key={point}>{point}</li>
+                                ))}
+                            </ul>
+                        </article>
+                    ))}
+                </section>
             </div>
 
             <ContactForm />

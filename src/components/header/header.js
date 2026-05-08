@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-import './header.css';
+"use client";
 
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import wordmarkwL from '../../assets/logos/inflectionWML.svg'; //logo workmark and desc
 import whiteLogo from '../../assets/logos/logoWhite.png';
+import { assetSrc } from "../../utils/assetSource";
 
 const HeaderComponent = ({ smoother }) => {
     const [isMobile, setIsMobile] = useState(false);
@@ -13,7 +15,6 @@ const HeaderComponent = ({ smoother }) => {
     // Function to check scroll position and update header state
     const checkScrollPosition = () => {
         const target = document.querySelector('.main-content-container');
-        console.log("ACTIVATED")
         if (target) {
             const viewportHeight = window.innerHeight;
             const rect = target.getBoundingClientRect();
@@ -68,9 +69,6 @@ const HeaderComponent = ({ smoother }) => {
 
     const smoothScrollTo = (sectionId) => {
         if (window.location.pathname !== "/") {
-            // Store the target section in sessionStorage before navigation
-            sessionStorage.setItem('scrollTarget', sectionId);
-            window.location.href = "/";
             return;
         }
 
@@ -87,16 +85,21 @@ const HeaderComponent = ({ smoother }) => {
         }
     };
 
+    const handleSectionLinkClick = (event, sectionId) => {
+        setMenuOpen(false);
+        setMobileMenuOpen(false);
+
+        if (window.location.pathname === "/" && smoother) {
+            event.preventDefault();
+            smoothScrollTo(sectionId);
+        }
+    };
+
     const handleWordmarkClick = (e) => {
         if (isMobile) {
             e.preventDefault();
             setMobileMenuOpen(!mobileMenuOpen);
         }
-    };
-
-    const handleNavClick = (path) => {
-        setMobileMenuOpen(false);
-        window.location.href = path;
     };
 
     return (
@@ -107,7 +110,7 @@ const HeaderComponent = ({ smoother }) => {
                 <div className="wordmark-header">
                     <a href="/" onClick={handleWordmarkClick}>
                         <img
-                            src={isMobile ? whiteLogo : wordmarkwL}
+                            src={assetSrc(isMobile ? whiteLogo : wordmarkwL)}
                             alt="Inflection Wordmark"
                         />
                     </a>
@@ -134,24 +137,26 @@ const HeaderComponent = ({ smoother }) => {
                                 <button onClick={() => smoothScrollTo('#services')} className="header-nav-link">Services</button>
                             </li> */}
                             <li>
-                                <button onClick={() => (window.location.href = "/services")} className="header-nav-link">Services</button>
+                                <Link href="/services" onClick={() => setMenuOpen(false)} className="header-nav-link">Services</Link>
                             </li>
                             <li>
-                                <button onClick={() => (window.location.href = "/team")} className="header-nav-link">Team</button>
+                                <Link href="/team" onClick={() => setMenuOpen(false)} className="header-nav-link">Team</Link>
                             </li>
                             <li>
-                                <button onClick={() => smoothScrollTo('#about')} className="header-nav-link">About Us</button>
+                                <Link href="/#about" onClick={(event) => handleSectionLinkClick(event, '#about')} className="header-nav-link">About Us</Link>
                             </li>
                             <li>
-                                <button onClick={() => smoothScrollTo('#contact')} className="header-nav-link">Contact</button>
+                                <Link href="/#contact" onClick={(event) => handleSectionLinkClick(event, '#contact')} className="header-nav-link">Contact</Link>
                             </li>
                             <li>
-                                <button
-                                    onClick={() => window.open('https://inflection.addepar.com', '_blank', 'noopener,noreferrer')}
+                                <a
+                                    href="https://inflection.addepar.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="header-nav-link"
                                 >
                                     Log In
-                                </button>
+                                </a>
                             </li>
 
                         </ul>
@@ -169,21 +174,23 @@ const HeaderComponent = ({ smoother }) => {
                         <nav className="mobile-menu-nav">
                             <ul className="mobile-menu-list">
                                 <li>
-                                    <button onClick={() => handleNavClick('/')} className="mobile-menu-link">Home</button>
+                                    <Link href="/" onClick={() => setMobileMenuOpen(false)} className="mobile-menu-link">Home</Link>
                                 </li>
                                 <li>
-                                    <button onClick={() => handleNavClick('/services')} className="mobile-menu-link">Services</button>
+                                    <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="mobile-menu-link">Services</Link>
                                 </li>
                                 <li>
-                                    <button onClick={() => handleNavClick('/team')} className="mobile-menu-link">Team</button>
+                                    <Link href="/team" onClick={() => setMobileMenuOpen(false)} className="mobile-menu-link">Team</Link>
                                 </li>
                                 <li>
-                                    <button
-                                        onClick={() => window.open('https://inflection.addepar.com', '_blank', 'noopener,noreferrer')}
+                                    <a
+                                        href="https://inflection.addepar.com"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="mobile-menu-link"
                                     >
                                         Log In
-                                    </button>
+                                    </a>
                                 </li>
                             </ul>
                         </nav>
