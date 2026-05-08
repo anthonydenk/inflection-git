@@ -5,6 +5,7 @@ import * as d3 from "d3";
 import HeaderComponent from "../../components/header/header"; // Import HeaderComponent
 import FooterComponent from "../../components/footer/footer";
 import ContactForm from "../../components/contact/contact";
+import { resetPageScroll } from "../../utils/resetPageScroll";
 
 const dataSet = [
     {
@@ -90,6 +91,10 @@ const ServicesChart = () => {
     const currentExpanded = useRef(null); // Use ref instead of state
     const [isMobile, setIsMobile] = useState(false);
     const [openSection, setOpenSection] = useState(null);
+
+    useEffect(() => {
+        resetPageScroll();
+    }, []);
 
 
 

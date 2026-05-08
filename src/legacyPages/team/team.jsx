@@ -9,6 +9,7 @@ import patrick from '../../assets/mainInfo/portfolio/patrickHayes.jpg';
 import sophia from '../../assets/mainInfo/portfolio/SOPHIA.jpg';
 import Yvonne from '../../assets/mainInfo/portfolio/Yvonne2.jpg';
 import { assetSrc } from "../../utils/assetSource";
+import { resetPageScroll } from "../../utils/resetPageScroll";
 const people = [
     {
         name: 'Justin Kunz',
@@ -135,6 +136,10 @@ const TeamCard = ({ person, isMobile, activeSection, toggleDescription }) => {
 const Team = () => {
     const isMobile = useIsMobile();
     const [activeSection, setActiveSection] = useState(null);
+
+    useEffect(() => {
+        resetPageScroll();
+    }, []);
 
     const toggleDescription = (sectionId) => {
         setActiveSection((prevSection) => {

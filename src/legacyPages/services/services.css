@@ -17,8 +17,9 @@ html {
     min-height: 100vh;
     /* Ensure it takes at least the full viewport height */
     width: 100vw;
-    overflow: hidden;
-    /* Prevent horizontal scroll bar */
+    overflow-x: hidden;
+    overflow-y: visible;
+    /* Prevent horizontal scroll bar while allowing vertical page scroll */
     align-content: center;
     /* Add padding for responsiveness */
 }
