@@ -1,0 +1,416 @@
+.who-we-serve {
+    --wws-forest: #022118;
+    --wws-forest-2: #03291d;
+    --wws-seafoam: #75b2b2;
+    --wws-ice: #d7e9e5;
+    --wws-peach: #ff9566;
+    --wws-white: #ffffff;
+    background: var(--wws-forest);
+    color: var(--wws-white);
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "RoobertoL", "RoobertoR", sans-serif;
+    line-height: 1.6;
+}
+
+.who-we-serve .header-header-container {
+    background: rgba(2, 33, 24, 0.88);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+}
+
+.who-we-serve .header-nav-link,
+.who-we-serve .header-header-container.scrolled .header-nav-link {
+    color: var(--wws-white);
+}
+
+.who-we-serve .wordmark-header img,
+.who-we-serve .header-header-container.scrolled .wordmark-header img {
+    filter: invert(99%) sepia(94%) saturate(28%) hue-rotate(52deg) brightness(106%) contrast(100%);
+}
+
+.who-we-serve__wrap {
+    width: min(100% - 80px, 1160px);
+    margin: 0 auto;
+}
+
+.who-we-serve__hero {
+    position: relative;
+    padding: clamp(168px, 17vh, 220px) 0 108px;
+    background:
+        radial-gradient(circle at 82% 22%, rgba(117, 178, 178, 0.1), transparent 30%),
+        var(--wws-forest);
+}
+
+.who-we-serve__hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.who-we-serve__eyebrow,
+.who-we-serve__label,
+.who-we-serve__services-eyebrow {
+    margin-bottom: 24px;
+    color: var(--wws-seafoam);
+    font-family: "RoobertoR", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+}
+
+.who-we-serve__hero h1 {
+    max-width: 900px;
+    margin: 0;
+    color: var(--wws-white);
+    font-family: "RoobertoR", sans-serif;
+    font-size: clamp(3.35rem, 7.4vw, 6.5rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+}
+
+.who-we-serve__hero h1 em,
+.who-we-serve__services h2 em,
+.who-we-serve__lead {
+    font-family: "GTMI", Georgia, serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.who-we-serve__thesis {
+    max-width: 31ch;
+    margin: 32px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: "GTMI", Georgia, serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    line-height: 1.4;
+}
+
+.who-we-serve__hero-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.who-we-serve__hero-art svg {
+    width: min(100%, 230px);
+    height: auto;
+}
+
+.who-we-serve__divider {
+    background: var(--wws-forest);
+    line-height: 0;
+}
+
+.who-we-serve__divider svg {
+    display: block;
+    width: 100%;
+    height: 72px;
+}
+
+.who-we-serve__content {
+    padding: 92px 0 96px;
+    background: var(--wws-forest);
+}
+
+.who-we-serve__content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+}
+
+.who-we-serve__block p {
+    margin: 0;
+    color: var(--wws-white);
+    font-family: "RoobertoL", "RoobertoR", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.who-we-serve__block .who-we-serve__detail {
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.03rem;
+    line-height: 1.72;
+}
+
+.who-we-serve__peach {
+    color: var(--wws-peach);
+}
+
+.who-we-serve__services {
+    padding: 6px 0 96px;
+    background: var(--wws-forest);
+}
+
+.who-we-serve__services .who-we-serve__wrap {
+    padding-top: 56px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.who-we-serve__services-eyebrow {
+    margin-bottom: 16px;
+}
+
+.who-we-serve__services h2 {
+    margin: 0;
+    color: var(--wws-white);
+    font-family: "RoobertoR", sans-serif;
+    font-size: clamp(1.875rem, 4vw, 2.875rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+}
+
+.who-we-serve__services-intro {
+    max-width: 70ch;
+    margin: 16px 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.06rem;
+    line-height: 1.6;
+}
+
+.who-we-serve__services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 54px;
+    margin: 40px 0 4px;
+    padding: 0;
+    list-style: none;
+}
+
+.who-we-serve__services-grid li {
+    position: relative;
+    padding-left: 28px;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.who-we-serve__services-grid li::before {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 14px;
+    height: 2px;
+    background: var(--wws-seafoam);
+    content: "";
+}
+
+.who-we-serve__services-grid strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--wws-white);
+    font-family: "RoobertoR", sans-serif;
+    font-size: 1.03rem;
+    font-weight: 400;
+}
+
+.who-we-serve__cta-wrap {
+    margin-top: 38px;
+}
+
+.who-we-serve__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 30px;
+    border-radius: 9px;
+    background: var(--wws-seafoam);
+    color: var(--wws-forest);
+    font-family: "RoobertoR", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.who-we-serve__cta:hover,
+.who-we-serve__cta:focus-visible {
+    background: #8ac2c2;
+    box-shadow: 0 18px 34px -16px rgba(0, 0, 0, 0.55);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.who-we-serve__cta svg {
+    flex: 0 0 auto;
+    transition: transform 200ms ease;
+}
+
+.who-we-serve__cta:hover svg,
+.who-we-serve__cta:focus-visible svg {
+    transform: translateX(3px);
+}
+
+.who-we-serve__switcher {
+    padding: 0 0 84px;
+    background: var(--wws-forest);
+}
+
+.who-we-serve__switcher .who-we-serve__wrap {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.who-we-serve__switcher-label {
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: "RoobertoR", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+}
+
+.who-we-serve__segments {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.who-we-serve__segment {
+    padding: 24px 26px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.who-we-serve__segment:hover,
+.who-we-serve__segment:focus-visible {
+    border-color: var(--wws-seafoam);
+    background: rgba(117, 178, 178, 0.08);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.who-we-serve__segment.is-current {
+    border-color: var(--wws-seafoam);
+    background: rgba(117, 178, 178, 0.12);
+}
+
+.who-we-serve__segment-name,
+.who-we-serve__segment-description {
+    display: block;
+}
+
+.who-we-serve__segment-name {
+    color: var(--wws-white);
+    font-family: "GTM", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+.who-we-serve__segment.is-current .who-we-serve__segment-name {
+    color: var(--wws-seafoam);
+}
+
+.who-we-serve__segment-description {
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: "RoobertoR", sans-serif;
+    font-size: 0.8125rem;
+}
+
+@media (max-width: 900px) {
+    .who-we-serve__wrap {
+        width: min(100% - 44px, 760px);
+    }
+
+    .who-we-serve__hero {
+        padding: 130px 0 66px;
+    }
+
+    .who-we-serve__hero-grid,
+    .who-we-serve__content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .who-we-serve__hero-grid {
+        gap: 34px;
+    }
+
+    .who-we-serve__hero-art {
+        order: -1;
+        justify-content: flex-start;
+    }
+
+    .who-we-serve__hero-art svg {
+        width: 170px;
+    }
+
+    .who-we-serve__content {
+        padding: 60px 0;
+    }
+
+    .who-we-serve__content-grid {
+        gap: 44px;
+    }
+
+    .who-we-serve__services .who-we-serve__wrap {
+        padding-top: 40px;
+    }
+
+    .who-we-serve__services-grid,
+    .who-we-serve__segments {
+        grid-template-columns: 1fr;
+    }
+
+    .who-we-serve__services-grid {
+        gap: 20px;
+    }
+
+    .who-we-serve__divider svg {
+        height: 44px;
+    }
+}
+
+@media (max-width: 768px) {
+    .who-we-serve .header-header-container {
+        height: 88px;
+        padding: 0.75rem 1.25rem 1rem;
+    }
+
+    .who-we-serve .wordmark-header img,
+    .who-we-serve .header-header-container.scrolled .wordmark-header img {
+        width: 54px;
+        filter: none;
+    }
+
+    .who-we-serve__hero h1 {
+        font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .who-we-serve__block p {
+        font-size: 1.1rem;
+    }
+
+    .who-we-serve__segment {
+        padding: 21px 22px;
+    }
+
+    .who-we-serve__cta {
+        width: 100%;
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .who-we-serve *,
+    .who-we-serve *::before,
+    .who-we-serve *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
