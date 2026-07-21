@@ -6,6 +6,8 @@ export default (
     <Routes>
         <Route path="/" />
         <Route path="/privacy-policy" />
+        <Route path="/who-we-serve" />
+        <Route path="/preipo" />
         <Route path="/services" />
         <Route path="/team" />
         {/* <Route path="/contact" />  // add later if you enable it */}

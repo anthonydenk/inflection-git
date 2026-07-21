@@ -134,6 +134,9 @@ const HeaderComponent = ({ smoother }) => {
                                 <button onClick={() => smoothScrollTo('#services')} className="header-nav-link">Services</button>
                             </li> */}
                             <li>
+                                <button onClick={() => handleNavClick('/who-we-serve')} className="header-nav-link">Who We Serve</button>
+                            </li>
+                            <li>
                                 <button onClick={() => (window.location.href = "/services")} className="header-nav-link">Services</button>
                             </li>
                             <li>
@@ -170,6 +173,9 @@ const HeaderComponent = ({ smoother }) => {
                             <ul className="mobile-menu-list">
                                 <li>
                                     <button onClick={() => handleNavClick('/')} className="mobile-menu-link">Home</button>
+                                </li>
+                                <li>
+                                    <button onClick={() => handleNavClick('/who-we-serve')} className="mobile-menu-link">Who We Serve</button>
                                 </li>
                                 <li>
                                     <button onClick={() => handleNavClick('/services')} className="mobile-menu-link">Services</button>
