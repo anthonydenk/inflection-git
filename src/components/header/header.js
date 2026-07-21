@@ -4,6 +4,12 @@ import './header.css';
 import wordmarkwL from '../../assets/logos/inflectionWML.svg'; //logo workmark and desc
 import whiteLogo from '../../assets/logos/logoWhite.png';
 
+const WHO_WE_SERVE_LINKS = [
+    { label: 'Wealth Creators', href: '/who-we-serve#wealth-creators' },
+    { label: 'Next Generation Families', href: '/who-we-serve#next-generation' },
+    { label: 'Small Family Offices', href: '/who-we-serve#single-family-offices' },
+];
+
 const HeaderComponent = ({ smoother }) => {
     const [isMobile, setIsMobile] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -133,8 +139,33 @@ const HeaderComponent = ({ smoother }) => {
                             {/* <li>
                                 <button onClick={() => smoothScrollTo('#services')} className="header-nav-link">Services</button>
                             </li> */}
-                            <li>
-                                <button onClick={() => handleNavClick('/who-we-serve')} className="header-nav-link">Who We Serve</button>
+                            <li className="header-nav-item header-nav-item--audiences">
+                                <button
+                                    onClick={() => handleNavClick('/who-we-serve')}
+                                    className="header-nav-link header-nav-link--audiences"
+                                    aria-haspopup="true"
+                                >
+                                    Who We Serve
+                                    <svg className="header-nav-chevron" viewBox="0 0 12 8" aria-hidden="true">
+                                        <path d="M1 1.25 6 6.25l5-5" />
+                                    </svg>
+                                </button>
+                                <ul className="header-audience-menu" aria-label="Who We Serve audiences">
+                                    {WHO_WE_SERVE_LINKS.map((item) => (
+                                        <li key={item.href}>
+                                            <a
+                                                className="header-audience-link"
+                                                href={item.href}
+                                                onClick={() => setMenuOpen(false)}
+                                            >
+                                                <span>{item.label}</span>
+                                                <svg viewBox="0 0 18 12" aria-hidden="true">
+                                                    <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" />
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
                             </li>
                             <li>
                                 <button onClick={() => (window.location.href = "/services")} className="header-nav-link">Services</button>
@@ -176,6 +207,18 @@ const HeaderComponent = ({ smoother }) => {
                                 </li>
                                 <li>
                                     <button onClick={() => handleNavClick('/who-we-serve')} className="mobile-menu-link">Who We Serve</button>
+                                    <div className="mobile-menu-audience-links" aria-label="Who We Serve audiences">
+                                        {WHO_WE_SERVE_LINKS.map((item) => (
+                                            <button
+                                                type="button"
+                                                key={item.href}
+                                                onClick={() => handleNavClick(item.href)}
+                                                className="mobile-menu-audience-link"
+                                            >
+                                                {item.label}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </li>
                                 <li>
                                     <button onClick={() => handleNavClick('/services')} className="mobile-menu-link">Services</button>
