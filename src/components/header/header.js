@@ -7,7 +7,7 @@ import whiteLogo from '../../assets/logos/logoWhite.png';
 const WHO_WE_SERVE_LINKS = [
     { label: 'Wealth Creators', href: '/who-we-serve#wealth-creators' },
     { label: 'Next Generation Families', href: '/who-we-serve#next-generation' },
-    { label: 'Small Family Offices', href: '/who-we-serve#single-family-offices' },
+    { label: 'Single Family Offices', href: '/who-we-serve#single-family-offices' },
 ];
 
 const HeaderComponent = ({ smoother }) => {
