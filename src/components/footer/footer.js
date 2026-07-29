@@ -1,6 +1,7 @@
 import React from 'react'
 import PDFdisc1 from './ADVpt4.pdf';
-import PDFdisc2 from './CRSForm2.pdf';
+import PDFdisc2 from './ADVpt2B.pdf';
+import PDFdisc3 from './CRSForm2.pdf';
 import './footer.css';
 import bg from '../../assets/footerbg.jpg'
 
@@ -15,6 +16,9 @@ const FooterComponent = () => {
                         ADV Part 2A
                     </a>
                     <a href={PDFdisc2} className="footer-item" target="_blank" rel="noopener noreferrer">
+                        ADV Part 2B
+                    </a>
+                    <a href={PDFdisc3} className="footer-item" target="_blank" rel="noopener noreferrer">
                         Form CRS
                     </a>
                     <a href='/privacy-policy' className="footer-item" target="_blank" rel="noopener noreferrer">
