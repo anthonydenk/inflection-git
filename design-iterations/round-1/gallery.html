@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design variants</title>
+<style>
+  :root{
+    --bg:#131416;
+    --panel:#1b1d20;
+    --panel-2:#232629;
+    --line:#2d3036;
+    --line-hover:#42464e;
+    --text:#e7e9ec;
+    --muted:#9aa0a8;
+    --faint:#686e76;
+    --page:#0c0d0e;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font:14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  button{ font:inherit; }
+
+  /* ---------- header ---------- */
+  header.chrome{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+    padding:13px 20px;
+    background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  header.chrome h1{ margin:0; font-size:15px; font-weight:600; letter-spacing:.01em; }
+  #count{ color:var(--muted); font-size:13px; }
+  .hint{ margin-left:auto; color:var(--faint); font-size:12px; white-space:nowrap; }
+
+  /* ---------- grid ---------- */
+  main#grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:18px;
+    padding:18px 20px 48px;
+    max-width:1720px;
+    margin:0 auto;
+  }
+  @media (max-width:980px){
+    main#grid{ grid-template-columns:1fr; }
+    .hint{ display:none; }
+  }
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:border-color .15s ease;
+  }
+  .card:hover{ border-color:var(--line-hover); }
+  .card:focus-visible{ outline:2px solid var(--muted); outline-offset:2px; }
+
+  .preview{
+    position:relative;
+    aspect-ratio:16 / 10;
+    overflow:hidden;
+    background:var(--page);
+  }
+  .preview iframe{
+    position:absolute; top:0; left:0;
+    width:1280px; height:800px; /* 1280 x (1280*10/16) virtual viewport */
+    border:0;
+    transform-origin:0 0;
+    pointer-events:none; /* grid mode: never steal scroll/clicks */
+    background:#fff;
+  }
+
+  .card .meta{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 14px;
+    border-top:1px solid var(--line);
+    min-width:0;
+  }
+  .badge{
+    flex:none;
+    width:22px; height:22px;
+    border-radius:6px;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    color:var(--muted);
+    font-size:11px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .meta .t{ font-weight:600; font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .meta .n{ color:var(--muted); font-size:12px; flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .meta a.open{
+    flex:none;
+    color:var(--muted); text-decoration:none; font-size:12px;
+    padding:3px 8px; border:1px solid var(--line); border-radius:6px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .meta a.open:hover{ color:var(--text); border-color:var(--line-hover); }
+
+  /* ---------- empty / placeholder state ---------- */
+  .empty{
+    grid-column:1 / -1;
+    max-width:640px; margin:8vh auto 0;
+    background:var(--panel);
+    border:1px dashed var(--line-hover);
+    border-radius:12px;
+    padding:28px 30px;
+  }
+  .empty h2{ margin:0 0 8px; font-size:15px; font-weight:600; }
+  .empty p{ margin:0 0 12px; color:var(--muted); font-size:13px; }
+  .empty code, .empty pre{
+    font:12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background:var(--page);
+    border:1px solid var(--line);
+    border-radius:6px;
+  }
+  .empty code{ padding:1px 5px; }
+  .empty pre{ padding:12px 14px; overflow-x:auto; margin:0; }
+
+  /* ---------- focus mode ---------- */
+  #focus{
+    position:fixed; inset:0; z-index:50;
+    display:flex; flex-direction:column;
+    background:var(--bg);
+  }
+  #focus[hidden]{ display:none; }
+  .fbar{
+    display:flex; align-items:center; gap:10px;
+    padding:9px 14px;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    min-width:0;
+  }
+  .fbar .t{ font-weight:600; font-size:13px; white-space:nowrap; }
+  .fbar .n{ color:var(--muted); font-size:12px; flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .fbar button, .fbar a.open{
+    flex:none;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    color:var(--muted);
+    font-size:12px;
+    padding:4px 10px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .fbar button:hover, .fbar a.open:hover{ color:var(--text); border-color:var(--line-hover); }
+  .fbar .kbd{ color:var(--faint); font-size:11px; margin-left:2px; white-space:nowrap; }
+  @media (max-width:700px){ .fbar .kbd, .fbar .n{ display:none; } }
+  #fframe{
+    flex:1; width:100%; border:0; background:#fff;
+  }
+  body.focused{ overflow:hidden; }
+</style>
+</head>
+<body>
+
+<header class="chrome">
+  <h1 id="galleryTitle">Design variants</h1>
+  <span id="count"></span>
+  <span class="hint">Click a card to inspect &middot; number keys to jump &middot; Esc back</span>
+</header>
+
+<main id="grid"></main>
+
+<div id="focus" hidden>
+  <div class="fbar">
+    <button id="backBtn" title="Back to grid (Esc)">&larr; Grid</button>
+    <span class="badge" id="fbadge"></span>
+    <span class="t" id="ftitle"></span>
+    <span class="n" id="fnote"></span>
+    <button id="prevBtn" title="Previous variant">&larr; Prev</button>
+    <button id="nextBtn" title="Next variant">Next &rarr;</button>
+    <a class="open" id="fopen" href="#" target="_blank" rel="noopener">Open in new tab &#8599;</a>
+    <span class="kbd">&larr;/&rarr; switch &middot; Esc grid</span>
+  </div>
+  <iframe id="fframe" title="Variant preview"></iframe>
+</div>
+
+<script>
+  // ============================================================
+  // TEMPLATE TOKENS — the consuming agent must find-and-replace:
+  //
+  //   1. The VARIANTS placeholder on the `const VARIANTS =` line
+  //      below: replace the comment-marker-plus-empty-array chunk
+  //      (comment marker, then `[]`) with a JSON array. The exact
+  //      token appears ONLY on that line, so a global find-and-
+  //      replace of the whole chunk is safe.
+  //
+  //   2. `TOKEN_GALLERY_TITLE` (with double underscores instead of
+  //      the TOKEN_ prefix — see the RAW_TITLE line below for the
+  //      exact spelling) -> a human title for the header
+  //      (if left unreplaced, falls back to "Design variants")
+  //
+  // Variant shape:
+  //   { "file": "v1-print-tech.html",
+  //     "title": "Print-Tech Paper",
+  //     "note":  "editorial grid, data-as-texture" }
+  //
+  // `file` is a path relative to this gallery file (same directory
+  // when using the standard workflow), loaded live in iframes — no
+  // fetch(), no JSON sidecar file, works on any static dev server.
+  // ============================================================
+  const VARIANTS = [
+    { "file": "v1-vast-quiet.html", "title": "V1 — Vast Quiet", "note": "cinematic minimalism, fog-and-horizon hero, slow drift" },
+    { "file": "v2-gallery-white.html", "title": "V2 — Gallery White", "note": "typographic masthead, hairline grid, Basel-gallery restraint" },
+    { "file": "v3-soft-luxury.html", "title": "V3 — Soft Luxury", "note": "stone/cream tactile strata, italic serif promise" },
+    { "file": "v4-classical-remix.html", "title": "V4 — Classical Remix", "note": "engraved emblem + Didone, ivory/ink/oxblood" },
+    { "file": "v5-quiet-instrument.html", "title": "V5 — Quiet Instrument", "note": "graphite instrument panel, mono + serif, drawing curve" }
+  ];
+  const RAW_TITLE = "Inflection · Round 1 — five directions";
+
+  const DESIGN_WIDTH = 1280;             // virtual viewport width for grid previews
+  const TITLE = /^__.*__$/.test(RAW_TITLE) ? "Design variants" : RAW_TITLE;
+
+  const grid    = document.getElementById("grid");
+  const focusEl = document.getElementById("focus");
+  const fframe  = document.getElementById("fframe");
+  const fbadge  = document.getElementById("fbadge");
+  const ftitle  = document.getElementById("ftitle");
+  const fnote   = document.getElementById("fnote");
+  const fopen   = document.getElementById("fopen");
+
+  let focusedIndex = -1; // -1 = grid mode
+
+  document.title = TITLE;
+  document.getElementById("galleryTitle").textContent = TITLE;
+  document.getElementById("count").textContent =
+    VARIANTS.length ? VARIANTS.length + (VARIANTS.length === 1 ? " variant" : " variants") : "";
+
+  // ---------- empty state ----------
+  function renderEmpty(){
+    const box = document.createElement("div");
+    box.className = "empty";
+    box.innerHTML =
+      "<h2>No variants configured yet</h2>" +
+      "<p>This is the unmodified gallery template. To use it, replace the " +
+      "<code>/*__VARIANTS__<\/code><code>*\/[]<\/code> placeholder in the inline script with a JSON " +
+      "array of your variant pages, for example:</p>" +
+      "<pre>const VARIANTS = [\n" +
+      '  { "file": "v1-print-tech.html", "title": "Print-Tech Paper",\n' +
+      '    "note": "editorial grid, data-as-texture" },\n' +
+      '  { "file": "v2-neon-terminal.html", "title": "Neon Terminal",\n' +
+      '    "note": "CRT glow, mono grid" }\n' +
+      "];</pre>" +
+      "<p style=\"margin-top:12px\">Files are loaded as same-directory relative iframes, " +
+      "so keep the variant HTML files next to this gallery and serve the folder with any " +
+      "static dev server.</p>";
+    grid.appendChild(box);
+  }
+
+  // ---------- grid cards ----------
+  function renderGrid(){
+    VARIANTS.forEach(function(v, i){
+      const card = document.createElement("article");
+      card.className = "card";
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", "Inspect variant " + (i + 1) + ": " + (v.title || v.file));
+
+      const preview = document.createElement("div");
+      preview.className = "preview";
+      const iframe = document.createElement("iframe");
+      iframe.src = v.file;
+      iframe.loading = "lazy";
+      iframe.setAttribute("tabindex", "-1");
+      iframe.setAttribute("title", (v.title || v.file) + " preview");
+      preview.appendChild(iframe);
+
+      // Scale the 1280px-wide virtual page down to the card width.
+      const ro = new ResizeObserver(function(entries){
+        const w = entries[0].contentRect.width;
+        if (w > 0) iframe.style.transform = "scale(" + (w / DESIGN_WIDTH) + ")";
+      });
+      ro.observe(preview);
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = String(i + 1);
+
+      const t = document.createElement("span");
+      t.className = "t";
+      t.textContent = v.title || v.file;
+
+      const n = document.createElement("span");
+      n.className = "n";
+      n.textContent = v.note || "";
+
+      const open = document.createElement("a");
+      open.className = "open";
+      open.href = v.file;
+      open.target = "_blank";
+      open.rel = "noopener";
+      open.textContent = "Open ↗";
+      open.addEventListener("click", function(e){ e.stopPropagation(); });
+
+      meta.appendChild(badge);
+      meta.appendChild(t);
+      meta.appendChild(n);
+      meta.appendChild(open);
+
+      card.appendChild(preview);
+      card.appendChild(meta);
+      card.addEventListener("click", function(){ enterFocus(i); });
+      card.addEventListener("keydown", function(e){
+        if (e.key === "Enter" || e.key === " "){ e.preventDefault(); enterFocus(i); }
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  // ---------- focus mode ----------
+  function enterFocus(i){
+    if (i < 0 || i >= VARIANTS.length) return;
+    const v = VARIANTS[i];
+    focusedIndex = i;
+    fbadge.textContent = String(i + 1);
+    ftitle.textContent = v.title || v.file;
+    fnote.textContent  = v.note || "";
+    fopen.href = v.file;
+    if (fframe.getAttribute("src") !== v.file) fframe.setAttribute("src", v.file);
+    focusEl.hidden = false;
+    document.body.classList.add("focused");
+    // Keep keyboard focus on the chrome so arrow/Esc keys reach the gallery,
+    // not the variant iframe.
+    document.getElementById("backBtn").focus({ preventScroll: true });
+  }
+
+  function exitFocus(){
+    focusedIndex = -1;
+    focusEl.hidden = true;
+    document.body.classList.remove("focused");
+    fframe.removeAttribute("src");
+  }
+
+  function step(delta){
+    if (focusedIndex < 0) return;
+    const n = VARIANTS.length;
+    enterFocus(((focusedIndex + delta) % n + n) % n);
+  }
+
+  document.getElementById("backBtn").addEventListener("click", exitFocus);
+  document.getElementById("prevBtn").addEventListener("click", function(){ step(-1); });
+  document.getElementById("nextBtn").addEventListener("click", function(){ step(1); });
+
+  // ---------- keyboard ----------
+  window.addEventListener("keydown", function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
+    if (focusedIndex >= 0){
+      if (e.key === "Escape"){ e.preventDefault(); exitFocus(); return; }
+      if (e.key === "ArrowLeft"){ e.preventDefault(); step(-1); return; }
+      if (e.key === "ArrowRight"){ e.preventDefault(); step(1); return; }
+    }
+    // Number keys 1-9 jump straight to a variant's focus mode (works from
+    // the grid; also allowed while focused, which is harmless and handy).
+    if (e.key >= "1" && e.key <= "9"){
+      const i = e.key.charCodeAt(0) - 49; // '1' -> 0
+      if (i < VARIANTS.length){ e.preventDefault(); enterFocus(i); }
+    }
+  });
+
+  // ---------- boot ----------
+  if (!Array.isArray(VARIANTS) || VARIANTS.length === 0){
+    renderEmpty();
+  } else {
+    renderGrid();
+  }
+</script>
+</body>
+</html>

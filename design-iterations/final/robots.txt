@@ -1,0 +1,76 @@
+# robots.txt — Inflection Capital Management
+#
+# AI-crawler policy: DELIBERATELY OPEN.
+# AI answer engines (ChatGPT, Claude, Perplexity, Gemini, Copilot) are a real
+# referral channel for a firm whose buyers research quietly before making
+# contact. Being citable there is worth more than withholding public marketing
+# copy, all of which is already published on this site. Nothing here is
+# proprietary: no client data, no performance figures, no gated material.
+#
+# Reverse this only as a conscious tradeoff — blocking these agents removes the
+# firm from AI answers entirely; it does not "protect" anything already public.
+
+User-agent: *
+Allow: /
+
+# --- OpenAI ---------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# --- Anthropic ------------------------------------------------------------
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# --- Perplexity -----------------------------------------------------------
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# --- Google Gemini / Vertex (separate from Google Search ranking) ----------
+User-agent: Google-Extended
+Allow: /
+
+# --- Apple Intelligence ---------------------------------------------------
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Microsoft Copilot ----------------------------------------------------
+User-agent: bingbot
+Allow: /
+
+# --- Meta AI --------------------------------------------------------------
+User-agent: meta-externalagent
+Allow: /
+
+# --- Common Crawl (feeds many downstream models) --------------------------
+User-agent: CCBot
+Allow: /
+
+# --- Others ---------------------------------------------------------------
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://inflectioncm.com/sitemap.xml

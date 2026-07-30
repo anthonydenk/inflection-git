@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflection Capital Management — A Multi-Family Office of San Francisco</title>
+<meta name="description" content="Inflection Capital Management is a partner-owned multi-family office based in Silicon Valley, serving wealth creators and families as trusted stewards for generations to come.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CINEMATIC PLATES — Round-2 variant v2a
+   Base aesthetic: Seven Hills (v4b) · evergreen / mint / sky
+   Structure: full-viewport plates carry the narrative;
+   dense copy lives in compact mint interludes between them.
+   Every plate line sits on a guaranteed-contrast scrim.
+   ============================================================ */
+:root{
+  --ever-deep:   #072117;
+  --ever:        #0B2E20;
+  --ever-mid:    #14402E;
+  --ever-soft:   #1E5540;
+  --ever-haze:   #35604C;
+  --ever-far:    #4F7663;
+  --mint:        #D6E7DD;
+  --mint-pale:   #E7F1EA;
+  --mint-bright: #F2F7F4;
+  --white:       #FBFDFB;
+  --sky:         #C9D9E0;
+  --sky-pale:    #DFEAEC;
+  --sky-deep:    #A9C2C9;
+  --ink:         #10261C;
+  --ink-soft:    #3D5548;
+  --hairline-dark: rgba(214,231,221,.18);
+  --hairline-light: rgba(11,46,32,.16);
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --measure: 34em;
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --ease-silk: cubic-bezier(.22,.61,.21,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; }
+
+::selection{ background: var(--ever); color: var(--mint); }
+
+:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ---------- type scale ---------- */
+.display-1{
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3.4rem, 9.5vw, 8.25rem);
+  line-height: .98;
+  letter-spacing: -0.015em;
+}
+.display-2{
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.1rem, 4.6vw, 3.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.plate-line{
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.9rem, 4.4vw, 3.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.008em;
+}
+.lede{
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.15rem, 1.8vw, 1.42rem);
+  line-height: 1.55;
+}
+.kicker{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: .72rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+.promise{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.15rem, 2.1vw, 1.6rem);
+  letter-spacing: .005em;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.1rem var(--gutter);
+  color: var(--mint-bright);
+  transition: background .45s var(--ease-silk), box-shadow .45s var(--ease-silk), padding .45s var(--ease-silk);
+}
+.nav.is-scrolled{
+  background: rgba(7,33,23,.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding-top: .8rem;
+  padding-bottom: .8rem;
+  box-shadow: 0 1px 0 rgba(214,231,221,.12);
+}
+.nav-wordmark{
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.nav-wordmark .mark{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: .01em;
+}
+.nav-wordmark .sub{
+  font-size: .58rem;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  margin-top: .3rem;
+  opacity: .75;
+}
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: clamp(1.1rem, 2.4vw, 2.2rem);
+  list-style: none;
+}
+.nav-links a{
+  text-decoration: none;
+  font-size: .82rem;
+  font-weight: 400;
+  letter-spacing: .06em;
+  position: relative;
+  padding: .35rem 0;
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0; right:100%; bottom:0;
+  height:1px;
+  background: currentColor;
+  transition: right .35s var(--ease-silk);
+}
+.nav-links a:hover::after{ right:0; }
+.nav-login{
+  text-decoration: none;
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .55rem 1.25rem;
+  border: 1px solid rgba(214,231,221,.45);
+  border-radius: 999px;
+  transition: background .3s var(--ease-silk), color .3s var(--ease-silk), border-color .3s var(--ease-silk);
+}
+.nav-login:hover{
+  background: var(--mint);
+  border-color: var(--mint);
+  color: var(--ever);
+}
+.nav-toggle{
+  display: none;
+  background: none;
+  border: 1px solid rgba(214,231,221,.45);
+  border-radius: 999px;
+  color: inherit;
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: .55rem 1.1rem;
+  cursor: pointer;
+}
+@media (max-width: 860px){
+  .nav-links, .nav-login{ display:none; }
+  .nav-toggle{ display:inline-block; }
+}
+.menu-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: var(--ever-deep);
+  color: var(--mint-bright);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--gutter);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s var(--ease-silk), visibility 0s .4s;
+}
+.menu-overlay.is-open{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .4s var(--ease-silk);
+}
+.menu-overlay ul{ list-style:none; }
+.menu-overlay a{
+  display: block;
+  text-decoration: none;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.5;
+}
+.menu-overlay a:hover{ font-style: italic; }
+.menu-close{
+  position: absolute;
+  top: 1.1rem;
+  right: var(--gutter);
+  background: none;
+  border: 1px solid rgba(214,231,221,.45);
+  border-radius: 999px;
+  color: inherit;
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: .55rem 1.1rem;
+  cursor: pointer;
+}
+.menu-overlay .menu-login{
+  margin-top: 2.5rem;
+  font-family: var(--sans);
+  font-size: .8rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(214,231,221,.45);
+  align-self: flex-start;
+  padding-bottom: .3rem;
+}
+
+/* ============================================================
+   PLATES — the cinematic spine. Full viewport, art behind,
+   one short line on a guaranteed-contrast scrim.
+   ============================================================ */
+.plate{
+  position: relative;
+  overflow: hidden;
+  background: var(--ever);
+  color: var(--mint-bright);
+}
+.plate-art{
+  position: absolute;
+  inset: -7% 0;
+  will-change: transform;
+}
+.plate-art > *{ position:absolute; inset:0; }
+.plate-art svg{ width:100%; height:100%; }
+.grain::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index: 3;
+  pointer-events:none;
+  opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.055'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* THE CONTRAST FIX: every plate carries a dedicated scrim layer
+   under its text zone. Lines never sit on pale fog. */
+.scrim-top{
+  position:absolute; inset:0; z-index:4; pointer-events:none;
+  background: linear-gradient(180deg,
+    rgba(5,23,15,.78) 0%, rgba(5,23,15,.55) 30%, rgba(5,23,15,.18) 52%, rgba(5,23,15,0) 68%);
+}
+.scrim-center{
+  position:absolute; inset:0; z-index:4; pointer-events:none;
+  background: radial-gradient(62% 58% at 50% 46%,
+    rgba(5,23,15,.62) 0%, rgba(5,23,15,.38) 52%, rgba(5,23,15,0) 78%);
+}
+
+.plate-caption{
+  position: absolute;
+  z-index: 6;
+  left: var(--gutter);
+  bottom: 2.4rem;
+  text-shadow: 0 1px 2px rgba(7,33,23,.45), 0 2px 18px rgba(7,33,23,.5);
+  display: flex;
+  align-items: baseline;
+  gap: .8rem;
+  color: rgba(242,247,244,.72);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.plate-caption::before{
+  content:"";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  align-self: center;
+  opacity: .6;
+}
+.plate-caption em{
+  font-family: var(--serif);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: .02em;
+  font-size: .85rem;
+  font-weight: 300;
+}
+
+/* movement plates: full-viewport cinema, line anchored to the
+   dark upper band where the scrim guarantees contrast */
+.movement{
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-start;
+}
+.movement-inner{
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: clamp(9rem, 20vh, 13rem) var(--gutter) clamp(5rem, 10vw, 8rem);
+}
+.movement .kicker{
+  color: rgba(214,231,221,.85);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.movement .kicker::before{
+  content:"";
+  width: 2.6rem;
+  height: 1px;
+  background: rgba(214,231,221,.55);
+}
+.movement .plate-line{
+  max-width: 15em;
+  text-wrap: balance;
+  text-shadow: 0 1px 2px rgba(5,23,15,.35), 0 2px 30px rgba(5,23,15,.5);
+}
+.movement .plate-line em{ font-style: italic; }
+.movement-inner.is-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+.movement-inner.is-right .kicker{ flex-direction: row-reverse; }
+
+/* ============================================================
+   HERO — Plate I · Marin Headlands, first light
+   ============================================================ */
+.hero{
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+}
+.hero .sky{
+  background:
+    radial-gradient(85% 45% at 50% 104%, rgba(242,247,244,.42) 0%, rgba(223,234,236,.16) 40%, rgba(223,234,236,0) 68%),
+    linear-gradient(180deg,
+      #0A2A1E 0%,
+      #103525 34%,
+      #1B4732 56%,
+      #2E5A45 70%,
+      #6E9180 80%,
+      #AEC7BC 89%,
+      #DCE9E2 96%,
+      #F2F7F4 100%);
+}
+.hero .fogbank{
+  top:auto; bottom:0; height:28%;
+  background: linear-gradient(180deg, rgba(242,247,244,0) 0%, rgba(242,247,244,.26) 52%, rgba(223,234,236,.55) 100%);
+  filter: blur(2px);
+}
+.hero-inner{
+  position: relative;
+  z-index: 6;
+  text-align: center;
+  padding: 7rem var(--gutter) 8rem;
+  max-width: 62rem;
+}
+.hero-eyebrow{
+  color: rgba(242,247,244,.8);
+  margin-bottom: 2.2rem;
+}
+.hero h1{ margin: 0; }
+.hero h1 .mark{ display:block; }
+.hero h1 .sub{
+  display: block;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(.72rem, 1.4vw, .95rem);
+  letter-spacing: .52em;
+  text-indent: .52em;
+  text-transform: uppercase;
+  margin-top: 1.6rem;
+  color: rgba(242,247,244,.85);
+}
+.hero .promise{
+  margin-top: 2.6rem;
+  color: rgba(242,247,244,.92);
+}
+.hero-rule{
+  width: 1px;
+  height: 4.5rem;
+  margin: 3rem auto 0;
+  background: linear-gradient(180deg, rgba(242,247,244,.85), rgba(242,247,244,0));
+}
+.hero-scroll{
+  position:absolute;
+  z-index: 6;
+  right: var(--gutter);
+  bottom: 2.4rem;
+  color: rgba(242,247,244,.72);
+  text-shadow: 0 1px 2px rgba(7,33,23,.45), 0 2px 18px rgba(7,33,23,.5);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .3rem 0;
+}
+.hero-scroll:hover{ color: var(--mint-bright); }
+
+/* ============================================================
+   CURVED SWEEPS — the signature transition
+   ============================================================ */
+.sweep{
+  position: relative;
+  z-index: 7;
+  height: clamp(56px, 9vw, 130px);
+  margin-top: calc(clamp(56px, 9vw, 130px) * -1);
+  pointer-events: none;
+}
+.sweep svg{ width:100%; height:100%; }
+
+/* ============================================================
+   INTERLUDES — compact mint text sections between plates.
+   All dense copy lives here; never fights the imagery.
+   ============================================================ */
+.interlude{
+  position: relative;
+  background: var(--mint);
+  color: var(--ink);
+  padding: clamp(3.25rem, 6vw, 4.75rem) var(--gutter) clamp(3.5rem, 7vw, 5.25rem);
+}
+.interlude-inner{ max-width: 74rem; margin: 0 auto; }
+.interlude .kicker{ color: var(--ink-soft); }
+
+/* Interlude 1 — the firm */
+.story-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.story-side .place{
+  margin-top: 1.2rem;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  line-height: 1.15;
+}
+.story-side .place em{ font-style: italic; }
+.coords{
+  margin-top: 1.4rem;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.story-copy .lede{ max-width: var(--measure); }
+.story-copy .lede + .lede{ margin-top: 1.4em; }
+.signoff{
+  margin-top: 2.2rem;
+  display:flex;
+  align-items:center;
+  gap: 1.1rem;
+  color: var(--ink-soft);
+}
+.signoff::before{
+  content:"";
+  width: 3rem;
+  height: 1px;
+  background: rgba(11,46,32,.4);
+}
+.signoff span{
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* Interlude 2 — principles as compact hairline rows */
+.principles-head{ margin-bottom: clamp(1.75rem, 4vw, 2.5rem); max-width: 74rem; }
+.principles-head .display-2{ max-width: 15em; margin-top: 1.4rem; }
+.principles-head .display-2 em{ font-style: italic; }
+.principle-list{ list-style: none; }
+.principle{
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr) minmax(0, 5fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  padding: clamp(1.25rem, 2.5vw, 1.9rem) 0;
+  border-top: 1px solid var(--hairline-light);
+  align-items: baseline;
+}
+.principle:last-child{ border-bottom: 1px solid var(--hairline-light); }
+.principle .numeral{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: rgba(11,46,32,.45);
+}
+.principle h3{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  transition: transform .45s var(--ease-silk);
+}
+.principle:hover h3{ transform: translateX(.35rem); }
+.principle p{
+  color: var(--ink-soft);
+  font-size: .96rem;
+  max-width: 30em;
+}
+
+/* Interlude 3 — approach + practice index */
+.interlude.tone-pale{ background: var(--mint-pale); }
+.approach-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.approach-copy .display-2{ margin-top: 1.4rem; }
+.approach-copy .display-2 em{ font-style: italic; }
+.approach-copy p{
+  max-width: var(--measure);
+  margin-top: 1.4rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+.approach-copy p strong{ font-weight: 500; color: var(--ink); }
+.practice-list{
+  list-style: none;
+  border-top: 1px solid var(--hairline-light);
+  margin-top: .4rem;
+}
+.practice-list li{
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  padding: .85rem .25rem;
+  border-bottom: 1px solid var(--hairline-light);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+  transition: background .3s var(--ease-silk), padding-left .3s var(--ease-silk);
+}
+.practice-list li:hover{
+  background: rgba(214,231,221,.6);
+  padding-left: .8rem;
+}
+.practice-list .n{
+  font-family: var(--sans);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  color: var(--ink-soft);
+  min-width: 2.2rem;
+}
+.practice-note{
+  margin-top: 1.2rem;
+  font-size: .78rem;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+}
+
+/* Interlude 4 — partners + writing, one compact chamber */
+.interlude.tone-white{ background: var(--white); }
+.partners-head{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+.partners-head .display-2{ margin-top: 1.4rem; }
+.partners-head .note{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  max-width: 22em;
+}
+.partner-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+.partner-card{ text-decoration: none; display: block; }
+.portrait{
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 2px;
+  background:
+    radial-gradient(85% 70% at 30% 20%, rgba(242,247,244,.55), rgba(242,247,244,0) 60%),
+    linear-gradient(160deg, #C4D6CE 0%, #9DBBAC 42%, #557A69 78%, #23503C 100%);
+}
+.portrait .initials{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(3.4rem, 7vw, 5.5rem);
+  color: rgba(7,33,23,.28);
+  transition: transform .6s var(--ease-silk);
+}
+.partner-card:hover .initials{ transform: scale(1.045); }
+.portrait .plabel{
+  position:absolute;
+  left: 1.1rem;
+  bottom: 1rem;
+  z-index: 4;
+  color: rgba(7,33,23,.55);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.partner-card h3{
+  margin-top: 1.2rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+.partner-card .role{
+  margin-top: .3rem;
+  font-size: .74rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.partner-card .read{
+  display: inline-block;
+  margin-top: .7rem;
+  font-size: .8rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid rgba(11,46,32,.3);
+  padding-bottom: .15rem;
+  transition: color .3s, border-color .3s;
+}
+.partner-card:hover .read{ color: var(--ink); border-color: var(--ink); }
+
+.writing-block{
+  margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--hairline-light);
+}
+.writing-block .kicker{ margin-bottom: 1.6rem; }
+.writing-list{ list-style:none; border-top: 1px solid var(--hairline-light); }
+.writing-list a{
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 3fr) auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 1.15rem .25rem;
+  border-bottom: 1px solid var(--hairline-light);
+  text-decoration: none;
+  transition: background .3s var(--ease-silk), padding-left .3s var(--ease-silk);
+}
+.writing-list a:hover{ background: rgba(231,241,234,.75); padding-left: .8rem; }
+.writing-list h3{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+}
+.writing-list .tag{
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.writing-list .arrow{
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  transition: transform .35s var(--ease-silk);
+}
+.writing-list a:hover .arrow{ transform: translateX(.4rem); }
+
+/* ============================================================
+   PLATE ART — the four cinematic scenes
+   ============================================================ */
+/* Plate II — the bay from Telegraph Hill */
+.plate-bay .sky{
+  background: linear-gradient(180deg,
+    #0A2A1E 0%, #16402E 30%, #3A6350 48%, #7E9C90 60%, #C9D9E0 72%, #DFEAEC 100%);
+}
+.plate-bay .water{
+  top: 62%;
+  background:
+    repeating-linear-gradient(180deg,
+      rgba(242,247,244,.16) 0 2px,
+      rgba(169,194,201,.10) 2px 7px,
+      rgba(11,46,32,.14) 7px 9px),
+    linear-gradient(180deg, #A9C2C9 0%, #8FADA8 40%, #557A69 100%);
+}
+.plate-bay .water::after{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(70% 55% at 50% 0%, rgba(242,247,244,.5), rgba(242,247,244,0) 70%);
+}
+.plate-bay .bridge{ top: 34%; height: 32%; opacity:.6; }
+.plate-bay .cityedge{ top:auto; bottom:-1px; height: 30%; }
+
+/* Plate III — eucalyptus in the Presidio */
+.plate-grove{ background: var(--ever-deep); }
+.plate-grove .canopy{
+  background:
+    radial-gradient(130% 90% at 50% -25%, #072117 40%, rgba(7,33,23,0) 75%),
+    linear-gradient(180deg, #0A2A1E 0%, #123829 42%, #23503C 75%, #35604C 100%);
+}
+.plate-grove .shafts{
+  background:
+    linear-gradient(112deg, rgba(242,247,244,0) 16%, rgba(242,247,244,.14) 21%, rgba(242,247,244,0) 27%),
+    linear-gradient(112deg, rgba(242,247,244,0) 38%, rgba(223,234,236,.2) 45%, rgba(242,247,244,0) 53%),
+    linear-gradient(112deg, rgba(242,247,244,0) 66%, rgba(214,231,221,.12) 72%, rgba(242,247,244,0) 79%);
+  filter: blur(6px);
+}
+.plate-grove .floor{
+  top:auto; bottom:0; height:22%;
+  background: linear-gradient(180deg, rgba(7,33,23,0), rgba(7,33,23,.85));
+}
+
+/* Plate IV — downtown from Nob Hill, dusk */
+.plate-dusk .sky{
+  background:
+    radial-gradient(95% 60% at 50% 108%, rgba(214,231,221,.34) 0%, rgba(214,231,221,0) 60%),
+    linear-gradient(180deg, #05170F 0%, #072117 40%, #123829 68%, #23503C 88%, #35604C 100%);
+}
+.plate-dusk .skyline{ top:auto; bottom:-1px; height:56%; }
+.plate-dusk .fog{
+  top:auto; bottom:0; height:34%;
+  background: linear-gradient(180deg, rgba(223,234,236,0), rgba(223,234,236,.22) 55%, rgba(223,234,236,.4));
+  filter: blur(4px);
+}
+
+/* ============================================================
+   CTA — Begin a conversation (Plate V)
+   ============================================================ */
+.cta{
+  min-height: 88svh;
+  display: grid;
+  place-items: center;
+}
+.cta-inner{
+  position: relative;
+  z-index: 6;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(7rem, 16vh, 10rem) var(--gutter);
+  max-width: 74rem;
+  margin: 0 auto;
+}
+.cta .kicker{
+  color: rgba(214,231,221,.8);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cta .kicker::before, .cta .kicker::after{
+  content:"";
+  width: 2.6rem;
+  height: 1px;
+  background: rgba(214,231,221,.55);
+}
+.cta .display-2{ max-width: 16em; text-wrap: balance; text-shadow: 0 1px 2px rgba(5,23,15,.35), 0 2px 30px rgba(5,23,15,.5); }
+.cta .display-2 em{ font-style: italic; }
+.cta .promise{ margin-top: 1.8rem; color: rgba(231,241,234,.9); max-width: 30em; }
+.cta-actions{
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem 2.2rem;
+}
+.btn-mint{
+  display: inline-block;
+  text-decoration: none;
+  background: var(--mint);
+  color: var(--ever);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: .82rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 1.05rem 2.6rem;
+  border-radius: 999px;
+  transition: background .3s var(--ease-silk), transform .3s var(--ease-silk), box-shadow .3s var(--ease-silk);
+}
+.btn-mint:hover{
+  background: var(--mint-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.28);
+}
+.cta-alt{
+  font-size: .84rem;
+  letter-spacing: .06em;
+  color: rgba(231,241,234,.9);
+}
+.cta-alt a{
+  color: var(--mint-bright);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(214,231,221,.5);
+  padding-bottom: .12rem;
+  transition: border-color .3s;
+}
+.cta-alt a:hover{ border-color: var(--mint-bright); }
+.cta-address{
+  margin-top: 2.8rem;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(214,231,221,.7);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  background: var(--ever-deep);
+  color: rgba(231,241,234,.75);
+  padding: clamp(2.75rem, 5vw, 3.5rem) var(--gutter) 2.25rem;
+  font-size: .82rem;
+}
+.footer-inner{ max-width: 74rem; margin: 0 auto; }
+.footer-top{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid var(--hairline-dark);
+}
+.footer-wordmark{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--mint-bright);
+}
+.footer-wordmark small{
+  display:block;
+  font-family: var(--sans);
+  font-size: .56rem;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  margin-top: .4rem;
+  color: rgba(214,231,221,.6);
+}
+.footer-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem 1.8rem;
+  list-style: none;
+}
+.footer-links a{
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: .1rem;
+  transition: border-color .3s, color .3s;
+}
+.footer-links a:hover{ color: var(--mint-bright); border-color: rgba(214,231,221,.5); }
+.footer-legal{
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 2rem;
+  color: rgba(231,241,234,.55);
+  font-size: .74rem;
+  line-height: 1.7;
+}
+.footer-legal .contact{ text-align: right; }
+.footer-legal .contact a{ text-decoration:none; }
+.footer-legal .contact a:hover{ color: var(--mint-bright); }
+
+/* ============================================================
+   REVEALS
+   ============================================================ */
+.reveal{
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .9s var(--ease-silk), transform .9s var(--ease-silk);
+  transition-delay: var(--d, 0s);
+}
+.reveal.in{ opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .plate-art{ transform: none !important; }
+  *{ transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px){
+  .story-grid, .approach-grid{ grid-template-columns: 1fr; }
+  .principle{
+    grid-template-columns: 1fr;
+    gap: .7rem;
+    padding: 1.5rem 0;
+  }
+  .principle .numeral{ font-size: 1.1rem; }
+  .partner-grid{ grid-template-columns: 1fr; }
+  .writing-list a{ grid-template-columns: 1fr auto; }
+  .writing-list .tag{ display:none; }
+  .footer-legal{ grid-template-columns: 1fr; }
+  .footer-legal .contact{ text-align: left; }
+  .movement-inner.is-right{ align-items: flex-start; text-align: left; }
+  .movement-inner.is-right .kicker{ flex-direction: row; }
+  .movement-inner{ padding-top: clamp(7rem, 18vh, 10rem); }
+  .hero-scroll{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <a class="nav-wordmark" href="#top" aria-label="Inflection Capital Management — home">
+    <span class="mark">Inflection</span>
+    <span class="sub">Capital Management</span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="nav-links">
+      <li><a href="#story">Who We Serve</a></li>
+      <li><a href="#approach">Services</a></li>
+      <li><a href="#partners">Team</a></li>
+      <li><a href="#story">About Us</a></li>
+      <li><a href="#conversation">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="nav-login" href="#">Log In</a>
+  <button class="nav-toggle" id="menuOpen" aria-expanded="false" aria-controls="menuOverlay">Menu</button>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="menu-close" id="menuClose">Close</button>
+  <ul>
+    <li><a href="#story">Who We Serve</a></li>
+    <li><a href="#approach">Services</a></li>
+    <li><a href="#partners">Team</a></li>
+    <li><a href="#story">About Us</a></li>
+    <li><a href="#conversation">Contact</a></li>
+  </ul>
+  <a class="menu-login" href="#">Log In</a>
+</div>
+
+<main id="top">
+
+<!-- ============ PLATE I · HERO — Marin Headlands, first light ============ -->
+<section class="plate hero grain" aria-label="Inflection Capital Management">
+  <div class="plate-art" data-parallax="0.12">
+    <div class="sky"></div>
+    <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true" style="height:60%; top:auto; bottom:-1px; opacity:.9;">
+      <path fill="#4F7663" d="M0,210 C170,150 340,236 520,196 C700,156 830,96 1010,150 C1190,204 1300,140 1440,170 L1440,420 L0,420 Z"/>
+    </svg>
+    <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true" style="height:48%; top:auto; bottom:-1px;">
+      <path fill="#23503C" d="M0,260 C220,190 420,286 640,236 C860,186 1040,120 1220,196 C1330,240 1390,220 1440,232 L1440,420 L0,420 Z"/>
+    </svg>
+    <div class="fogbank"></div>
+    <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true" style="height:34%; top:auto; bottom:-1px;">
+      <path fill="#0B2E20" d="M0,300 C260,220 520,330 760,290 C1000,250 1200,320 1440,270 L1440,420 L0,420 Z"/>
+    </svg>
+  </div>
+  <div class="scrim-center" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <p class="kicker hero-eyebrow reveal">A multi-family office of San Francisco</p>
+    <h1 class="reveal" style="--d:.12s">
+      <span class="display-1 mark">Inflection</span>
+      <span class="sub">Capital Management</span>
+    </h1>
+    <p class="promise reveal" style="--d:.26s">We serve as trusted stewards for generations to come.</p>
+    <div class="hero-rule reveal" style="--d:.4s" aria-hidden="true"></div>
+  </div>
+
+  <p class="plate-caption"><span>Plate I</span> <em>Marin Headlands, first light</em></p>
+  <a class="hero-scroll" href="#story">The story begins below</a>
+</section>
+
+<!-- sweep into mint interlude -->
+<div class="sweep" aria-hidden="true">
+  <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+    <path fill="#D6E7DD" d="M0,130 C420,10 1020,10 1440,130 L1440,130 L0,130 Z"/>
+  </svg>
+</div>
+
+<!-- ============ INTERLUDE 1 · The firm ============ -->
+<section class="interlude" id="story">
+  <div class="interlude-inner story-grid">
+    <div class="story-side">
+      <p class="kicker reveal">The Firm</p>
+      <p class="place reveal" style="--d:.1s">Built where the fog meets <em>the future.</em></p>
+      <p class="coords reveal" style="--d:.2s">San Francisco, California · 37.79° N, 122.40° W</p>
+    </div>
+    <div class="story-copy">
+      <p class="lede reveal">Inflection Capital Management is a partner-owned and operated multi-family office based in Silicon Valley, dedicated to working with clients to preserve and grow their wealth and legacy.</p>
+      <p class="lede reveal" style="--d:.12s">Our careers have been dedicated to working with wealth creators, families navigating periods of transition, and family offices, including their foundations. With a commitment to personal connection and a deep understanding of our clients' unique goals, we serve as trusted stewards for generations to come.</p>
+      <p class="signoff reveal" style="--d:.22s"><span>Partner-owned · SEC-registered investment adviser</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATE II · The bay from Telegraph Hill ============ -->
+<section class="plate movement plate-bay grain" aria-label="Where wealth is created">
+  <div class="plate-art" data-parallax="0.1">
+    <div class="sky"></div>
+    <svg class="bridge" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="#123829" fill="none">
+        <path d="M-40,150 C300,40 620,40 960,150" stroke-width="4"/>
+        <path d="M-40,150 L960,150" stroke-width="7"/>
+        <path d="M250,150 L250,58 M670,150 L670,58" stroke-width="12"/>
+        <path d="M250,58 L250,40 M670,58 L670,40" stroke-width="7"/>
+        <path d="M100,150 L100,112 M175,150 L175,92 M325,150 L325,92 M400,150 L400,110 M475,150 L475,118 M550,150 L550,108 M615,150 L615,90 M745,150 L745,95 M820,150 L820,115 M895,150 L895,132" stroke-width="2.5"/>
+      </g>
+    </svg>
+    <div class="water"></div>
+    <svg class="cityedge" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="#0B2E20">
+        <path d="M0,260 L0,150 L90,150 L90,110 L150,110 L150,170 L230,170 L230,120 L280,120 L280,90 L330,90 L330,160 L420,160 L420,130 L500,130 L500,180 L560,180 L560,140 L640,140 L640,100 L680,100 L680,60 L720,60 L720,150 L810,150 L810,120 L900,120 L900,170 L980,170 L980,140 L1080,140 L1080,90 L1130,90 L1130,150 L1230,150 L1230,110 L1330,110 L1330,160 L1440,160 L1440,260 Z"/>
+      </g>
+      <g fill="#D6E7DD" opacity=".5">
+        <rect x="108" y="126" width="5" height="7"/><rect x="296" y="104" width="5" height="7"/>
+        <rect x="648" y="112" width="5" height="7"/><rect x="692" y="74" width="5" height="7"/>
+        <rect x="1092" y="104" width="5" height="7"/><rect x="1244" y="122" width="5" height="7"/>
+      </g>
+    </svg>
+  </div>
+  <div class="scrim-top" aria-hidden="true"></div>
+  <div class="movement-inner">
+    <p class="kicker reveal">I · Where wealth is created</p>
+    <p class="plate-line reveal" style="--d:.14s">Fortunes begin in the flats. <em>They are kept on the hills.</em></p>
+  </div>
+  <p class="plate-caption"><span>Plate II</span> <em>The bay from Telegraph Hill</em></p>
+</section>
+
+<!-- sweep into principles interlude -->
+<div class="sweep" aria-hidden="true">
+  <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+    <path fill="#D6E7DD" d="M0,130 C480,14 960,14 1440,130 L1440,130 L0,130 Z"/>
+  </svg>
+</div>
+
+<!-- ============ INTERLUDE 2 · Principles ============ -->
+<section class="interlude">
+  <div class="interlude-inner">
+    <div class="principles-head">
+      <p class="kicker reveal">What guides us</p>
+      <h2 class="display-2 reveal" style="--d:.1s">Three commitments, held as steadily <em>as the hills hold the city.</em></h2>
+    </div>
+    <ol class="principle-list">
+      <li class="principle reveal">
+        <span class="numeral" aria-hidden="true">i.</span>
+        <h3>Our Clients Inspire Us</h3>
+        <p>The families we serve built remarkable things. Our work is to return the favor of their trust — giving them the space to focus on what matters most, while we attend to everything else.</p>
+      </li>
+      <li class="principle reveal" style="--d:.12s">
+        <span class="numeral" aria-hidden="true">ii.</span>
+        <h3>Our Partnership</h3>
+        <p>We meet you at the inflection point of your legacy, bringing institutional-level expertise to your side of the table — as your advocate, never a vendor.</p>
+      </li>
+      <li class="principle reveal" style="--d:.24s">
+        <span class="numeral" aria-hidden="true">iii.</span>
+        <h3>Success Together</h3>
+        <p>Decades of experience with hundreds of single family offices taught us what endures: clarity, direction, and a relationship that carries across generations.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PLATE III · Eucalyptus in the Presidio ============ -->
+<section class="plate movement plate-grove grain" aria-label="Where life is lived">
+  <div class="plate-art" data-parallax="0.09">
+    <div class="canopy"></div>
+    <svg viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="#072117">
+        <path d="M120,0 L164,0 L150,800 L106,800 Z"/>
+        <path d="M395,0 L425,0 L440,800 L398,800 Z" opacity=".92"/>
+        <path d="M690,0 L720,0 L706,800 L668,800 Z"/>
+        <path d="M1030,0 L1074,0 L1092,800 L1040,800 Z" opacity=".95"/>
+        <path d="M1310,0 L1338,0 L1352,800 L1312,800 Z" opacity=".88"/>
+      </g>
+      <g fill="#123829" opacity=".8">
+        <path d="M262,0 L280,0 L272,800 L248,800 Z"/>
+        <path d="M560,0 L574,0 L584,800 L562,800 Z"/>
+        <path d="M880,0 L896,0 L888,800 L866,800 Z"/>
+        <path d="M1200,0 L1214,0 L1222,800 L1202,800 Z"/>
+      </g>
+    </svg>
+    <div class="shafts"></div>
+    <div class="floor"></div>
+  </div>
+  <div class="scrim-top" aria-hidden="true"></div>
+  <div class="movement-inner is-right">
+    <p class="kicker reveal">II · Where life is lived</p>
+    <p class="plate-line reveal" style="--d:.14s">Three generations at one table. <em>That is the wealth worth stewarding.</em></p>
+  </div>
+  <p class="plate-caption"><span>Plate III</span> <em>Eucalyptus in the Presidio</em></p>
+</section>
+
+<!-- sweep into approach interlude -->
+<div class="sweep" aria-hidden="true">
+  <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+    <path fill="#E7F1EA" d="M0,130 C480,14 960,14 1440,130 L1440,130 L0,130 Z"/>
+  </svg>
+</div>
+
+<!-- ============ INTERLUDE 3 · Approach & practice ============ -->
+<section class="interlude tone-pale" id="approach">
+  <div class="interlude-inner approach-grid">
+    <div class="approach-copy">
+      <p class="kicker reveal">Our approach</p>
+      <h2 class="display-2 reveal" style="--d:.1s">Order and intention for <em>meaningful wealth.</em></h2>
+      <p class="reveal" style="--d:.2s"><strong>25+ years advising single-family offices, foundations, and institutional allocators.</strong> Transparent fees, intuitive reporting, and education tailored to your needs.</p>
+      <p class="reveal" style="--d:.28s">Our work is to bring order and intention to the complexity that comes with meaningful wealth — quietly, thoroughly, and always in your interest.</p>
+    </div>
+    <div>
+      <ol class="practice-list">
+        <li class="reveal"><span class="n">01</span>Rising Generation</li>
+        <li class="reveal" style="--d:.05s"><span class="n">02</span>Philanthropy</li>
+        <li class="reveal" style="--d:.1s"><span class="n">03</span>Family Governance &amp; Succession</li>
+        <li class="reveal" style="--d:.15s"><span class="n">04</span>Investment Process</li>
+        <li class="reveal" style="--d:.2s"><span class="n">05</span>Trust, Tax &amp; Estate Planning</li>
+        <li class="reveal" style="--d:.25s"><span class="n">06</span>Financial Reporting</li>
+        <li class="reveal" style="--d:.3s"><span class="n">07</span>Pre-IPO &amp; Equity Planning</li>
+      </ol>
+      <p class="practice-note reveal" style="--d:.35s">Each engagement is built around the family, never the product.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATE IV · Downtown from Nob Hill, dusk ============ -->
+<section class="plate movement plate-dusk grain" aria-label="Where legacies are tended">
+  <div class="plate-art" data-parallax="0.1">
+    <div class="sky"></div>
+    <svg class="skyline" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="#05170F">
+        <path d="M0,420 L0,300 L70,300 L70,250 L120,250 L120,320 L190,320 L190,210 L240,210 L240,290 L310,290 L310,240 L350,240 L350,180 L392,180 L392,300 L460,300 L460,260 L540,260 L540,150 L570,150 L570,120 L600,60 L630,120 L630,150 L662,150 L662,280 L740,280 L740,230 L820,230 L820,300 L890,300 L890,190 L940,190 L940,260 L1020,260 L1020,220 L1090,220 L1090,290 L1160,290 L1160,240 L1240,240 L1240,310 L1320,310 L1320,270 L1440,270 L1440,420 Z"/>
+      </g>
+      <g fill="#D6E7DD" opacity=".55">
+        <rect x="84" y="266" width="4" height="6"/><rect x="98" y="282" width="4" height="6"/>
+        <rect x="204" y="228" width="4" height="6"/><rect x="216" y="250" width="4" height="6"/>
+        <rect x="360" y="200" width="4" height="6"/><rect x="372" y="222" width="4" height="6"/>
+        <rect x="552" y="170" width="4" height="6"/><rect x="592" y="140" width="4" height="6"/>
+        <rect x="606" y="160" width="4" height="6"/><rect x="676" y="296" width="4" height="6"/>
+        <rect x="756" y="246" width="4" height="6"/><rect x="770" y="264" width="4" height="6"/>
+        <rect x="902" y="210" width="4" height="6"/><rect x="916" y="232" width="4" height="6"/>
+        <rect x="1034" y="238" width="4" height="6"/><rect x="1104" y="240" width="4" height="6"/>
+        <rect x="1176" y="258" width="4" height="6"/><rect x="1256" y="326" width="4" height="6"/>
+      </g>
+    </svg>
+    <div class="fog"></div>
+  </div>
+  <div class="scrim-top" aria-hidden="true"></div>
+  <div class="movement-inner">
+    <p class="kicker reveal">III · Where legacies are tended</p>
+    <p class="plate-line reveal" style="--d:.14s">When the lights come up, <em>someone keeps watch.</em></p>
+  </div>
+  <p class="plate-caption"><span>Plate IV</span> <em>Downtown from Nob Hill, dusk</em></p>
+</section>
+
+<!-- sweep into partners interlude -->
+<div class="sweep" aria-hidden="true">
+  <svg viewBox="0 0 1440 130" preserveAspectRatio="none">
+    <path fill="#FBFDFB" d="M0,130 C420,10 1020,10 1440,130 L1440,130 L0,130 Z"/>
+  </svg>
+</div>
+
+<!-- ============ INTERLUDE 4 · Partners & writing ============ -->
+<section class="interlude tone-white" id="partners">
+  <div class="interlude-inner">
+    <div class="partners-head">
+      <div>
+        <p class="kicker reveal">The partners</p>
+        <h2 class="display-2 reveal" style="--d:.1s">Owned by the people<br>across the table.</h2>
+      </div>
+      <p class="note reveal" style="--d:.2s">Partner-owned and operated — the people who advise you are the people whose names are on the firm.</p>
+    </div>
+    <div class="partner-grid">
+      <a class="partner-card reveal" href="#">
+        <div class="portrait grain">
+          <span class="initials" aria-hidden="true">JK</span>
+          <span class="plabel">Portrait · natural light, the Presidio</span>
+        </div>
+        <h3>Justin Kunz</h3>
+        <p class="role">CEO &amp; Founding Partner</p>
+        <span class="read">Read biography</span>
+      </a>
+      <a class="partner-card reveal" href="#" style="--d:.14s">
+        <div class="portrait grain">
+          <span class="initials" aria-hidden="true">KRM</span>
+          <span class="plabel">Portrait · natural light, the Presidio</span>
+        </div>
+        <h3>Katie Riley Mahany</h3>
+        <p class="role">Managing Partner</p>
+        <span class="read">Read biography</span>
+      </a>
+    </div>
+
+    <div class="writing-block">
+      <p class="kicker reveal">Selected writing</p>
+      <ul class="writing-list">
+        <li class="reveal"><a href="#">
+          <h3>Planning After a Liquidity Event</h3>
+          <span class="tag">Wealth transitions</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a></li>
+        <li class="reveal" style="--d:.1s"><a href="#">
+          <h3>What to Expect from a Multi-Family Office</h3>
+          <span class="tag">The firm</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a></li>
+        <li class="reveal" style="--d:.2s"><a href="#">
+          <h3>Family Governance for the Long Term</h3>
+          <span class="tag">Generations</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATE V · CTA — Begin a conversation ============ -->
+<section class="plate cta grain" id="conversation" aria-label="Begin a conversation">
+  <div class="plate-art" data-parallax="0.08">
+    <div class="sky" style="background:
+      radial-gradient(90% 65% at 50% 112%, rgba(214,231,221,.4) 0%, rgba(214,231,221,0) 62%),
+      linear-gradient(180deg, #05170F 0%, #072117 34%, #0B2E20 58%, #14402E 82%, #23503C 100%);"></div>
+    <svg viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true" style="top:auto; bottom:-1px; height:44%;">
+      <path fill="#05170F" d="M0,260 C240,200 480,290 720,250 C960,210 1200,270 1440,230 L1440,420 L0,420 Z"/>
+    </svg>
+  </div>
+  <div class="scrim-center" aria-hidden="true"></div>
+  <div class="cta-inner">
+    <p class="kicker reveal">Begin a conversation</p>
+    <h2 class="display-2 reveal" style="--d:.1s">The best relationships here <em>start with a walk and a talk.</em></h2>
+    <p class="promise reveal" style="--d:.2s">No decks, no pitch. An hour with our partners to understand where your family stands — and where you would like it to go.</p>
+    <div class="cta-actions reveal" style="--d:.3s">
+      <a class="btn-mint" href="#">Meet with the team</a>
+      <p class="cta-alt">or call us directly at <a href="tel:+14154506556">(415) 450-6556</a></p>
+    </div>
+    <p class="cta-address reveal" style="--d:.4s">San Francisco, California</p>
+  </div>
+  <p class="plate-caption"><span>Plate V</span> <em>The bay at dusk, from the office</em></p>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <p class="footer-wordmark">Inflection<small>Capital Management</small></p>
+      <ul class="footer-links">
+        <li><a href="#">ADV Part 2A</a></li>
+        <li><a href="#">ADV Part 2B</a></li>
+        <li><a href="#">Form CRS</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-legal">
+      <p>Inflection Capital Management, LLC is a registered investment adviser. Registration does not imply a certain level of skill or training. Past performance is not indicative of future results. Investing involves risk, including possible loss of principal.</p>
+      <p class="contact">San Francisco, CA<br><a href="tel:+14154506556">(415) 450-6556</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- nav scrolled state ---------- */
+  var nav = document.getElementById('nav');
+  var onScrollNav = function(){
+    nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScrollNav, { passive: true });
+  onScrollNav();
+
+  /* ---------- mobile menu ---------- */
+  var overlay = document.getElementById('menuOverlay');
+  var openBtn = document.getElementById('menuOpen');
+  var closeBtn = document.getElementById('menuClose');
+  function setMenu(open){
+    overlay.classList.toggle('is-open', open);
+    openBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    (open ? closeBtn : openBtn).focus();
+  }
+  openBtn.addEventListener('click', function(){ setMenu(true); });
+  closeBtn.addEventListener('click', function(){ setMenu(false); });
+  overlay.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) setMenu(false);
+  });
+
+  /* ---------- once-only staggered reveals ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- silk parallax drift on plates ---------- */
+  if (!reduced){
+    var plates = Array.prototype.map.call(
+      document.querySelectorAll('.plate-art[data-parallax]'),
+      function(el){ return { el: el, f: parseFloat(el.getAttribute('data-parallax')) || 0.1 }; }
+    );
+    var ticking = false;
+    function drift(){
+      ticking = false;
+      var vh = window.innerHeight;
+      plates.forEach(function(p){
+        var r = p.el.parentElement.getBoundingClientRect();
+        if (r.bottom < -80 || r.top > vh + 80) return;
+        var center = r.top + r.height / 2;
+        var delta = (center - vh / 2) * p.f;
+        p.el.style.transform = 'translate3d(0,' + delta.toFixed(1) + 'px,0)';
+      });
+    }
+    function requestDrift(){
+      if (!ticking){ ticking = true; requestAnimationFrame(drift); }
+    }
+    window.addEventListener('scroll', requestDrift, { passive: true });
+    window.addEventListener('resize', requestDrift);
+    requestDrift();
+  }
+})();
+</script>
+</body>
+</html>

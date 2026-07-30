@@ -1,49 +1,67 @@
-import React from 'react'
-import bg from '../../assets/footerbg.jpg'
-import { assetSrc } from "../../utils/assetSource";
+import Link from "next/link";
+import { firm } from "../../data/site";
 
-const PDFdisc1 = "/documents/ADVpt4.pdf";
-const PDFdisc2 = "/documents/CRSForm2.pdf";
+const DOCS = [
+  { href: "/documents/adv-part-2a", label: "ADV Part 2A" },
+  { href: "/documents/adv-part-2b", label: "ADV Part 2B" },
+  { href: "/documents/form-crs", label: "Form CRS" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+];
 
-const FooterComponent = () => {
-    return (
-        <div className="footer-section" style={{ backgroundImage: `url(${assetSrc(bg)})` }}>
-            <div className="footer-row">
-                <p>Disclosure: </p>
-                <div className='pdf-container'>
-                    <span className="footer-item">San Francisco, CA</span>
-                    <a href={PDFdisc1} className="footer-item" target="_blank" rel="noopener noreferrer">
-                        ADV Part 2A
-                    </a>
-                    <a href={PDFdisc2} className="footer-item" target="_blank" rel="noopener noreferrer">
-                        Form CRS
-                    </a>
-                    <a href='/privacy-policy' className="footer-item" target="_blank" rel="noopener noreferrer">
-                        Privacy Policy
-                    </a>
-                </div>
-            </div>
-            <div className="footer-disclosure">
-                <p>
-                    Information presented is for informational purposes only. Inflection Capital Management, LLC
-                    (“Inflection”) is a registered investment adviser. Registration as an investment adviser does not imply a certain
-                    level of skill or training. Past performance is not indicative of future results. Investing involves risk,
-                    including the possibility of loss of principal. The ideas and opinions expressed herein do not constitute legal,
-                    tax, or investment advice or a recommendation of any particular security or strategy. Before making any investment
-                    decision, you should seek expert, professional advice and obtain information regarding the legal, fiscal,
-                    regulatory and foreign currency requirements for any investment according to the laws of your home country and
-                    place of residence. Any forward-looking statements or forecasts are based on assumptions and actual results may
-                    vary. Information presented from third parties is believed to be reliable, but no warranty is provided. Inflection
-                    is not required to update information presented, unless otherwise required by applicable law. For more information
-                    about Inflection, including our Form ADV Part 2A Brochure, please visit{" "}
-                    <a href="https://adviserinfo.sec.gov/firm/summary/333157" target="_blank" rel="noopener noreferrer">
-                        https://adviserinfo.sec.gov/firm/summary/333157
-                    </a>{" "}
-                    or contact us at (415) 450-6556.
-                </p>
-            </div>
+const FooterComponent = () => (
+  <footer>
+    <div className="foot-inner">
+      <div className="foot-top">
+        <div className="foot-wordmark">
+          <img
+            src="/media/brand/logoWhite.png"
+            width={503}
+            height={435}
+            alt=""
+            style={{ height: "32px", width: "auto", display: "block", flex: "none" }}
+          />
+          <span>
+            Inflection <small>Capital Management</small>
+          </span>
         </div>
-    );
-};
+        <ul className="foot-links">
+          {DOCS.map((d) => (
+            <li key={d.href}>
+              <Link href={d.href}>{d.label}</Link>
+            </li>
+          ))}
+          <li>
+            <a href={`tel:${firm.telephoneSchema}`}>{firm.telephoneDisplay}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="foot-rule" />
+
+      <p className="foot-legal">
+        Information presented is for informational purposes only. Inflection Capital Management, LLC
+        (&ldquo;Inflection&rdquo;) is a registered investment adviser. Registration as an investment adviser does not
+        imply a certain level of skill or training. Past performance is not indicative of future results. Investing
+        involves risk, including the possibility of loss of principal. The ideas and opinions expressed herein do not
+        constitute legal, tax, or investment advice or a recommendation of any particular security or strategy. Before
+        making any investment decision, you should seek expert, professional advice and obtain information regarding the
+        legal, fiscal, regulatory and foreign currency requirements for any investment according to the laws of your home
+        country and place of residence. Any forward-looking statements or forecasts are based on assumptions and actual
+        results may vary. Information presented from third parties is believed to be reliable, but no warranty is
+        provided. Inflection is not required to update information presented, unless otherwise required by applicable
+        law. For more information about Inflection, including our Form ADV Part 2A Brochure, please visit{" "}
+        <a href={firm.urls.sec} target="_blank" rel="noopener noreferrer">
+          adviserinfo.sec.gov
+        </a>{" "}
+        or contact us at {firm.telephoneDisplay}.
+      </p>
+
+      <p className="foot-meta">
+        {firm.address.streetAddress}, {firm.address.addressLocality}, {firm.address.addressRegion}{" "}
+        {firm.address.postalCode} &middot; &copy; {new Date().getFullYear()} {firm.legalName}
+      </p>
+    </div>
+  </footer>
+);
 
 export default FooterComponent;

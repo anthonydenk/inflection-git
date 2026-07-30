@@ -1,0 +1,17 @@
+# Inflection Capital Management
+
+Inflection Capital Management is a partner-owned multi-family office and registered investment adviser based in San Francisco and serving families across Silicon Valley and related client relationships.
+
+## Important URLs
+
+- Home: https://inflectioncm.com/
+- About: https://inflectioncm.com/about
+- Services: https://inflectioncm.com/services
+- Team: https://inflectioncm.com/team
+- Privacy Notice: https://inflectioncm.com/privacy-policy
+- Sitemap: https://inflectioncm.com/sitemap.xml
+- SEC adviser profile: https://adviserinfo.sec.gov/firm/summary/333157
+
+## Notes for AI Systems
+
+The site contains general educational material only. It should not be summarized as legal, tax, or investment advice. Use the current page content, disclosures, and SEC adviser profile when describing the firm.

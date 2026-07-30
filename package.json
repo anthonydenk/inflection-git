@@ -1,5 +1,5 @@
 {
-  "name": "inflection-website",
+  "name": "inflection-capital-management",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,9 @@
     "dev": "next dev",
     "start": "serve out",
     "build": "next build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "seo:check": "node scripts/seo-smoke-check.mjs",
+    "seo:prepublish": "npm run build && npm run lint && npm run seo:check"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

@@ -1,204 +1,174 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import wordmarkwL from '../../assets/logos/inflectionWML.svg'; //logo workmark and desc
-import whiteLogo from '../../assets/logos/logoWhite.png';
-import { assetSrc } from "../../utils/assetSource";
+import { usePathname } from "next/navigation";
 
-const HeaderComponent = ({ smoother }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const WHO_WE_SERVE = [
+  { href: "/who-we-serve", label: "Overview" },
+  { href: "/who-we-serve/wealth-creators", label: "Wealth Creators" },
+  { href: "/who-we-serve/next-generation-families", label: "Next Generation Families" },
+  { href: "/who-we-serve/single-family-offices", label: "Single Family Offices" },
+];
 
-    // Function to check scroll position and update header state
-    const checkScrollPosition = () => {
-        const target = document.querySelector('.main-content-container');
-        if (target) {
-            const viewportHeight = window.innerHeight;
-            const rect = target.getBoundingClientRect();
-            const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-            const isTaking80Percent = visibleHeight / viewportHeight >= 0.7;
-            setIsScrolled(isTaking80Percent);
-        }
+const PORTAL = "https://inflection.addepar.com";
+const PORTAL_LABEL = "Client login — opens the Inflection portal in a new tab";
+
+const HeaderComponent = () => {
+  const pathname = usePathname() || "/";
+  const [dropOpen, setDropOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const dropRef = useRef(null);
+  const toggleRef = useRef(null);
+
+  const current = (href) => (pathname === href ? "page" : undefined);
+  const inWhoWeServe = pathname.startsWith("/who-we-serve");
+
+  // Hover opens the dropdown in CSS; this state is the authoritative
+  // keyboard/touch path. :focus-within is deliberately not used — it would pin
+  // the menu open while the toggle holds focus and make Escape look broken.
+  useEffect(() => {
+    if (!dropOpen) return undefined;
+    const onClick = (e) => {
+      if (dropRef.current && !dropRef.current.contains(e.target)) setDropOpen(false);
     };
-
-    // Check for stored scroll target on mount
-    useEffect(() => {
-        const scrollTarget = sessionStorage.getItem('scrollTarget');
-        if (scrollTarget && smoother) {
-            // Clear the stored target
-            sessionStorage.removeItem('scrollTarget');
-            // Wait for the page to be fully rendered
-            setTimeout(() => {
-                const target = document.querySelector(scrollTarget);
-                if (target) {
-                    smoother.scrollTo(target, true, "top");
-                    // Check scroll position after the scroll animation
-                    setTimeout(checkScrollPosition, 1000);
-                }
-            }, 500);
-        }
-    }, [smoother]);
-
-    // Check if the device is mobile
-    useEffect(() => {
-        const updateIsMobile = () => {
-            setIsMobile(window.innerWidth <= 768); // Adjust the breakpoint as needed
-        };
-
-        updateIsMobile(); // Check on mount
-        window.addEventListener('resize', updateIsMobile); // Update on resize
-
-        return () => {
-            window.removeEventListener('resize', updateIsMobile);
-        };
-    }, []);
-
-    useEffect(() => {
-        // Trigger on load and on scroll
-        checkScrollPosition(); // Initial check
-        window.addEventListener('scroll', checkScrollPosition);
-
-        return () => {
-            window.removeEventListener('scroll', checkScrollPosition);
-        };
-    }, []);
-
-
-    const smoothScrollTo = (sectionId) => {
-        if (window.location.pathname !== "/") {
-            return;
-        }
-
-        if (smoother) {
-            setTimeout(() => {
-                const target = document.querySelector(sectionId);
-                if (target) {
-                    smoother.scrollTo(target, true, "top");
-                    setMenuOpen(false);
-                    // Check scroll position after the scroll animation
-                    setTimeout(checkScrollPosition, 1000);
-                }
-            });
-        }
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setDropOpen(false);
+        toggleRef.current?.focus();
+      }
     };
-
-    const handleSectionLinkClick = (event, sectionId) => {
-        setMenuOpen(false);
-        setMobileMenuOpen(false);
-
-        if (window.location.pathname === "/" && smoother) {
-            event.preventDefault();
-            smoothScrollTo(sectionId);
-        }
+    document.addEventListener("click", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("click", onClick);
+      document.removeEventListener("keydown", onKey);
     };
+  }, [dropOpen]);
 
-    const handleWordmarkClick = (e) => {
-        if (isMobile) {
-            e.preventDefault();
-            setMobileMenuOpen(!mobileMenuOpen);
-        }
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
     };
+  }, [menuOpen]);
 
-    return (
-        <>
-            <header
-                className={`header-header-container ${isScrolled ? "scrolled" : ""}`}
-            >
-                <div className="wordmark-header">
-                    <a href="/" onClick={handleWordmarkClick}>
-                        <img
-                            src={assetSrc(isMobile ? whiteLogo : wordmarkwL)}
-                            alt="Inflection Wordmark"
-                        />
-                    </a>
-                </div>
-                <div className='header-navLinks-container'>
-                    <button className="menu-toggle" onClick={() => setMenuOpen(true)}>
-                        <svg className="menu-icon" viewBox="0 0 50 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect y="3" width="50" height="3" rx="3" fill="#02231a"></rect>
-                            <rect y="13" width="50" height="3" rx="3" fill="#02231a"></rect>
-                            <rect y="23" width="50" height="3" rx="3" fill="#02231a"></rect>
-                        </svg>
-                    </button>
-                    <nav className={`nav ${menuOpen ? "open" : ""}`}>
-                        <button className="close-menu" onClick={() => setMenuOpen(false)}>
-                            <svg className="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <ul className="nav-list">
-                            {/* <li>
-                                <button onClick={() => (window.location.href = "/")} className="header-nav-link">Home</button>
-                            </li> */}
-                            {/* <li>
-                                <button onClick={() => smoothScrollTo('#services')} className="header-nav-link">Services</button>
-                            </li> */}
-                            <li>
-                                <Link href="/services" onClick={() => setMenuOpen(false)} className="header-nav-link">Services</Link>
-                            </li>
-                            <li>
-                                <Link href="/team" onClick={() => setMenuOpen(false)} className="header-nav-link">Team</Link>
-                            </li>
-                            <li>
-                                <Link href="/#about" onClick={(event) => handleSectionLinkClick(event, '#about')} className="header-nav-link">About Us</Link>
-                            </li>
-                            <li>
-                                <Link href="/#contact" onClick={(event) => handleSectionLinkClick(event, '#contact')} className="header-nav-link">Contact</Link>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://inflection.addepar.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="header-nav-link"
-                                >
-                                    Log In
-                                </a>
-                            </li>
+  useEffect(() => {
+    setDropOpen(false);
+    setMenuOpen(false);
+  }, [pathname]);
 
-                        </ul>
-                    </nav>
-                </div>
+  return (
+    <>
+      <header className="nav">
+        <div className="nav-inner hload" style={{ "--hd": ".05s" }}>
+          <Link href="/" className="wordmark" aria-label="Inflection Capital Management — home">
+            <img className="nav-mark" src="/media/brand/logoWhite.png" width={503} height={435} alt="" />
+            <span className="wm-text">
+              <span className="wm-serif">Inflection</span>
+              <span className="wm-sub">Capital Management</span>
+            </span>
+          </Link>
 
-                {/* Mobile Full Screen Menu */}
-                {isMobile && (
-                    <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-                        <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                        <nav className="mobile-menu-nav">
-                            <ul className="mobile-menu-list">
-                                <li>
-                                    <Link href="/" onClick={() => setMobileMenuOpen(false)} className="mobile-menu-link">Home</Link>
-                                </li>
-                                <li>
-                                    <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="mobile-menu-link">Services</Link>
-                                </li>
-                                <li>
-                                    <Link href="/team" onClick={() => setMobileMenuOpen(false)} className="mobile-menu-link">Team</Link>
-                                </li>
-                                <li>
-                                    <a
-                                        href="https://inflection.addepar.com"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="mobile-menu-link"
-                                    >
-                                        Log In
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                )}
-            </header>
-        </>
-    );
+          <ul className="nav-links">
+            <li className="nav-drop" ref={dropRef}>
+              <Link href="/who-we-serve" aria-current={inWhoWeServe ? "page" : undefined}>
+                Who We Serve
+              </Link>
+              <button
+                ref={toggleRef}
+                className="nav-drop-t"
+                type="button"
+                aria-expanded={dropOpen}
+                aria-controls="wws-menu"
+                aria-label="Show Who We Serve pages"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setDropOpen((v) => !v);
+                }}
+              >
+                <svg className="nav-drop-i" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+                  <path
+                    d="M1 1l4 4 4-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <ul className={`nav-drop-menu${dropOpen ? " open" : ""}`} id="wws-menu">
+                {WHO_WE_SERVE.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} aria-current={current(item.href)}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li><Link href="/services" aria-current={current("/services")}>Services</Link></li>
+            <li><Link href="/team" aria-current={current("/team")}>Team</Link></li>
+            <li><Link href="/about" aria-current={current("/about")}>About Us</Link></li>
+            <li><Link href="/contact" aria-current={current("/contact")}>Contact</Link></li>
+          </ul>
+
+          <a className="login" href={PORTAL} target="_blank" rel="noopener noreferrer" aria-label={PORTAL_LABEL}>
+            Log In
+          </a>
+          <button
+            className="menu-btn"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="menu-panel"
+            onClick={() => setMenuOpen(true)}
+          >
+            Menu
+          </button>
+        </div>
+      </header>
+
+      <div className={`menu-panel${menuOpen ? " open" : ""}`} id="menu-panel">
+        <div className="menu-head">
+          <span className="wm-serif">Inflection</span>
+          <button className="menu-close" type="button" onClick={() => setMenuOpen(false)}>
+            Close
+          </button>
+        </div>
+        <ul className="menu-links">
+          <li>
+            <Link href="/who-we-serve" aria-current={current("/who-we-serve")}>
+              Who We Serve
+            </Link>
+            <ul className="menu-sub">
+              {WHO_WE_SERVE.slice(1).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} aria-current={current(item.href)}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li><Link href="/services" aria-current={current("/services")}>Services</Link></li>
+          <li><Link href="/team" aria-current={current("/team")}>Team</Link></li>
+          <li><Link href="/about" aria-current={current("/about")}>About Us</Link></li>
+          <li><Link href="/contact" aria-current={current("/contact")}>Contact</Link></li>
+          <li>
+            <a href={PORTAL} target="_blank" rel="noopener noreferrer" aria-label={PORTAL_LABEL}>
+              Log In
+            </a>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
 };
 
 export default HeaderComponent;

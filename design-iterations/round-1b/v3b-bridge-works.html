@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflection Capital Management — A Multi-Family Office in San Francisco</title>
+<meta name="description" content="Inflection Capital Management is a partner-owned multi-family office in San Francisco, serving as trusted stewards for generations to come.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#071F16;
+    --ever:#0B2E20;
+    --ever-2:#0E3A28;
+    --mint:#D6E7DD;
+    --mint-2:#E9F2EC;
+    --paper:#F6FAF7;
+    --sky:#CFE0E1;
+    --hair:rgba(214,231,221,.26);
+    --hair-strong:rgba(214,231,221,.6);
+    --hair-dark:rgba(11,46,32,.18);
+    --hair-dark-strong:rgba(11,46,32,.45);
+    --serif:"Newsreader", Georgia, serif;
+    --sans:"Archivo", "Helvetica Neue", sans-serif;
+    --max:1240px;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ever);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--ever);color:var(--mint)}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible, button:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:1px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+
+  /* ---------- small-caps label ---------- */
+  .label{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-weight:600;
+    display:flex;align-items:center;gap:14px;
+  }
+  .label::before{content:"";display:block;width:34px;height:1px;background:currentColor;opacity:.55}
+
+  /* ---------- reveals ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.2,.6,.2,1),transform .95s cubic-bezier(.2,.6,.2,1);transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+
+  /* =============================================================
+     NAV
+  ============================================================= */
+  header.nav{
+    position:absolute;top:0;left:0;right:0;z-index:20;
+    color:var(--mint);
+  }
+  .nav-inner{
+    max-width:var(--max);margin:0 auto;
+    padding:26px clamp(20px,4vw,56px);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .wordmark{display:flex;flex-direction:column;line-height:1.05}
+  .wordmark .wm-serif{font-family:var(--serif);font-size:27px;font-weight:500;letter-spacing:.01em;color:#fff}
+  .wordmark .wm-sub{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--mint);opacity:.85;margin-top:5px;font-weight:500}
+  .nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,36px);list-style:none}
+  .nav-links a{
+    font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+    color:var(--mint);position:relative;padding:6px 0;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+    background:var(--mint);transform:scaleX(0);transform-origin:left;
+    transition:transform .35s cubic-bezier(.2,.6,.2,1);
+  }
+  .nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+  .login{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+    color:var(--mint);border:1px solid var(--hair-strong);padding:9px 20px;border-radius:999px;
+    transition:background .3s,color .3s,border-color .3s;
+  }
+  .login:hover{background:var(--mint);color:var(--ever);border-color:var(--mint)}
+  @media (max-width:900px){ .nav-links{display:none} }
+
+  /* =============================================================
+     HERO — the span
+  ============================================================= */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 50% -10%, #12442F 0%, var(--ever) 46%, var(--ink) 100%);
+    color:var(--mint);
+    min-height:100svh;
+    display:flex;flex-direction:column;
+    overflow:hidden;
+  }
+  .hero-copy{
+    position:relative;z-index:5;
+    max-width:var(--max);margin:0 auto;width:100%;
+    padding:clamp(110px,15vh,160px) clamp(20px,4vw,56px) clamp(180px,26vh,300px);
+    text-align:center;
+  }
+  .hero-eyebrow{
+    font-family:var(--sans);
+    font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;
+    color:var(--mint);opacity:.9;
+  }
+  .hero-eyebrow .dot{opacity:.5;padding:0 .6em}
+  .hero h2.display, .hero .display{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(2.7rem, 6.4vw, 5.3rem);
+    line-height:1.06;
+    letter-spacing:-.012em;
+    color:#fff;
+    margin:26px auto 0;
+    max-width:16ch;
+  }
+  .display em{font-style:italic;font-weight:300;color:var(--mint)}
+  .hero-sub{
+    max-width:52ch;margin:26px auto 0;
+    font-size:clamp(1rem,1.25vw,1.13rem);line-height:1.75;color:var(--mint);opacity:.88;
+  }
+  .hero-ctas{margin-top:36px;display:flex;gap:34px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .cta-line{
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#fff;
+    display:inline-flex;align-items:center;gap:12px;padding:8px 0;position:relative;
+  }
+  .cta-line::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--mint);
+    transform-origin:left;transition:transform .4s cubic-bezier(.2,.6,.2,1);
+  }
+  .cta-line:hover::after{transform:scaleX(.4)}
+  .cta-line .arr{transition:transform .4s cubic-bezier(.2,.6,.2,1)}
+  .cta-line:hover .arr{transform:translateX(6px)}
+  .cta-quiet{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--mint);opacity:.75;transition:opacity .3s}
+  .cta-quiet:hover{opacity:1}
+
+  /* --- the drawing --- */
+  .bridge-stage{
+    position:absolute;left:0;right:0;bottom:0;z-index:1;
+    height:clamp(200px, 28.5vw, 660px);
+    pointer-events:none;
+  }
+  .bridge-stage svg{display:block;width:100%;height:100%}
+  .drawing-caption{
+    position:absolute;right:clamp(20px,4vw,56px);bottom:18px;z-index:6;
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mint);opacity:.55;font-weight:500;
+  }
+  .scroll-cue{
+    position:absolute;left:clamp(20px,4vw,56px);bottom:18px;z-index:6;
+    display:flex;align-items:center;gap:12px;
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mint);opacity:.65;font-weight:500;
+  }
+  .scroll-cue::before{content:"";width:1px;height:34px;background:var(--hair-strong);display:block}
+
+  /* cable draw-on: once, deliberate */
+  #mainCable{
+    stroke-dasharray:1;stroke-dashoffset:1;
+    animation:drawCable 3.4s cubic-bezier(.45,.05,.25,1) .5s forwards;
+  }
+  #backCable{
+    stroke-dasharray:1;stroke-dashoffset:1;
+    animation:drawCable 3.4s cubic-bezier(.45,.05,.25,1) .75s forwards;
+  }
+  @keyframes drawCable{to{stroke-dashoffset:0}}
+  #towers,#deck,#land{opacity:0;animation:riseIn 1.6s ease .2s forwards}
+  #suspenders{opacity:0;animation:fadeIn 1.8s ease 3.4s forwards}
+  #water,#skyline,#fogband{opacity:0;animation:fadeIn 2.4s ease 2.2s forwards}
+  @keyframes fadeIn{to{opacity:1}}
+  @keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){
+    #mainCable,#backCable{animation:none;stroke-dasharray:none;stroke-dashoffset:0}
+    #towers,#deck,#land,#suspenders,#water,#skyline,#fogband{animation:none;opacity:1}
+  }
+
+  /* =============================================================
+     CATENARY SWEEPS between sections
+  ============================================================= */
+  .sweep{display:block;width:100%;height:clamp(48px,7vw,96px);position:relative;overflow:hidden}
+  .sweep svg{position:absolute;inset:0;width:100%;height:100%}
+
+  /* =============================================================
+     SECTION SHARED
+  ============================================================= */
+  section{position:relative}
+  .sec-pad{padding:clamp(72px,9vw,130px) 0}
+
+  /* suspender-cable divider */
+  .cable-divider{
+    height:44px;position:relative;margin:clamp(48px,6vw,80px) 0 0;
+  }
+  .cable-divider::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--hair-dark);
+  }
+  .cable-divider::after{
+    content:"";position:absolute;top:0;left:0;right:0;bottom:0;
+    background:repeating-linear-gradient(90deg, var(--hair-dark) 0 1px, transparent 1px 56px);
+    mask-image:linear-gradient(180deg,#000 0%,transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 100%);
+  }
+
+  /* =============================================================
+     01 — STORY
+  ============================================================= */
+  .story{background:var(--paper);color:var(--ever)}
+  .story-grid{
+    display:grid;grid-template-columns:minmax(200px,3fr) 7fr;gap:clamp(32px,5vw,90px);
+    align-items:start;
+  }
+  .story .label{color:var(--ever);opacity:.75}
+  .story-lede{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.65rem,3vw,2.5rem);line-height:1.28;letter-spacing:-.01em;
+    max-width:24ch;margin-top:22px;
+  }
+  .story-lede em{font-style:italic;font-weight:300}
+  .story-body{font-size:clamp(1.02rem,1.2vw,1.14rem);line-height:1.85;color:#274A3B;max-width:58ch}
+  .story-body p + p{margin-top:1.4em}
+  .story-sign{
+    margin-top:34px;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ever);
+    display:flex;align-items:center;gap:16px;
+  }
+  .story-sign::after{content:"";height:1px;width:70px;background:var(--hair-dark-strong)}
+  @media (max-width:820px){ .story-grid{grid-template-columns:1fr} }
+
+  /* =============================================================
+     02 — PRINCIPLES (load paths)
+  ============================================================= */
+  .principles{background:var(--paper)}
+  .principle-rows{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--hair-dark)}
+  .p-row{
+    display:grid;grid-template-columns:110px minmax(220px,4fr) 6fr;
+    gap:clamp(20px,3vw,56px);align-items:baseline;
+    padding:clamp(30px,3.6vw,48px) 0;
+    border-bottom:1px solid var(--hair-dark);
+    position:relative;
+  }
+  .p-row:nth-child(2){padding-left:clamp(0px,5vw,84px)}
+  .p-row:nth-child(3){padding-left:clamp(0px,9vw,168px)}
+  .p-num{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:clamp(1.5rem,2.2vw,2rem);color:var(--ever);opacity:.45;
+  }
+  .p-title{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(1.35rem,2vw,1.75rem);line-height:1.2;letter-spacing:-.005em;
+  }
+  .p-theme{font-size:1rem;line-height:1.8;color:#2E5242;max-width:52ch}
+  @media (max-width:820px){
+    .p-row{grid-template-columns:64px 1fr}
+    .p-theme{grid-column:2}
+    .p-row:nth-child(2),.p-row:nth-child(3){padding-left:0}
+  }
+
+  /* =============================================================
+     LOAD CARRIED QUIETLY — numbers band (dark)
+  ============================================================= */
+  .load{
+    background:var(--ever);color:var(--mint);position:relative;overflow:hidden;
+  }
+  .load::before{ /* suspender rhythm */
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg, var(--hair) 0 1px, transparent 1px 72px);
+    opacity:.5;pointer-events:none;
+  }
+  .load::after{ /* deck line */
+    content:"";position:absolute;left:0;right:0;top:88px;height:1px;background:var(--hair);pointer-events:none;
+  }
+  .load .label{color:var(--mint)}
+  .load-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:clamp(28px,4vw,64px);margin-top:clamp(48px,6vw,84px);
+    position:relative;z-index:2;
+  }
+  .stat{border-left:1px solid var(--hair-strong);padding-left:clamp(18px,2vw,30px)}
+  .stat-num{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(3rem,6vw,5rem);line-height:1;color:#fff;letter-spacing:-.02em;
+  }
+  .stat-num sup{font-size:.45em;vertical-align:.7em;font-weight:400;color:var(--mint)}
+  .stat-cap{margin-top:14px;font-size:.92rem;line-height:1.7;color:var(--mint);opacity:.85;max-width:26ch}
+  .load-note{
+    margin-top:clamp(48px,6vw,72px);position:relative;z-index:2;
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:clamp(1.15rem,1.8vw,1.5rem);color:var(--mint);max-width:44ch;
+  }
+  @media (max-width:820px){ .load-grid{grid-template-columns:1fr;gap:36px} }
+
+  /* =============================================================
+     03 — APPROACH & practice deck
+  ============================================================= */
+  .approach{background:var(--mint-2);color:var(--ever)}
+  .approach-top{
+    display:grid;grid-template-columns:minmax(200px,3fr) 7fr;gap:clamp(32px,5vw,90px);align-items:start;
+  }
+  .approach .label{opacity:.75}
+  .approach-copy{font-size:clamp(1.02rem,1.2vw,1.14rem);line-height:1.85;color:#274A3B;max-width:58ch}
+  .approach-copy strong{font-weight:600;color:var(--ever)}
+  .approach-lede{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.4vw,2.1rem);
+    line-height:1.3;letter-spacing:-.008em;max-width:26ch;margin-top:22px;
+  }
+  /* the practice deck: items hang from a deck line like suspenders */
+  .deck-line{
+    margin-top:clamp(56px,7vw,96px);
+    border-top:1.5px solid var(--ever);position:relative;
+  }
+  .deck-line::before,.deck-line::after{
+    content:"";position:absolute;top:-4px;width:7px;height:7px;border-radius:50%;background:var(--ever);
+  }
+  .deck-line::before{left:0}
+  .deck-line::after{right:0}
+  .practices{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    list-style:none;
+  }
+  .practice{
+    position:relative;
+    padding:34px clamp(14px,1.6vw,26px) 30px;
+    border-right:1px solid var(--hair-dark);
+    transition:background .35s ease;
+  }
+  .practice:nth-child(4n){border-right:none}
+  .practice:nth-child(n+5){border-top:1px solid var(--hair-dark)}
+  .practice::before{ /* suspender stem */
+    content:"";position:absolute;top:0;left:clamp(14px,1.6vw,26px);width:1px;height:22px;
+    background:var(--ever);opacity:.5;transition:height .35s ease,opacity .35s ease;
+  }
+  .practice:hover{background:rgba(255,255,255,.55)}
+  .practice:hover::before{height:30px;opacity:1}
+  .pr-idx{font-size:10.5px;letter-spacing:.2em;font-weight:600;color:var(--ever);opacity:.5}
+  .pr-name{
+    display:block;font-family:var(--serif);font-weight:500;
+    font-size:clamp(1.05rem,1.35vw,1.25rem);line-height:1.3;margin-top:10px;letter-spacing:-.003em;
+  }
+  @media (max-width:1000px){
+    .practices{grid-template-columns:repeat(2,1fr)}
+    .practice:nth-child(2n){border-right:none}
+    .practice:nth-child(4n-1){border-right:1px solid var(--hair-dark)}
+    .practice:nth-child(n+3){border-top:1px solid var(--hair-dark)}
+  }
+  @media (max-width:560px){
+    .practices{grid-template-columns:1fr}
+    .practice{border-right:none !important}
+    .practice:nth-child(n+2){border-top:1px solid var(--hair-dark)}
+  }
+  @media (max-width:820px){ .approach-top{grid-template-columns:1fr} }
+
+  /* =============================================================
+     04 — PARTNERS (tower portals)
+  ============================================================= */
+  .partners{background:var(--paper)}
+  .partners-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .partners .label{opacity:.75}
+  .partners-title{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3vw,2.6rem);
+    letter-spacing:-.01em;margin-top:20px;
+  }
+  .partners-note{font-size:.95rem;color:#2E5242;max-width:34ch;line-height:1.7}
+  .partner-grid{
+    display:grid;grid-template-columns:repeat(2,minmax(0,440px));
+    gap:clamp(32px,5vw,72px);margin-top:clamp(44px,5vw,68px);
+    justify-content:center;
+  }
+  .portal{display:block}
+  .portal-frame{position:relative}
+  .portal-frame svg{display:block;width:100%;height:auto}
+  .partner-meta{margin-top:22px;text-align:center}
+  .partner-name{font-family:var(--serif);font-weight:500;font-size:clamp(1.3rem,1.8vw,1.6rem);letter-spacing:-.005em}
+  .partner-role{
+    margin-top:6px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    color:var(--ever);opacity:.6;
+  }
+  @media (max-width:760px){ .partner-grid{grid-template-columns:minmax(0,440px)} }
+
+  /* =============================================================
+     05 — WRITING
+  ============================================================= */
+  .writing{background:var(--paper)}
+  .writing .label{opacity:.75}
+  .writing-list{list-style:none;margin-top:clamp(36px,4vw,56px);border-top:1px solid var(--hair-dark)}
+  .writing-list li{border-bottom:1px solid var(--hair-dark)}
+  .w-link{
+    display:grid;grid-template-columns:90px 1fr auto;align-items:baseline;gap:clamp(18px,3vw,48px);
+    padding:clamp(24px,3vw,36px) 6px;
+    transition:background .3s ease;
+  }
+  .w-link:hover{background:var(--mint-2)}
+  .w-idx{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.2rem;opacity:.45}
+  .w-title{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2.1vw,1.8rem);letter-spacing:-.008em;
+    transition:transform .35s cubic-bezier(.2,.6,.2,1);
+  }
+  .w-link:hover .w-title{transform:translateX(10px)}
+  .w-arr{font-size:1.1rem;opacity:.5;transition:opacity .3s,transform .35s cubic-bezier(.2,.6,.2,1)}
+  .w-link:hover .w-arr{opacity:1;transform:translateX(6px)}
+  @media (max-width:640px){ .w-link{grid-template-columns:48px 1fr auto} }
+
+  /* =============================================================
+     06 — CTA (begin a conversation)
+  ============================================================= */
+  .cta{
+    background:
+      radial-gradient(110% 100% at 50% 110%, #124531 0%, var(--ever) 55%, var(--ink) 100%);
+    color:var(--mint);position:relative;overflow:hidden;text-align:center;
+  }
+  .cta-cable{width:min(680px,80%);margin:0 auto;display:block;opacity:.8}
+  .cta h2{
+    font-family:var(--serif);font-weight:400;color:#fff;
+    font-size:clamp(2.2rem,4.6vw,3.8rem);letter-spacing:-.012em;line-height:1.1;margin-top:34px;
+  }
+  .cta h2 em{font-style:italic;font-weight:300;color:var(--mint)}
+  .cta-copy{max-width:46ch;margin:24px auto 0;font-size:1.05rem;line-height:1.8;color:var(--mint);opacity:.88}
+  .cta-actions{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:26px}
+  .btn-mint{
+    display:inline-block;background:var(--mint);color:var(--ever);
+    font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+    padding:17px 44px;border-radius:999px;border:1px solid var(--mint);
+    transition:background .35s,color .35s;
+  }
+  .btn-mint:hover{background:transparent;color:var(--mint)}
+  .cta-contact{
+    display:flex;gap:28px;flex-wrap:wrap;justify-content:center;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--mint);opacity:.75;
+  }
+  .cta-contact a{border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .3s,opacity .3s}
+  .cta-contact a:hover{border-color:var(--mint);opacity:1}
+
+  /* =============================================================
+     FOOTER
+  ============================================================= */
+  footer{background:var(--ink);color:var(--mint);border-top:1px solid var(--hair)}
+  .foot-inner{max-width:var(--max);margin:0 auto;padding:clamp(48px,6vw,72px) clamp(20px,4vw,56px)}
+  .foot-top{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+  .foot-wordmark{font-family:var(--serif);font-size:22px;font-weight:500;color:#fff}
+  .foot-wordmark small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.32em;text-transform:uppercase;opacity:.8;margin-top:6px;font-weight:500}
+  .foot-links{display:flex;gap:clamp(16px,2.4vw,32px);flex-wrap:wrap;list-style:none}
+  .foot-links a{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;opacity:.8;transition:opacity .3s;border-bottom:1px solid transparent;padding-bottom:2px}
+  .foot-links a:hover{opacity:1;border-color:var(--hair-strong)}
+  .foot-rule{height:1px;background:var(--hair);margin:36px 0 28px}
+  .foot-legal{font-size:12.5px;line-height:1.8;opacity:.6;max-width:88ch}
+  .foot-meta{margin-top:18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.5;font-weight:500}
+</style>
+</head>
+<body>
+
+<!-- ====================== NAV ====================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="wordmark" aria-label="Inflection Capital Management — home">
+      <span class="wm-serif">Inflection</span>
+      <span class="wm-sub">Capital Management</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#story">Who We Serve</a></li>
+      <li><a href="#approach">Services</a></li>
+      <li><a href="#partners">Team</a></li>
+      <li><a href="#story">About Us</a></li>
+      <li><a href="#conversation">Contact</a></li>
+    </ul>
+    <a href="#" class="login">Log In</a>
+  </div>
+</header>
+
+<!-- ====================== HERO — THE SPAN ====================== -->
+<section class="hero">
+  <div class="hero-copy">
+    <h1 class="hero-eyebrow">Inflection Capital Management <span class="dot">·</span> San Francisco</h1>
+    <p class="display">Built to carry <em>generations</em> across.</p>
+    <p class="hero-sub">A partner-owned multi-family office in San Francisco — engineered, like our city's greatest span, to hold what matters through every kind of weather.</p>
+    <div class="hero-ctas">
+      <a class="cta-line" href="#conversation">Begin a conversation <span class="arr">&#8594;</span></a>
+      <a class="cta-quiet" href="#approach">Our services</a>
+    </div>
+  </div>
+
+  <div class="bridge-stage" aria-hidden="true">
+    <svg viewBox="0 0 1440 380" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Hairline engineering elevation of the Golden Gate Bridge">
+      <defs>
+        <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#D6E7DD" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#D6E7DD" stop-opacity=".07"/>
+          <stop offset="1" stop-color="#D6E7DD" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- fog band drifting through the span -->
+      <rect id="fogband" x="0" y="110" width="1440" height="120" fill="url(#fog)"/>
+
+      <!-- land: Marin headland (left), anchorages -->
+      <g id="land" stroke="#D6E7DD" stroke-opacity=".3" fill="none" stroke-width="1">
+        <path d="M-10 186 Q 90 208 190 260 T 350 304"/>
+        <path d="M-10 222 Q 80 238 160 288"/>
+        <rect x="26" y="270" width="30" height="20" stroke-opacity=".55"/>
+        <rect x="1384" y="270" width="30" height="20" stroke-opacity=".55"/>
+      </g>
+
+      <!-- faint SF skyline at the far shore -->
+      <g id="skyline" stroke="#D6E7DD" stroke-opacity=".16" fill="none" stroke-width="1">
+        <path d="M1180 290 V272 h14 V290 M1206 290 V262 h10 V290 M1228 290 V276 h16 V290 M1256 290 V252 h9 V290 M1278 290 V266 h13 V290 M1303 290 V246 l6 -10 6 10 V290 M1327 290 V270 h14 V290 M1352 290 V258 h10 V290 M1374 290 V278 h12 V290"/>
+      </g>
+
+      <!-- towers: art-deco portal bracing -->
+      <g id="towers" stroke="#D6E7DD" stroke-opacity=".8" fill="none" stroke-width="1.4">
+        <!-- north tower -->
+        <path d="M424 36 V332 M444 36 V332"/>
+        <path d="M420 36 H448"/>
+        <path d="M424 70 H444 M424 76 H444"/>
+        <path d="M424 118 H444 M424 124 H444"/>
+        <path d="M424 168 H444 M424 174 H444"/>
+        <path d="M424 222 H444 M424 228 H444"/>
+        <path d="M420 308 H448" stroke-opacity=".5"/>
+        <!-- south tower -->
+        <path d="M1004 36 V332 M1024 36 V332"/>
+        <path d="M1000 36 H1028"/>
+        <path d="M1004 70 H1024 M1004 76 H1024"/>
+        <path d="M1004 118 H1024 M1004 124 H1024"/>
+        <path d="M1004 168 H1024 M1004 174 H1024"/>
+        <path d="M1004 222 H1024 M1004 228 H1024"/>
+        <path d="M1000 308 H1028" stroke-opacity=".5"/>
+      </g>
+
+      <!-- deck / stiffening truss -->
+      <g id="deck" stroke="#D6E7DD" fill="none">
+        <path d="M20 290 H1420" stroke-width="1.4" stroke-opacity=".8"/>
+        <path d="M20 299 H1420" stroke-width="1" stroke-opacity=".45"/>
+        <path id="deckTicks" d="" stroke-width="1" stroke-opacity=".22"/>
+      </g>
+
+      <!-- the catenary: back cable (fainter) then main -->
+      <path id="backCable" pathLength="1" d="M46 280 Q 240 100 434 48 Q 724 368 1014 48 Q 1208 100 1402 280"
+            fill="none" stroke="#D6E7DD" stroke-opacity=".3" stroke-width="1"/>
+      <path id="mainCable" pathLength="1" d="M40 282 Q 236 96 434 44 Q 724 366 1014 44 Q 1212 96 1408 282"
+            fill="none" stroke="#D6E7DD" stroke-width="1.8" stroke-linecap="round"/>
+
+      <!-- suspender ropes: generated to hang truly from the curve -->
+      <g id="suspenders" stroke="#D6E7DD" stroke-opacity=".38" stroke-width="1"></g>
+
+      <!-- the bay -->
+      <g id="water" stroke="#D6E7DD" fill="none" stroke-width="1">
+        <path d="M0 318 Q 120 312 240 318 T 480 318 T 720 318 T 960 318 T 1200 318 T 1440 318" stroke-opacity=".18"/>
+        <path d="M0 340 Q 150 334 300 340 T 600 340 T 900 340 T 1200 340 T 1500 340" stroke-opacity=".12"/>
+        <path d="M0 362 Q 180 356 360 362 T 720 362 T 1080 362 T 1440 362" stroke-opacity=".08"/>
+      </g>
+    </svg>
+  </div>
+  <span class="scroll-cue">Cross the span</span>
+  <span class="drawing-caption">Golden Gate — Main Span Elevation · San Francisco Bay</span>
+</section>
+
+<!-- sweep: dark -> paper (catenary sag) -->
+<div class="sweep" style="background:var(--ink)" aria-hidden="true">
+  <svg viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="M0 0 Q 720 118 1440 0 V96 H0 Z" fill="#F6FAF7"/></svg>
+</div>
+
+<!-- ====================== 01 · STORY ====================== -->
+<section class="story sec-pad" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="reveal">
+        <span class="label">01 — The Firm</span>
+        <h2 class="story-lede">A firm of San Francisco, built the way this city builds — <em>for the long span.</em></h2>
+      </div>
+      <div class="story-body reveal" style="--d:.15s">
+        <p>Inflection Capital Management is a partner-owned and operated multi-family office based in Silicon Valley, dedicated to working with clients to preserve and grow their wealth and legacy.</p>
+        <p>Our careers have been dedicated to working with wealth creators, families navigating periods of transition, and family offices, including their foundations. With a commitment to personal connection and a deep understanding of our clients' unique goals, we serve as trusted stewards for generations to come.</p>
+        <p class="story-sign">Trusted stewards, for generations to come</p>
+      </div>
+    </div>
+    <div class="cable-divider" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ====================== 02 · PRINCIPLES ====================== -->
+<section class="principles sec-pad" style="padding-top:0">
+  <div class="wrap">
+    <span class="label reveal" style="opacity:.75">02 — What Bears the Load</span>
+    <div class="principle-rows">
+      <div class="p-row reveal">
+        <span class="p-num">01</span>
+        <h3 class="p-title">Our Clients Inspire Us</h3>
+        <p class="p-theme">Meaningful wealth should widen your life, not narrow it. We carry the complexity so you have the space to focus on what matters most — your family, your work, your city, your time.</p>
+      </div>
+      <div class="p-row reveal" style="--d:.12s">
+        <span class="p-num">02</span>
+        <h3 class="p-title">Our Partnership</h3>
+        <p class="p-theme">We meet you at the inflection point of your legacy — with institutional-level expertise, standing squarely as your advocate. Partner-owned means the people across the table are the people who answer for the work.</p>
+      </div>
+      <div class="p-row reveal" style="--d:.24s">
+        <span class="p-num">03</span>
+        <h3 class="p-title">Success Together</h3>
+        <p class="p-theme">Decades of experience with hundreds of single family offices taught us what endures: clarity and direction, held steady across generations, checked and re-checked like any structure meant to last.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- sweep: paper -> dark -->
+<div class="sweep" style="background:var(--paper)" aria-hidden="true">
+  <svg viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="M0 0 Q 720 118 1440 0 V96 H0 Z" fill="#0B2E20"/></svg>
+</div>
+
+<!-- ====================== LOAD CARRIED QUIETLY ====================== -->
+<section class="load sec-pad">
+  <div class="wrap">
+    <span class="label reveal">Load Carried Quietly</span>
+    <div class="load-grid">
+      <div class="stat reveal">
+        <div class="stat-num">25<sup>+</sup></div>
+        <p class="stat-cap">Years advising single-family offices, foundations, and institutional allocators.</p>
+      </div>
+      <div class="stat reveal" style="--d:.12s">
+        <div class="stat-num">100<sup>s</sup></div>
+        <p class="stat-cap">Of single family offices served across our partners' careers.</p>
+      </div>
+      <div class="stat reveal" style="--d:.24s">
+        <div class="stat-num">1</div>
+        <p class="stat-cap">Purpose — stewardship of wealth and legacy, from one generation to the next.</p>
+      </div>
+    </div>
+    <p class="load-note reveal" style="--d:.3s">A bridge does not announce the weight it holds. Neither do we.</p>
+  </div>
+</section>
+
+<!-- sweep: dark -> mint -->
+<div class="sweep" style="background:var(--ever)" aria-hidden="true">
+  <svg viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="M0 0 Q 720 118 1440 0 V96 H0 Z" fill="#E9F2EC"/></svg>
+</div>
+
+<!-- ====================== 03 · APPROACH ====================== -->
+<section class="approach sec-pad" id="approach">
+  <div class="wrap">
+    <div class="approach-top">
+      <div class="reveal">
+        <span class="label">03 — Our Approach</span>
+        <h2 class="approach-lede">Order and intention, engineered into the everyday.</h2>
+      </div>
+      <div class="approach-copy reveal" style="--d:.15s">
+        <p><strong>25+ years advising single-family offices, foundations, and institutional allocators.</strong> Transparent fees, intuitive reporting, education tailored to your needs. We bring order and intention to the complexity that comes with meaningful wealth — the way an engineer brings order to a crossing: one deliberate connection at a time.</p>
+      </div>
+    </div>
+
+    <div class="deck-line reveal" style="--d:.2s">
+      <ul class="practices">
+        <li class="practice"><span class="pr-idx">S–01</span><span class="pr-name">Rising Generation</span></li>
+        <li class="practice"><span class="pr-idx">S–02</span><span class="pr-name">Philanthropy</span></li>
+        <li class="practice"><span class="pr-idx">S–03</span><span class="pr-name">Family Governance &amp; Succession</span></li>
+        <li class="practice"><span class="pr-idx">S–04</span><span class="pr-name">Investment Process</span></li>
+        <li class="practice"><span class="pr-idx">S–05</span><span class="pr-name">Trust, Tax &amp; Estate Planning</span></li>
+        <li class="practice"><span class="pr-idx">S–06</span><span class="pr-name">Financial Reporting</span></li>
+        <li class="practice"><span class="pr-idx">S–07</span><span class="pr-name">Pre-IPO &amp; Equity Planning</span></li>
+        <li class="practice"><span class="pr-idx">S–08</span><span class="pr-name">Education &amp; Stewardship</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== 04 · PARTNERS ====================== -->
+<section class="partners sec-pad" id="partners">
+  <div class="wrap">
+    <div class="partners-head reveal">
+      <div>
+        <span class="label">04 — The Partners</span>
+        <h2 class="partners-title">The hands on the cable.</h2>
+      </div>
+      <p class="partners-note">Partner-owned and operated. The people who built the firm are the people who serve you.</p>
+    </div>
+
+    <div class="partner-grid">
+      <a href="#" class="portal reveal" aria-label="Justin Kunz — CEO and Founding Partner">
+        <div class="portal-frame">
+          <!-- tower-portal frame -->
+          <svg viewBox="0 0 440 520" role="img" aria-label="Portrait placeholder framed in a bridge tower portal">
+            <defs>
+              <linearGradient id="port1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#12442F"/>
+                <stop offset=".65" stop-color="#0B2E20"/>
+                <stop offset="1" stop-color="#071F16"/>
+              </linearGradient>
+            </defs>
+            <rect x="1" y="1" width="438" height="518" fill="none" stroke="#0B2E20" stroke-opacity=".35"/>
+            <!-- stepped art-deco portal opening -->
+            <path d="M60 520 V150 q0 -12 12 -12 h24 q10 0 10 -10 v-16 q0 -10 10 -10 h228 q10 0 10 10 v16 q0 10 10 10 h24 q12 0 12 12 V520 Z" fill="url(#port1)"/>
+            <!-- portal hairlines -->
+            <path d="M60 210 H380 M60 216 H380" stroke="#D6E7DD" stroke-opacity=".28" fill="none"/>
+            <path d="M60 300 H380 M60 306 H380" stroke="#D6E7DD" stroke-opacity=".2" fill="none"/>
+            <!-- soft light through the fog -->
+            <ellipse cx="220" cy="330" rx="130" ry="180" fill="#D6E7DD" opacity=".07"/>
+            <text x="220" y="480" text-anchor="middle" fill="#D6E7DD" opacity=".5" font-family="Archivo, sans-serif" font-size="10" letter-spacing="3">PORTRAIT — PHASE 3</text>
+          </svg>
+        </div>
+        <div class="partner-meta">
+          <h3 class="partner-name">Justin Kunz</h3>
+          <p class="partner-role">CEO &amp; Founding Partner</p>
+        </div>
+      </a>
+
+      <a href="#" class="portal reveal" style="--d:.15s" aria-label="Katie Riley Mahany — Managing Partner">
+        <div class="portal-frame">
+          <svg viewBox="0 0 440 520" role="img" aria-label="Portrait placeholder framed in a bridge tower portal">
+            <defs>
+              <linearGradient id="port2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#12442F"/>
+                <stop offset=".65" stop-color="#0B2E20"/>
+                <stop offset="1" stop-color="#071F16"/>
+              </linearGradient>
+            </defs>
+            <rect x="1" y="1" width="438" height="518" fill="none" stroke="#0B2E20" stroke-opacity=".35"/>
+            <path d="M60 520 V150 q0 -12 12 -12 h24 q10 0 10 -10 v-16 q0 -10 10 -10 h228 q10 0 10 10 v16 q0 10 10 10 h24 q12 0 12 12 V520 Z" fill="url(#port2)"/>
+            <path d="M60 210 H380 M60 216 H380" stroke="#D6E7DD" stroke-opacity=".28" fill="none"/>
+            <path d="M60 300 H380 M60 306 H380" stroke="#D6E7DD" stroke-opacity=".2" fill="none"/>
+            <ellipse cx="220" cy="330" rx="130" ry="180" fill="#D6E7DD" opacity=".07"/>
+            <text x="220" y="480" text-anchor="middle" fill="#D6E7DD" opacity=".5" font-family="Archivo, sans-serif" font-size="10" letter-spacing="3">PORTRAIT — PHASE 3</text>
+          </svg>
+        </div>
+        <div class="partner-meta">
+          <h3 class="partner-name">Katie Riley Mahany</h3>
+          <p class="partner-role">Managing Partner</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== 05 · WRITING ====================== -->
+<section class="writing sec-pad" style="padding-top:0">
+  <div class="wrap">
+    <span class="label reveal" style="opacity:.75">05 — Selected Writing</span>
+    <ul class="writing-list">
+      <li class="reveal">
+        <a class="w-link" href="#">
+          <span class="w-idx">i.</span>
+          <span class="w-title">Planning After a Liquidity Event</span>
+          <span class="w-arr">&#8594;</span>
+        </a>
+      </li>
+      <li class="reveal" style="--d:.1s">
+        <a class="w-link" href="#">
+          <span class="w-idx">ii.</span>
+          <span class="w-title">What to Expect from a Multi-Family Office</span>
+          <span class="w-arr">&#8594;</span>
+        </a>
+      </li>
+      <li class="reveal" style="--d:.2s">
+        <a class="w-link" href="#">
+          <span class="w-idx">iii.</span>
+          <span class="w-title">Family Governance for the Long Term</span>
+          <span class="w-arr">&#8594;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- sweep: paper -> dark -->
+<div class="sweep" style="background:var(--paper)" aria-hidden="true">
+  <svg viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="M0 0 Q 720 118 1440 0 V96 H0 Z" fill="#0B2E20"/></svg>
+</div>
+
+<!-- ====================== 06 · CTA ====================== -->
+<section class="cta sec-pad" id="conversation">
+  <div class="wrap">
+    <svg class="cta-cable reveal" viewBox="0 0 680 70" aria-hidden="true">
+      <path d="M10 12 Q 340 96 670 12" fill="none" stroke="#D6E7DD" stroke-width="1.4"/>
+      <circle cx="10" cy="12" r="3" fill="#D6E7DD"/>
+      <circle cx="670" cy="12" r="3" fill="#D6E7DD"/>
+      <path d="M340 33 V54" stroke="#D6E7DD" stroke-width="1" stroke-opacity=".6"/>
+    </svg>
+    <h2 class="reveal" style="--d:.1s">Begin a <em>conversation.</em></h2>
+    <p class="cta-copy reveal" style="--d:.2s">Every span begins with a single, deliberate connection. Tell us where you stand — a transition ahead, a company sold, a generation rising — and we will meet you there.</p>
+    <div class="cta-actions reveal" style="--d:.3s">
+      <a class="btn-mint" href="mailto:hello@inflectioncm.com">Begin a conversation</a>
+      <div class="cta-contact">
+        <a href="tel:+14154506556">(415) 450-6556</a>
+        <span aria-hidden="true">·</span>
+        <span>San Francisco, CA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-wordmark">Inflection <small>Capital Management</small></div>
+      <ul class="foot-links">
+        <li><a href="#">ADV Part 2A</a></li>
+        <li><a href="#">ADV Part 2B</a></li>
+        <li><a href="#">Form CRS</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="tel:+14154506556">(415) 450-6556</a></li>
+      </ul>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="foot-legal">Inflection Capital Management, LLC is a registered investment adviser. Registration does not imply a certain level of skill or training. Past performance is not indicative of future results. Investing involves risk, including possible loss of principal.</p>
+    <p class="foot-meta">San Francisco, CA · &copy; 2026 Inflection Capital Management, LLC</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --- generate suspender ropes hanging from the drawn cable --- */
+  try{
+    var cable = document.getElementById("mainCable");
+    var group = document.getElementById("suspenders");
+    var deckY = 290;
+    var len = cable.getTotalLength();
+    // pathLength=1 normalizes getTotalLength in some engines; sample by ratio
+    var samples = [];
+    for (var i = 0; i <= 400; i++){
+      var p = cable.getPointAtLength(len * i / 400);
+      samples.push(p);
+    }
+    function yAtX(x){
+      var best = null, bd = 1e9;
+      for (var j = 0; j < samples.length; j++){
+        var d = Math.abs(samples[j].x - x);
+        if (d < bd){ bd = d; best = samples[j]; }
+      }
+      return best ? best.y : null;
+    }
+    var d = "";
+    for (var x = 64; x <= 1384; x += 24){
+      // skip the tower shafts
+      if ((x > 412 && x < 456) || (x > 992 && x < 1036)) continue;
+      var y = yAtX(x);
+      if (y !== null && y < deckY - 5){
+        d += "M" + x + " " + y.toFixed(1) + " V" + deckY + " ";
+      }
+    }
+    var path = document.createElementNS("http://www.w3.org/2000/svg","path");
+    path.setAttribute("d", d);
+    path.setAttribute("fill","none");
+    group.appendChild(path);
+
+    // deck truss ticks
+    var ticks = "";
+    for (var t = 32; t <= 1408; t += 16){ ticks += "M" + t + " 290 V299 "; }
+    document.getElementById("deckTicks").setAttribute("d", ticks);
+  }catch(e){ /* drawing degrades gracefully */ }
+
+  /* --- once-only staggered reveals --- */
+  var els = document.querySelectorAll(".reveal");
+  if (reduced || !("IntersectionObserver" in window)){
+    els.forEach(function(el){ el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .18, rootMargin: "0px 0px -6% 0px" });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

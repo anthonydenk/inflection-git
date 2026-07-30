@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflection Capital Management — A Partner-Owned Multi-Family Office</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   INFLECTION CAPITAL MANAGEMENT — Round 1, Variant 4
+   "Classical Remix" — engraved old-world gravitas ×
+   Swiss-modernist grotesque structure.
+   Ivory / ink / oxblood.
+   ============================================================ */
+
+:root {
+  --ivory:      #f2ede1;
+  --ivory-deep: #eae3d2;
+  --ink:        #191512;
+  --ink-soft:   #3a342d;
+  --oxblood:    #6d1a22;
+  --oxblood-deep: #521218;
+  --hairline:   rgba(25, 21, 18, 0.28);
+  --hairline-faint: rgba(25, 21, 18, 0.14);
+  --hairline-ivory: rgba(242, 237, 225, 0.3);
+
+  --didone: "Bodoni Moda", "Didot", serif;
+  --grot:   "Archivo", "Helvetica Neue", sans-serif;
+
+  --measure: 62ch;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --frame-x: clamp(1.25rem, 5vw, 5.5rem);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--grot);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* faint laid-paper texture */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(25,21,18,0.016) 0px,
+      rgba(25,21,18,0.016) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+}
+
+::selection { background: var(--oxblood); color: var(--ivory); }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 3px;
+}
+
+/* ---------- shared primitives ---------- */
+
+.label {
+  font-family: var(--grot);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.label--oxblood { color: var(--oxblood); }
+
+.rule { border: 0; border-top: 1px solid var(--hairline); }
+
+/* small-caps links that underline with a thin double rule */
+.dbl-link {
+  display: inline-block;
+  font-family: var(--grot);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 5px;
+  border-bottom: 3px double transparent;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+.dbl-link:hover,
+.dbl-link:focus-visible {
+  border-bottom-color: currentColor;
+  color: var(--oxblood);
+}
+.dbl-link--on-ink:hover,
+.dbl-link--on-ink:focus-visible { color: var(--ivory); }
+
+/* scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--rd, 0ms);
+}
+[data-reveal].is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--ivory) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--hairline);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.1rem var(--frame-x);
+}
+.nav__mark {
+  font-family: var(--didone);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  white-space: nowrap;
+}
+.nav__mark svg { width: 22px; height: 22px; flex: none; transform: translateY(3px); }
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+  list-style: none;
+}
+.nav__links a {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 3px double transparent;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+.nav__links a:hover,
+.nav__links a:focus-visible {
+  border-bottom-color: currentColor;
+  color: var(--oxblood);
+}
+.nav__login {
+  color: var(--ink-soft);
+  opacity: 0.75;
+}
+@media (max-width: 860px) {
+  .nav__links li:nth-child(-n+4) { display: none; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+  border-bottom: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  min-height: min(88vh, 880px);
+}
+.hero__copy {
+  padding: clamp(3rem, 8vh, 6.5rem) var(--gutter) clamp(3rem, 7vh, 5rem) var(--frame-x);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 5vh, 3.5rem);
+}
+.hero__meta .rule { flex: 1; max-width: 72px; }
+.hero__h1 {
+  font-family: var(--didone);
+  font-weight: 500;
+  font-size: clamp(2.9rem, 7.2vw, 6.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  max-width: 12ch;
+}
+.hero__h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--oxblood);
+}
+.hero__sub {
+  margin-top: clamp(1.75rem, 4vh, 2.75rem);
+  font-family: var(--didone);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 44ch;
+}
+.hero__actions {
+  margin-top: clamp(2.25rem, 5vh, 3.5rem);
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  flex-wrap: wrap;
+}
+.btn-engraved {
+  font-family: var(--grot);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ivory);
+  background: var(--ink);
+  padding: 1.05rem 2.2rem;
+  border: 1px solid var(--ink);
+  position: relative;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.btn-engraved::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--hairline-ivory);
+  pointer-events: none;
+  transition: border-color 0.25s ease;
+}
+.btn-engraved:hover,
+.btn-engraved:focus-visible {
+  background: var(--oxblood);
+  border-color: var(--oxblood);
+}
+
+/* engraved plate column */
+.hero__plate {
+  border-left: 1px solid var(--hairline);
+  background: var(--ivory-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+}
+.hero__plate svg {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  color: var(--ink);
+  display: block;
+}
+/* folio marginalia on the plate */
+.hero__folio {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .hero__grid { grid-template-columns: 1fr; min-height: 0; }
+  .hero__plate {
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+    padding: 2.5rem 1.5rem;
+  }
+  .hero__copy { padding: 3rem var(--frame-x) 2.75rem; }
+}
+
+/* ============================================================
+   TICKER RULE — tracked caps strip under hero
+   ============================================================ */
+
+.strip {
+  border-bottom: 1px solid var(--hairline);
+  padding: 0.85rem var(--frame-x);
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.strip span {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.strip span b { color: var(--oxblood); font-weight: 600; }
+@media (max-width: 700px) {
+  .strip span:nth-child(3) { display: none; }
+}
+
+/* ============================================================
+   STORY — drop cap manuscript block
+   ============================================================ */
+
+.story {
+  padding: clamp(4.5rem, 11vh, 8.5rem) var(--frame-x);
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  border-bottom: 1px solid var(--hairline);
+}
+.story__side { position: relative; }
+.story__side .label { display: block; margin-bottom: 1.1rem; }
+.story__side svg.laurel {
+  width: 92px; height: auto; color: var(--oxblood);
+  margin-top: 1.75rem; display: block;
+}
+.story__sidepara {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 30ch;
+  margin-top: 1.25rem;
+}
+.story__body {
+  font-family: var(--didone);
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1.55;
+  max-width: var(--measure);
+}
+.story__body .dropcap {
+  float: left;
+  font-family: var(--didone);
+  font-weight: 600;
+  font-size: 4.6em;
+  line-height: 0.78;
+  padding: 0.08em 0.14em 0 0.1em;
+  margin: 0.06em 0.14em 0 0;
+  color: var(--oxblood);
+  border: 1px solid var(--hairline);
+  box-shadow: inset 0 0 0 3px var(--ivory), inset 0 0 0 4px var(--hairline-faint);
+}
+.story__body p + p { margin-top: 1.4em; text-indent: 2.5em; }
+@media (max-width: 900px) {
+  .story { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   PRINCIPLES — Roman-numeral triptych, asymmetric
+   ============================================================ */
+
+.principles {
+  border-bottom: 1px solid var(--hairline);
+}
+.principles__head {
+  padding: clamp(3rem, 7vh, 5rem) var(--frame-x) clamp(2rem, 4vh, 3rem);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.principles__head h2 {
+  font-family: var(--didone);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+.principles__list {
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+.principle {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr) minmax(0, 5fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  padding: clamp(1.9rem, 4.5vh, 3.1rem) var(--frame-x);
+  border-bottom: 1px solid var(--hairline-faint);
+  transition: background 0.3s ease;
+}
+.principle:last-child { border-bottom: 0; }
+.principle:hover { background: var(--ivory-deep); }
+.principle__numeral {
+  font-family: var(--didone);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--oxblood);
+  line-height: 1;
+}
+.principle__title {
+  font-family: var(--didone);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.1vw, 1.8rem);
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+  max-width: 16ch;
+}
+.principle__body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 48ch;
+}
+@media (max-width: 820px) {
+  .principle { grid-template-columns: minmax(0, 1fr); gap: 0.8rem; }
+  .principle__numeral { font-size: 1.6rem; }
+}
+
+/* ============================================================
+   LEDGER — the classical index, set on ink
+   ============================================================ */
+
+.ledger {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: clamp(4.5rem, 11vh, 8.5rem) var(--frame-x);
+  position: relative;
+  overflow: hidden;
+}
+.ledger::before {
+  /* faint engraving lines across the ink */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(242,237,225,0.03) 0px,
+    rgba(242,237,225,0.03) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  pointer-events: none;
+}
+.ledger__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+.ledger__intro .label { color: var(--ivory); opacity: 0.65; display: block; margin-bottom: 1.4rem; }
+.ledger__intro h2 {
+  font-family: var(--didone);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.ledger__intro h2 em { font-style: italic; font-weight: 400; color: #c88a8f; }
+.ledger__intro p {
+  margin-top: 1.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: rgba(242,237,225,0.72);
+  max-width: 42ch;
+}
+.ledger__intro svg.sunburst {
+  width: 120px; height: auto; color: rgba(242,237,225,0.5);
+  margin-top: 2.5rem; display: block;
+}
+
+.ledger__index {
+  list-style: none;
+  border-top: 1px solid var(--hairline-ivory);
+  counter-reset: idx;
+}
+.ledger__index li { counter-increment: idx; }
+.ledger__index a {
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.05rem 0.25rem;
+  border-bottom: 1px solid var(--hairline-ivory);
+  text-decoration: none;
+  transition: background 0.25s ease, padding-left 0.25s ease;
+}
+.ledger__index a:hover,
+.ledger__index a:focus-visible {
+  background: rgba(242,237,225,0.06);
+  padding-left: 0.9rem;
+}
+.ledger__index .no {
+  font-family: var(--didone);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #c88a8f;
+}
+.ledger__index .no::before { content: "No. " counter(idx, upper-roman); }
+.ledger__index .name {
+  font-family: var(--didone);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ledger__index .leader {
+  align-self: center;
+  height: 1px;
+  border-bottom: 1px dotted rgba(242,237,225,0.35);
+  min-width: 2.5rem;
+  flex: 1;
+}
+.ledger__index .fol {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242,237,225,0.55);
+}
+@media (max-width: 900px) {
+  .ledger__grid { grid-template-columns: 1fr; }
+  .ledger__index a { grid-template-columns: 3rem minmax(0,1fr) auto; }
+}
+
+/* ============================================================
+   PARTNERS — intaglio medallions
+   ============================================================ */
+
+.partners {
+  border-bottom: 1px solid var(--hairline);
+  padding: clamp(4.5rem, 11vh, 8rem) var(--frame-x);
+}
+.partners__head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
+}
+.partners__head .rule { flex: 1; }
+.partners__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 5rem);
+  max-width: 60rem;
+}
+.partner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: center;
+}
+.partner__medallion { width: clamp(120px, 16vw, 168px); flex: none; }
+.partner__medallion svg { width: 100%; height: auto; color: var(--ink); display: block; }
+.partner__name {
+  font-family: var(--didone);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  line-height: 1.12;
+}
+.partner__role {
+  margin-top: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+}
+.partner__line {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 34ch;
+}
+@media (max-width: 820px) {
+  .partners__row { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   WRITING — selected essays
+   ============================================================ */
+
+.writing {
+  border-bottom: 1px solid var(--hairline);
+}
+.writing__head {
+  padding: clamp(3rem, 7vh, 5rem) var(--frame-x) 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 5vh, 3.25rem);
+}
+.writing__head h2 {
+  font-family: var(--didone);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  letter-spacing: -0.01em;
+}
+.writing__list { list-style: none; border-top: 1px solid var(--hairline); }
+.writing__item a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  padding: clamp(1.6rem, 4vh, 2.4rem) var(--frame-x);
+  border-bottom: 1px solid var(--hairline-faint);
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+.writing__item a:hover,
+.writing__item a:focus-visible { background: var(--ivory-deep); }
+.writing__item a:hover .writing__title { color: var(--oxblood); }
+.writing__date {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  width: 7.5rem;
+}
+.writing__title {
+  font-family: var(--didone);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+  transition: color 0.25s ease;
+}
+.writing__arrow {
+  font-family: var(--didone);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--oxblood);
+}
+@media (max-width: 700px) {
+  .writing__item a { grid-template-columns: minmax(0,1fr) auto; }
+  .writing__date { display: none; }
+}
+
+/* ============================================================
+   CTA — the charter block
+   ============================================================ */
+
+.cta {
+  background: var(--oxblood);
+  color: var(--ivory);
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(25,21,18,0.10) 0px,
+    rgba(25,21,18,0.10) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  pointer-events: none;
+}
+.cta__inner {
+  position: relative;
+  padding: clamp(4.5rem, 12vh, 8.5rem) var(--frame-x);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+  border: 0;
+}
+.cta__frame {
+  position: absolute;
+  inset: clamp(0.9rem, 2vw, 1.6rem);
+  border: 1px solid rgba(242,237,225,0.35);
+  pointer-events: none;
+}
+.cta__frame::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(242,237,225,0.18);
+}
+.cta__inner .label { color: rgba(242,237,225,0.7); display: block; margin-bottom: 1.3rem; }
+.cta__inner h2 {
+  font-family: var(--didone);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.6vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  max-width: 14ch;
+}
+.cta__inner h2 em { font-style: italic; font-weight: 400; }
+.cta__body {
+  margin-top: 1.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: rgba(242,237,225,0.82);
+  max-width: 44ch;
+}
+.cta__card {
+  border: 1px solid rgba(242,237,225,0.4);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  position: relative;
+  background: rgba(25,21,18,0.12);
+}
+.cta__card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(242,237,225,0.16);
+  pointer-events: none;
+}
+.cta__card .seal { width: 74px; height: auto; color: var(--ivory); display: block; margin-bottom: 1.4rem; opacity: 0.9; }
+.cta__card dl { display: grid; gap: 1.1rem; }
+.cta__card dt {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242,237,225,0.6);
+  margin-bottom: 0.2rem;
+}
+.cta__card dd {
+  font-family: var(--didone);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.cta__card dd a { text-decoration: none; border-bottom: 3px double transparent; padding-bottom: 3px; transition: border-color 0.25s ease; }
+.cta__card dd a:hover,
+.cta__card dd a:focus-visible { border-bottom-color: currentColor; }
+.btn-ivory {
+  display: inline-block;
+  margin-top: 1.9rem;
+  font-family: var(--grot);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--oxblood-deep);
+  background: var(--ivory);
+  padding: 1rem 2rem;
+  position: relative;
+  transition: background 0.25s ease;
+}
+.btn-ivory::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(109,26,34,0.35);
+  pointer-events: none;
+}
+.btn-ivory:hover, .btn-ivory:focus-visible { background: #fff8e9; }
+@media (max-width: 900px) {
+  .cta__inner { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+  background: var(--ivory);
+  padding: clamp(2.75rem, 6vh, 4.25rem) var(--frame-x) clamp(2rem, 5vh, 3rem);
+}
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.footer__mark {
+  font-family: var(--didone);
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+.footer__links {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.footer__links a {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding-bottom: 3px;
+  border-bottom: 3px double transparent;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+.footer__links a:hover,
+.footer__links a:focus-visible { color: var(--oxblood); border-bottom-color: currentColor; }
+.footer__meta {
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+.footer__disclosure {
+  margin-top: 1.75rem;
+  font-size: 0.6875rem;
+  line-height: 1.8;
+  color: rgba(58,52,45,0.75);
+  max-width: 90ch;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__mark" href="#top" aria-label="Inflection Capital Management — home">
+      <!-- inflection glyph -->
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M2 22 C 9 22, 9 2, 12 12 C 15 22, 15 2, 22 2" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="12" cy="12" r="1.8" fill="#6d1a22"/>
+      </svg>
+      Inflection
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav__links">
+        <li><a href="#serve">Who We Serve</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav__login" href="#login">Log In</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="about">
+  <div class="hero__grid">
+    <div class="hero__copy">
+      <div class="hero__meta" data-reveal>
+        <hr class="rule">
+        <span class="label label--oxblood">A Partner-Owned Multi-Family Office · Silicon Valley</span>
+      </div>
+      <h1 class="hero__h1" data-reveal style="--rd:90ms">
+        Every fortune has its <em>inflection&nbsp;point.</em>
+      </h1>
+      <p class="hero__sub" data-reveal style="--rd:180ms">
+        The moment wealth stops being an outcome and becomes a responsibility.
+        We meet families there — with patient counsel, institutional discipline,
+        and a partnership built to last generations.
+      </p>
+      <div class="hero__actions" data-reveal style="--rd:270ms">
+        <a class="btn-engraved" href="#contact">Begin a Conversation</a>
+        <a class="dbl-link" href="#services">The Practice Index</a>
+      </div>
+    </div>
+
+    <!-- Engraved plate: Fig. I — the inflection curve as a classical diagram -->
+    <div class="hero__plate" aria-hidden="true">
+      <span class="hero__folio">Plate I · Charter Ed.</span>
+      <svg viewBox="0 0 480 560" fill="none" data-reveal style="--rd:200ms">
+        <defs>
+          <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="5" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+          </pattern>
+          <pattern id="engrave" width="4" height="4" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="2" x2="4" y2="2" stroke="currentColor" stroke-width="0.4" opacity="0.28"/>
+          </pattern>
+        </defs>
+
+        <!-- double plate frame -->
+        <rect x="8" y="8" width="464" height="544" stroke="currentColor" stroke-width="1.4"/>
+        <rect x="16" y="16" width="448" height="528" stroke="currentColor" stroke-width="0.5"/>
+        <!-- corner marks -->
+        <path d="M8 28 h8 M28 8 v8" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M472 28 h-8 M452 8 v8" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M8 532 h8 M28 552 v-8" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M472 532 h-8 M452 552 v-8" stroke="currentColor" stroke-width="0.8"/>
+
+        <!-- fig label -->
+        <text x="42" y="58" font-family="'Bodoni Moda', serif" font-style="italic" font-size="19" fill="currentColor">Fig. I.</text>
+        <line x1="42" y1="66" x2="96" y2="66" stroke="currentColor" stroke-width="0.6"/>
+
+        <!-- sunburst behind the apex, engraved rays -->
+        <g stroke="currentColor" stroke-width="0.55" opacity="0.65">
+          <line x1="392" y1="118" x2="392" y2="52"/>
+          <line x1="392" y1="118" x2="428" y2="62"/>
+          <line x1="392" y1="118" x2="448" y2="86"/>
+          <line x1="392" y1="118" x2="456" y2="120"/>
+          <line x1="392" y1="118" x2="356" y2="62"/>
+          <line x1="392" y1="118" x2="336" y2="86"/>
+          <line x1="392" y1="118" x2="328" y2="120"/>
+          <circle cx="392" cy="118" r="22" fill="url(#engrave)" stroke="currentColor" stroke-width="0.8"/>
+          <circle cx="392" cy="118" r="15" stroke="currentColor" stroke-width="0.5"/>
+        </g>
+
+        <!-- axes -->
+        <line x1="64" y1="452" x2="428" y2="452" stroke="currentColor" stroke-width="1.1"/>
+        <line x1="64" y1="452" x2="64" y2="96" stroke="currentColor" stroke-width="1.1"/>
+        <path d="M428 452 l-9 -4 v8 z" fill="currentColor"/>
+        <path d="M64 96 l-4 9 h8 z" fill="currentColor"/>
+        <!-- axis ticks -->
+        <g stroke="currentColor" stroke-width="0.7">
+          <line x1="140" y1="449" x2="140" y2="455"/>
+          <line x1="216" y1="449" x2="216" y2="455"/>
+          <line x1="292" y1="449" x2="292" y2="455"/>
+          <line x1="368" y1="449" x2="368" y2="455"/>
+          <line x1="61" y1="380" x2="67" y2="380"/>
+          <line x1="61" y1="308" x2="67" y2="308"/>
+          <line x1="61" y1="236" x2="67" y2="236"/>
+          <line x1="61" y1="164" x2="67" y2="164"/>
+        </g>
+        <text x="418" y="474" font-family="'Bodoni Moda', serif" font-style="italic" font-size="13" fill="currentColor">t</text>
+        <text x="46" y="104" font-family="'Bodoni Moda', serif" font-style="italic" font-size="13" fill="currentColor">w</text>
+
+        <!-- hatched area beneath early curve: the accumulation years -->
+        <path d="M64 452 C 150 448, 196 420, 232 306 L 232 452 Z" fill="url(#hatch)" stroke="none"/>
+
+        <!-- the curve itself -->
+        <path d="M64 452 C 150 448, 196 420, 232 306 C 268 192, 314 150, 400 142"
+              stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+
+        <!-- tangent at the inflection point, dashed -->
+        <line x1="152" y1="424" x2="316" y2="190" stroke="currentColor" stroke-width="0.8" stroke-dasharray="1.5 5"/>
+
+        <!-- the inflection point -->
+        <circle cx="232" cy="306" r="10" stroke="currentColor" stroke-width="0.8" fill="none"/>
+        <circle cx="232" cy="306" r="4.5" fill="#6d1a22"/>
+        <!-- callout to the point -->
+        <path d="M242 296 L 292 246 h 66" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <text x="296" y="240" font-family="'Bodoni Moda', serif" font-style="italic" font-size="15" fill="currentColor">punctum</text>
+
+        <!-- endpoint letters, classical geometry style -->
+        <text x="54" y="470" font-family="'Bodoni Moda', serif" font-size="14" fill="currentColor">A</text>
+        <text x="406" y="134" font-family="'Bodoni Moda', serif" font-size="14" fill="currentColor">B</text>
+
+        <!-- laurel sprigs flanking the caption -->
+        <g stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.85">
+          <path d="M132 516 q 22 -10 44 -2"/>
+          <path d="M140 514 q 2 -8 -4 -12 M152 510 q 2 -8 -4 -12 M164 508 q 2 -8 -3 -12"/>
+          <path d="M348 516 q -22 -10 -44 -2"/>
+          <path d="M340 514 q -2 -8 4 -12 M328 510 q -2 -8 4 -12 M316 508 q -2 -8 3 -12"/>
+        </g>
+
+        <!-- caption -->
+        <text x="240" y="500" text-anchor="middle" font-family="'Archivo', sans-serif" font-weight="600" font-size="11" letter-spacing="3.2" fill="currentColor">PUNCTUM INFLEXIONIS</text>
+        <text x="240" y="521" text-anchor="middle" font-family="'Bodoni Moda', serif" font-style="italic" font-size="12" fill="currentColor" opacity="0.75">Where the curve of a fortune changes its bearing.</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRIP ================= -->
+<div class="strip" aria-hidden="true">
+  <span><b>§</b> Partner-Owned &amp; Operated</span>
+  <span><b>§</b> SEC-Registered Investment Adviser</span>
+  <span><b>§</b> 25+ Years Advising Family Offices</span>
+  <span><b>§</b> San Francisco, California</span>
+</div>
+
+<!-- ================= STORY ================= -->
+<section class="story" id="serve">
+  <div class="story__side" data-reveal>
+    <span class="label label--oxblood">I · The Firm</span>
+    <span class="label" style="letter-spacing:0.18em; color:var(--ink-soft);">Stewards, Not Salesmen</span>
+    <svg class="laurel" viewBox="0 0 100 40" fill="none" aria-hidden="true">
+      <path d="M6 32 Q 50 8 94 32" stroke="currentColor" stroke-width="1"/>
+      <g stroke="currentColor" stroke-width="0.9" fill="none">
+        <path d="M16 28 q 0 -9 -7 -11 M28 23 q 0 -9 -6 -12 M40 20 q -1 -9 -6 -12 M52 18 q 0 -9 -4 -13"/>
+        <path d="M84 28 q 0 -9 7 -11 M72 23 q 0 -9 6 -12 M60 20 q 1 -9 6 -12"/>
+      </g>
+    </svg>
+    <p class="story__sidepara">Written for the families we serve: wealth creators, families in transition, and single family offices with their foundations.</p>
+  </div>
+  <div class="story__body" data-reveal style="--rd:120ms">
+    <p><span class="dropcap" aria-hidden="true">I</span><span class="sr-only"></span>nflection Capital Management is a partner-owned and operated multi-family office based in Silicon Valley, dedicated to working with clients to preserve and grow their wealth and legacy. Our careers have been dedicated to working with wealth creators, families navigating periods of transition, and family offices, including their foundations.</p>
+    <p>With a commitment to personal connection and a deep understanding of our clients&rsquo; unique goals, we serve as trusted stewards for generations to come.</p>
+  </div>
+</section>
+
+<!-- ================= PRINCIPLES ================= -->
+<section class="principles">
+  <div class="principles__head">
+    <span class="label label--oxblood" data-reveal>II · Articles of Practice</span>
+    <h2 data-reveal style="--rd:80ms">Three articles, held without exception.</h2>
+  </div>
+  <ol class="principles__list">
+    <li class="principle" data-reveal>
+      <span class="principle__numeral" aria-hidden="true">Art.&nbsp;I.</span>
+      <h3 class="principle__title">Our Clients Inspire&nbsp;Us</h3>
+      <p class="principle__body">Meaningful wealth should purchase, above all, the space to focus on what matters. We carry the complexity — the reporting, the coordination, the detail — so our families can attend to the work, the people, and the purpose that built the fortune in the first place.</p>
+    </li>
+    <li class="principle" data-reveal style="--rd:90ms">
+      <span class="principle__numeral" aria-hidden="true">Art.&nbsp;II.</span>
+      <h3 class="principle__title">Our&nbsp;Partnership</h3>
+      <p class="principle__body">We meet you at the inflection point of your legacy — a liquidity event, a succession, a generational hand-off — and stand beside you as advocate. Institutional-level expertise, delivered with the loyalty of a partner whose own name is on the door.</p>
+    </li>
+    <li class="principle" data-reveal style="--rd:180ms">
+      <span class="principle__numeral" aria-hidden="true">Art.&nbsp;III.</span>
+      <h3 class="principle__title">Success&nbsp;Together</h3>
+      <p class="principle__body">Decades of experience with hundreds of single family offices taught us that clarity and direction compound like capital. We measure success in generations — as stewards of a legacy that should outlast every one of us.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ================= LEDGER / PRACTICE INDEX ================= -->
+<section class="ledger" id="services">
+  <div class="ledger__grid">
+    <div class="ledger__intro">
+      <span class="label" data-reveal>III · Index of Practice Areas</span>
+      <h2 data-reveal style="--rd:80ms">The full ledger of a family&rsquo;s <em>affairs.</em></h2>
+      <p data-reveal style="--rd:160ms">25+ years advising single-family offices, foundations, and institutional allocators. Transparent fees, intuitive reporting, and education tailored to your needs — bringing order and intention to the complexity that comes with meaningful wealth.</p>
+      <svg class="sunburst" viewBox="0 0 120 62" fill="none" aria-hidden="true" data-reveal style="--rd:240ms">
+        <g stroke="currentColor" stroke-width="0.7">
+          <line x1="60" y1="58" x2="60" y2="6"/>
+          <line x1="60" y1="58" x2="30" y2="14"/>
+          <line x1="60" y1="58" x2="90" y2="14"/>
+          <line x1="60" y1="58" x2="12" y2="34"/>
+          <line x1="60" y1="58" x2="108" y2="34"/>
+          <line x1="60" y1="58" x2="4" y2="56"/>
+          <line x1="60" y1="58" x2="116" y2="56"/>
+        </g>
+        <path d="M40 58 a20 20 0 0 1 40 0" stroke="currentColor" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <ol class="ledger__index">
+      <li data-reveal><a href="#services"><span class="no"></span><span class="name">Rising Generation</span><span class="fol">Fol. 03</span></a></li>
+      <li data-reveal style="--rd:60ms"><a href="#services"><span class="no"></span><span class="name">Philanthropy</span><span class="fol">Fol. 07</span></a></li>
+      <li data-reveal style="--rd:120ms"><a href="#services"><span class="no"></span><span class="name">Family Governance &amp; Succession</span><span class="fol">Fol. 11</span></a></li>
+      <li data-reveal style="--rd:180ms"><a href="#services"><span class="no"></span><span class="name">Lifecycle</span><span class="fol">Fol. 15</span></a></li>
+      <li data-reveal style="--rd:240ms"><a href="#services"><span class="no"></span><span class="name">Investment Process</span><span class="fol">Fol. 19</span></a></li>
+      <li data-reveal style="--rd:300ms"><a href="#services"><span class="no"></span><span class="name">Trust, Tax &amp; Estate Planning</span><span class="fol">Fol. 23</span></a></li>
+      <li data-reveal style="--rd:360ms"><a href="#services"><span class="no"></span><span class="name">Financial Reporting</span><span class="fol">Fol. 27</span></a></li>
+      <li data-reveal style="--rd:420ms"><a href="#services"><span class="no"></span><span class="name">Pre-IPO &amp; Equity Planning</span><span class="fol">Fol. 31</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PARTNERS ================= -->
+<section class="partners" id="team">
+  <div class="partners__head">
+    <span class="label label--oxblood" data-reveal>IV · The Partners</span>
+    <hr class="rule">
+  </div>
+  <div class="partners__row">
+    <article class="partner" data-reveal>
+      <div class="partner__medallion" aria-hidden="true">
+        <!-- intaglio medallion: JK -->
+        <svg viewBox="0 0 160 190" fill="none">
+          <defs>
+            <pattern id="med-hatch-a" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+              <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="0.45" opacity="0.3"/>
+            </pattern>
+          </defs>
+          <ellipse cx="80" cy="86" rx="66" ry="80" stroke="currentColor" stroke-width="1.4"/>
+          <ellipse cx="80" cy="86" rx="59" ry="73" stroke="currentColor" stroke-width="0.5"/>
+          <ellipse cx="80" cy="86" rx="59" ry="73" fill="url(#med-hatch-a)"/>
+          <text x="80" y="100" text-anchor="middle" font-family="'Bodoni Moda', serif" font-weight="600" font-size="42" fill="currentColor">JK</text>
+          <line x1="56" y1="118" x2="104" y2="118" stroke="currentColor" stroke-width="0.7"/>
+          <g stroke="currentColor" stroke-width="0.8" fill="none">
+            <path d="M42 178 q 38 -14 76 0"/>
+            <path d="M52 174 q 1 -8 -5 -11 M66 170 q 1 -8 -4 -12 M108 174 q -1 -8 5 -11 M94 170 q -1 -8 4 -12"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <h3 class="partner__name">Justin Kunz</h3>
+        <p class="partner__role">CEO &amp; Founding Partner</p>
+        <p class="partner__line">A career spent beside wealth creators and single family offices, from first liquidity to third generation.</p>
+      </div>
+    </article>
+    <article class="partner" data-reveal style="--rd:120ms">
+      <div class="partner__medallion" aria-hidden="true">
+        <!-- intaglio medallion: KRM -->
+        <svg viewBox="0 0 160 190" fill="none">
+          <defs>
+            <pattern id="med-hatch-b" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)">
+              <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="0.45" opacity="0.3"/>
+            </pattern>
+          </defs>
+          <ellipse cx="80" cy="86" rx="66" ry="80" stroke="currentColor" stroke-width="1.4"/>
+          <ellipse cx="80" cy="86" rx="59" ry="73" stroke="currentColor" stroke-width="0.5"/>
+          <ellipse cx="80" cy="86" rx="59" ry="73" fill="url(#med-hatch-b)"/>
+          <text x="80" y="98" text-anchor="middle" font-family="'Bodoni Moda', serif" font-weight="600" font-size="34" fill="currentColor">KRM</text>
+          <line x1="56" y1="116" x2="104" y2="116" stroke="currentColor" stroke-width="0.7"/>
+          <g stroke="currentColor" stroke-width="0.8" fill="none">
+            <path d="M42 178 q 38 -14 76 0"/>
+            <path d="M52 174 q 1 -8 -5 -11 M66 170 q 1 -8 -4 -12 M108 174 q -1 -8 5 -11 M94 170 q -1 -8 4 -12"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <h3 class="partner__name">Katie Riley Mahany</h3>
+        <p class="partner__role">Managing Partner</p>
+        <p class="partner__line">Counsel to families navigating transition — governance, philanthropy, and the rising generation.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= WRITING ================= -->
+<section class="writing">
+  <div class="writing__head">
+    <span class="label label--oxblood" data-reveal>V · Selected Writing</span>
+    <h2 data-reveal style="--rd:80ms">From the firm&rsquo;s commonplace book.</h2>
+  </div>
+  <ul class="writing__list">
+    <li class="writing__item" data-reveal>
+      <a href="#writing-1">
+        <span class="writing__date">Essay · No. 12</span>
+        <span class="writing__title">Planning After a Liquidity Event</span>
+        <span class="writing__arrow" aria-hidden="true">Read&nbsp;&rarr;</span>
+      </a>
+    </li>
+    <li class="writing__item" data-reveal style="--rd:90ms">
+      <a href="#writing-2">
+        <span class="writing__date">Essay · No. 09</span>
+        <span class="writing__title">What to Expect from a Multi-Family Office</span>
+        <span class="writing__arrow" aria-hidden="true">Read&nbsp;&rarr;</span>
+      </a>
+    </li>
+    <li class="writing__item" data-reveal style="--rd:180ms">
+      <a href="#writing-3">
+        <span class="writing__date">Essay · No. 04</span>
+        <span class="writing__title">Family Governance for the Long Term</span>
+        <span class="writing__arrow" aria-hidden="true">Read&nbsp;&rarr;</span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="contact">
+  <div class="cta__frame" aria-hidden="true"></div>
+  <div class="cta__inner">
+    <div>
+      <span class="label" data-reveal>VI · Correspondence</span>
+      <h2 data-reveal style="--rd:80ms">Begin a <em>conversation.</em></h2>
+      <p class="cta__body" data-reveal style="--rd:160ms">There is no form to fill out and nothing to subscribe to. Write to the partners, or call the office in San Francisco, and we will find a time to sit down together — unhurried, in confidence, and at your convenience.</p>
+    </div>
+    <div class="cta__card" data-reveal style="--rd:200ms">
+      <svg class="seal" viewBox="0 0 74 74" fill="none" aria-hidden="true">
+        <circle cx="37" cy="37" r="35" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="37" cy="37" r="30" stroke="currentColor" stroke-width="0.5"/>
+        <path d="M14 48 C 26 48, 26 22, 37 37 C 48 52, 48 26, 60 26" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="37" cy="37" r="2.4" fill="currentColor"/>
+      </svg>
+      <dl>
+        <div>
+          <dt>By Telephone</dt>
+          <dd><a href="tel:+14154506556">(415) 450-6556</a></dd>
+        </div>
+        <div>
+          <dt>The Office</dt>
+          <dd>San Francisco, California</dd>
+        </div>
+        <div>
+          <dt>In Person</dt>
+          <dd>By appointment, with the partners</dd>
+        </div>
+      </dl>
+      <a class="btn-ivory" href="#contact">Request a Meeting</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer__top">
+    <a class="footer__mark" href="#top">Inflection Capital Management, LLC</a>
+    <ul class="footer__links">
+      <li><a href="#adv-2a">ADV Part 2A</a></li>
+      <li><a href="#adv-2b">ADV Part 2B</a></li>
+      <li><a href="#form-crs">Form CRS</a></li>
+      <li><a href="#privacy">Privacy Policy</a></li>
+    </ul>
+  </div>
+  <div class="footer__meta">
+    <span>San Francisco, CA · (415) 450-6556</span>
+    <span>&copy; MMXXVI Inflection Capital Management, LLC</span>
+  </div>
+  <p class="footer__disclosure">Inflection Capital Management, LLC is a registered investment adviser. Registration does not imply a certain level of skill or training. Past performance is not indicative of future results. Investing involves risk, including possible loss of principal.</p>
+</footer>
+
+<script>
+(function () {
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var els = document.querySelectorAll("[data-reveal]");
+  if (reduced || !("IntersectionObserver" in window)) {
+    els.forEach(function (el) { el.classList.add("is-in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

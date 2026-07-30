@@ -1,11 +1,13 @@
 .footer-section {
+    background-image: url("../../assets/footerbg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     object-fit: cover;
     z-index: -10;
-    color: white;
-    height: 300px;
+    color: var(--type-secondary);
+    min-height: 330px;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -17,32 +19,67 @@
 .footer-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 90%;
     padding-top: 50px;
     padding-left: 2.5%;
     padding-right: 2.5%;
-    margin-bottom: -25px;
+    margin-bottom: 0;
     padding-bottom: 0px;
-    color: #75b2b2;
+    color: var(--type-muted);
     z-index: 10;
+    gap: 2rem;
+}
+
+.footer-nap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-style: normal;
+    color: var(--type-muted);
+    line-height: 1.35;
+}
+
+.footer-nap strong {
+    color: var(--type-secondary);
+    font-family: var(--font-display-italic);
+    font-weight: 400;
+}
+
+.footer-nap a {
+    color: var(--type-muted);
+    text-decoration: none;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.pdf-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.75rem 1.25rem;
 }
 
 .pdf-container a {
-    padding-left: 20px;
-    color: #75b2b2;
+    color: var(--type-muted);
 }
 
 
 .footer-item {
     font-size: 1rem;
     text-decoration: none;
-    color: #75b2b2;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    color: var(--type-muted);
 }
 
 .footer-disclosure {
     width: 90%;
-    color: #75b2b2;
+    color: var(--type-muted);
     padding: 10px;
     font-size: 0.9rem;
     line-height: 1.5;
@@ -50,7 +87,11 @@
 }
 
 .footer-disclosure a {
-    color: #75b2b2;
+    color: var(--type-muted);
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -58,13 +99,15 @@
         flex-direction: column-reverse;
         font-size: 10px;
         text-align: center;
+        align-items: center;
     }
 
     .pdf-container {
         display: flex;
-        gap: 20px;
+        gap: 14px;
         flex-direction: column;
         padding-bottom: 20px;
+        justify-content: center;
     }
 
     .pdf-container a {
@@ -72,7 +115,7 @@
     }
 
     .footer-section {
-        height: 500px;
+        min-height: 560px;
     }
 
     .footer-disclosure {
