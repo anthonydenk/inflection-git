@@ -361,7 +361,7 @@ function App() {
                             <h1>Our Partnership</h1>
                             {/* <h3>&#40;The What&#41;</h3> */}
                             <p>
-                              We meet you at the inflection point of your legacy and wealth, collaborating to build the infrastructure to support your family&#39;s unique needs. With institutional-level expertise, we enhance both your financial well-being and personal affairs. Acting as your advocate, we design a refined investment portfolio that aligns precisely with your vision for protecting and growing your assets.
+                              We meet you at the inflection point of your legacy and wealth, collaborating to build the infrastructure to support your family&#39;s unique needs. Using skills honed at some of the largest financial institutions, we enhance both your financial well-being and personal affairs. Acting as your advocate, we design a refined investment portfolio that aligns precisely with your vision for protecting and growing your assets.
                             </p>
                           </div>
                           <div className='how'>
@@ -519,7 +519,7 @@ function App() {
                           <h1>Our Partnership</h1>
                           {/* <h3>&#40;The What&#41;</h3> */}
                           <p>
-                            We meet you at the inflection point of your legacy and wealth, collaborating to build the infrastructure to support your family&#39;s unique needs. With institutional-level expertise, we enhance both your financial well-being and personal affairs. Acting as your advocate, we design a refined investment portfolio that aligns precisely with your vision for protecting and growing your assets.
+                            We meet you at the inflection point of your legacy and wealth, collaborating to build the infrastructure to support your family&#39;s unique needs. Using skills honed at some of the largest financial institutions, we enhance both your financial well-being and personal affairs. Acting as your advocate, we design a refined investment portfolio that aligns precisely with your vision for protecting and growing your assets.
                           </p>
                         </div>
                         <div className='how'>
