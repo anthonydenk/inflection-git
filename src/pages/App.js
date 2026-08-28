@@ -464,7 +464,7 @@ function App() {
                         </div>
                       </div> */}
                       <ContactForm />
-                      <FooterComponent />
+                      <FooterComponent includeInstitutionalDisclosure />
                     </div>
                   </div>
             </div>
@@ -622,7 +622,7 @@ function App() {
                       </div>
                     </div> */}
                     <ContactForm />
-                    <FooterComponent />
+                    <FooterComponent includeInstitutionalDisclosure />
                   </div>
                 </div>
           </div>
