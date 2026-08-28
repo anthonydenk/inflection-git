@@ -184,10 +184,10 @@ const Team = () => {
                     </section>
 
 
-                    <section className="joint-venture-TOC" aria-label="Joint Venture: Inflection & TOC 23">
-                        <h2>Joint Venture: Inflection &amp; TOC-23</h2>
+                    <section className="joint-venture-TOC" aria-label="Strategic Alliance: Inflection & TOC-23">
+                        <h2>Strategic Alliance: Inflection &amp; TOC-23</h2>
                         <p>
-                            This partnership of Inflection and TOC-23 is the continuation of decades of work together across a cohesive team with complementary strengths covering
+                            This strategic alliance between Inflection and TOC-23 is the continuation of decades of work together across a cohesive team with complementary strengths covering
                             investment management, estate planning, business transition advisory, and family office services. By combining our expertise, we provide clients with a single,
                             coordinated team that understands the full picture — financial, personal, and generational.
                         </p>

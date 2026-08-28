@@ -306,7 +306,7 @@ const WhoWeServe = () => {
                 <WaveDivider color="#75b2b2" />
             </main>
 
-            <FooterComponent />
+            <FooterComponent includeInstitutionalDisclosure={activeAudience === "wealth-creators"} />
         </div>
     );
 };

@@ -5,7 +5,7 @@ import PDFdisc3 from './CRSForm2.pdf';
 import './footer.css';
 import bg from '../../assets/footerbg.jpg'
 
-const FooterComponent = () => {
+const FooterComponent = ({ includeInstitutionalDisclosure = false }) => {
     return (
         <div className="footer-section" style={{ backgroundImage: `url(${bg})` }}>
             <div className="footer-row">
@@ -37,7 +37,13 @@ const FooterComponent = () => {
                     regulatory and foreign currency requirements for any investment according to the laws of your home country and
                     place of residence. Any forward-looking statements or forecasts are based on assumptions and actual results may
                     vary. Information presented from third parties is believed to be reliable, but no warranty is provided. Inflection
-                    is not required to update information presented, unless otherwise required by applicable law. For more information
+                    is not required to update information presented, unless otherwise required by applicable law.{" "}
+                    {includeInstitutionalDisclosure && (
+                        <>
+                            <em>Institutional accounts are defined by FINRA Rule 4512(c) as an “investor with total assets of at least $50 million.” When we use the term “institutional-level” or “institutional-grade,” we are referring to the rigorous process and standard of care that would need to be applied to service an account with this level of assets.</em>{" "}
+                        </>
+                    )}
+                    For more information
                     about Inflection, including our Form ADV Part 2A Brochure, please visit{" "}
                     <a href="https://adviserinfo.sec.gov/firm/summary/333157" target="_blank" rel="noopener noreferrer">
                         https://adviserinfo.sec.gov/firm/summary/333157
