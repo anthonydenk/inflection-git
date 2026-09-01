@@ -53,6 +53,15 @@
     color: #75b2b2;
 }
 
+.footer-section--with-footnote {
+    height: auto;
+    min-height: 300px;
+}
+
+.footer-institutional-footnote {
+    margin-top: 0.75rem;
+}
+
 @media (max-width: 768px) {
     .footer-row {
         flex-direction: column-reverse;
@@ -73,6 +82,11 @@
 
     .footer-section {
         height: 500px;
+    }
+
+    .footer-section--with-footnote {
+        height: auto;
+        min-height: 500px;
     }
 
     .footer-disclosure {

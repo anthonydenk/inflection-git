@@ -67,7 +67,7 @@ const AUDIENCES = {
         whatWeDo:
             "We act as a fractional extension of your family office: an outsourced CIO and investment-operations partner. Plug us in where you need depth, and keep the parts you would rather run yourself.",
         detail:
-            "Portfolio construction, manager due diligence, consolidated reporting, and day-to-day investment operations, all backed by the connectivity of a team that knows the family office world from the inside. Institutional infrastructure, without the fixed cost of building it.",
+            "Portfolio construction, manager due diligence, consolidated reporting, and day-to-day investment operations, all backed by the connectivity of a team that knows the family office world from the inside. Institutional infrastructure, without the fixed cost of building it*.",
     },
 };
 
@@ -94,7 +94,7 @@ const SERVICES = [
     ],
     [
         "Investment management",
-        "Institutional-grade portfolios with access to boutique and alternative managers usually reserved for the largest family offices.",
+        "Institutional-grade portfolios with access to boutique and alternative managers usually reserved for the largest family offices*.",
     ],
     [
         "Philanthropy and charitable planning",
@@ -306,7 +306,7 @@ const WhoWeServe = () => {
                 <WaveDivider color="#75b2b2" />
             </main>
 
-            <FooterComponent includeInstitutionalDisclosure={activeAudience === "wealth-creators"} />
+            <FooterComponent includeInstitutionalFootnote={["wealth-creators", "single-family-offices"].includes(activeAudience)} />
         </div>
     );
 };
