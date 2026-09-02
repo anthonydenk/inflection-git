@@ -8,7 +8,7 @@ const DOCS = [
   { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 
-const FooterComponent = () => (
+const FooterComponent = ({ includeInstitutionalFootnote = false }) => (
   <footer>
     <div className="foot-inner">
       <div className="foot-top">
@@ -55,6 +55,12 @@ const FooterComponent = () => (
         </a>{" "}
         or contact us at {firm.telephoneDisplay}.
       </p>
+
+      {includeInstitutionalFootnote && (
+        <p className="foot-legal foot-institutional">
+          <em>*Institutional accounts are defined by FINRA Rule 4512(c) as an &ldquo;investor with total assets of at least $50 million.&rdquo; When we use the term &ldquo;institutional-level&rdquo; or &ldquo;institutional-grade,&rdquo; we are referring to the rigorous process and standard of care that would need to be applied to service an account with this level of assets.</em>
+        </p>
+      )}
 
       <p className="foot-meta">
         {firm.address.streetAddress}, {firm.address.addressLocality}, {firm.address.addressRegion}{" "}

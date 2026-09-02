@@ -7,7 +7,7 @@ import { absoluteUrl } from "../../src/data/site";
 
 const TITLE = "Contact Inflection Capital Management | San Francisco";
 const DESCRIPTION =
-  "Meet with the Inflection team. A partner-owned, fee-only multi-family office at 1 Sansome Street, Suite 1400, San Francisco, CA 94104. Call (415) 450-6556.";
+  "Meet with the Inflection team. A partner-owned and independent multi-family office at 1 Sansome Street, Suite 1400, San Francisco, CA 94104. Call (415) 450-6556.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -152,7 +152,7 @@ export default function ContactPage() {
           <div className="wrap">
             <p className="label reveal">Inflection Capital Management</p>
             <p className="statement-line reveal" style={{ "--d": ".12s" } as React.CSSProperties}>
-              Inflection Capital Management is a partner-owned, fee-only multi-family office serving
+              Inflection Capital Management is a partner-owned and independent multi-family office serving
               wealth creators, multigenerational families, and single family offices.
             </p>
           </div>

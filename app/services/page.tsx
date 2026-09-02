@@ -7,7 +7,7 @@ import { absoluteUrl } from "../../src/data/site";
 
 const TITLE = "Multi-Family Office Services in San Francisco | Inflection";
 const DESCRIPTION =
-  "Rising generation, philanthropy, governance, lifestyle, investments, trust and tax, and financial reporting — coordinated by one team in San Francisco.";
+  "Rising generation, philanthropy, governance, liquidity and equity compensation, investments, trust and tax, and financial reporting — coordinated in San Francisco.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -62,10 +62,11 @@ const servicesJsonLd = {
     { "@type": "ListItem", position: 1, name: "Rising Generation" },
     { "@type": "ListItem", position: 2, name: "Philanthropy" },
     { "@type": "ListItem", position: 3, name: "Family Governance & Succession" },
-    { "@type": "ListItem", position: 4, name: "Lifestyle" },
-    { "@type": "ListItem", position: 5, name: "Investment Process" },
-    { "@type": "ListItem", position: 6, name: "Trust, Tax and Estate Planning" },
-    { "@type": "ListItem", position: 7, name: "Financial Reporting" },
+    { "@type": "ListItem", position: 4, name: "Liquidity & Equity Compensation Planning" },
+    { "@type": "ListItem", position: 5, name: "Lifestyle" },
+    { "@type": "ListItem", position: 6, name: "Investment Process" },
+    { "@type": "ListItem", position: 7, name: "Trust, Tax and Estate Planning" },
+    { "@type": "ListItem", position: 8, name: "Financial Reporting" },
   ],
 };
 
@@ -97,12 +98,12 @@ export default function ServicesPage() {
           <div className="banner-copy">
             <span className="label">Services</span>
             <h1 className="banner-title">Our <em>Services</em></h1>
-            <p className="banner-sub">Inflection Capital Management is a partner-owned, fee-only multi-family office serving wealth creators, multigenerational families, and single family offices.</p>
+            <p className="banner-sub">Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.</p>
           </div>
           <span className="banner-tag">Cables into cloud, from the bridge deck</span>
         </section>
 
-        {/* ====================== CLIENT EXPERIENCE + INDEX 01–03 ====================== */}
+        {/* ====================== CLIENT EXPERIENCE + INDEX 01–04 ====================== */}
         <section className="interlude pad-sweep" id="experience">
           <div className="wrap">
 
@@ -112,7 +113,7 @@ export default function ServicesPage() {
                 <h2 className="lede-title">The Inflection Client Experience</h2>
               </div>
               <div className="lede-body reveal" style={{ "--d": ".15s" } as React.CSSProperties}>
-                <p>Our 25+ years spent advising single-family offices, foundations, and institutional allocators shape everything we do. We bring that same level of rigorous risk management and discipline directly to our clients. Clarity sits at the center of the relationship: transparent fees, intuitive reporting, and education tailored to your needs. Our philosophy is simple—bring order and intention to the complexity that comes with meaningful wealth.</p>
+                <p>Every family reaches an inflection point&mdash;where wealth becomes complex and legacy structures are no longer compatible. At Inflection, we integrate investments with tax strategy, estate planning, philanthropy, governance, and next generation stewardship&mdash;turning a fragmented financial world into one cohesive ecosystem. As a partner-owned firm, our incentives remain fully aligned with yours across generations.</p>
               </div>
             </div>
 
@@ -120,39 +121,40 @@ export default function ServicesPage() {
             <div className="index-open reveal" id="services">
               <div>
                 <span className="label">02 &middot; Services</span>
-                <h2 className="index-title">Inflection &amp; <em>Your Family</em></h2>
+                <h2 className="index-title">Inflection &amp; <em>You</em></h2>
               </div>
-              <span className="index-count">Seven practices · S-01 to S-07</span>
+              <span className="index-count">Eight practices · S-01 to S-08</span>
             </div>
 
-            {/* S-01 · wide row */}
-            <div className="svc-row reveal">
-              <div>
+            {/* S-01 / S-02 · paired columns */}
+            <div className="svc-pair svc-pair-first reveal">
+              <div className="svc-cell" id="rising-generation">
                 <span className="svc-idx">S-01</span>
                 <h2 className="svc-name">Rising Generation</h2>
+                <ul className="svc-items">
+                  <li>Rising Generation Investment Philosophy</li>
+                  <li>Family Business Succession Planning</li>
+                  <li>Family Board</li>
+                  <li>Marriage &amp; Prenuptial Agreements</li>
+                  <li>Rising Generation Career Initiatives</li>
+                </ul>
               </div>
-              <ul className="svc-items">
-                <li>Rising Generation Investment Philosophy</li>
-                <li>Family Business Succession Planning</li>
-                <li>Family Board</li>
-                <li>Marriage &amp; Prenuptial Agreements</li>
-                <li>Rising Generation Career Initiatives</li>
-              </ul>
-            </div>
-
-            {/* S-02 / S-03 · paired columns */}
-            <div className="svc-pair reveal">
-              <div className="svc-cell">
+              <div className="svc-cell" id="philanthropy">
                 <span className="svc-idx">S-02</span>
                 <h2 className="svc-name">Philanthropy</h2>
                 <ul className="svc-items">
+                  <li>DAF &amp; Private Foundations</li>
                   <li>Foundation Investment Allocation</li>
                   <li>Grant Analysis</li>
                   <li>Impact Alignment</li>
                   <li>Vehicle Structuring &amp; Formation</li>
                 </ul>
               </div>
-              <div className="svc-cell">
+            </div>
+
+            {/* S-03 / S-04 · paired columns */}
+            <div className="svc-pair reveal">
+              <div className="svc-cell" id="family-governance">
                 <span className="svc-idx">S-03</span>
                 <h2 className="svc-name">Family Governance &amp; Succession</h2>
                 <ul className="svc-items">
@@ -160,6 +162,16 @@ export default function ServicesPage() {
                   <li>Rising Generation Education</li>
                   <li>Generational Legacy Success</li>
                   <li>Documenting Family Legacy</li>
+                </ul>
+              </div>
+              <div className="svc-cell" id="liquidity-equity">
+                <span className="svc-idx">S-04</span>
+                <h2 className="svc-name">Liquidity &amp; Equity Compensation Planning</h2>
+                <ul className="svc-items">
+                  <li>Equity Compensation Strategy (RSUs, ISOs &amp; NSOs)</li>
+                  <li>IPO, Tender Offer &amp; Liquidity Event Planning</li>
+                  <li>Tax Planning for Vesting &amp; Exercise Decisions</li>
+                  <li>Concentrated Stock Diversification &amp; Hedging</li>
                 </ul>
               </div>
             </div>
@@ -182,14 +194,14 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ====================== INDEX 04–07 ====================== */}
+        {/* ====================== INDEX 05–08 ====================== */}
         <section className="interlude sweep-over">
           <div className="wrap">
 
-            {/* S-04 / S-05 · asymmetric split, deepest list carried on a paper card */}
+            {/* S-05 / S-06 · asymmetric split */}
             <div className="svc-split reveal">
-              <div className="svc-cell">
-                <span className="svc-idx">S-04</span>
+              <div className="svc-cell" id="lifestyle">
+                <span className="svc-idx">S-05</span>
                 <h2 className="svc-name">Lifestyle</h2>
                 <ul className="svc-items">
                   <li>Private Aviation</li>
@@ -198,8 +210,8 @@ export default function ServicesPage() {
                   <li>Project Management</li>
                 </ul>
               </div>
-              <div className="svc-card">
-                <span className="svc-idx">S-05</span>
+              <div className="svc-card" id="investment-process">
+                <span className="svc-idx">S-06</span>
                 <h2 className="svc-name">Investment Process</h2>
                 <ul className="svc-items svc-two">
                   <li>Overall Investment Asset Allocation</li>
@@ -213,13 +225,13 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            {/* S-06 / S-07 · paired columns */}
+            {/* S-07 / S-08 · paired columns */}
             <div
               className="svc-pair svc-tail reveal"
               style={{ "--d": ".1s", marginTop: "clamp(34px,4vw,58px)" } as React.CSSProperties}
             >
-              <div className="svc-cell">
-                <span className="svc-idx">S-06</span>
+              <div className="svc-cell" id="trust-tax-estate">
+                <span className="svc-idx">S-07</span>
                 <h2 className="svc-name">Trust, Tax and Estate Planning</h2>
                 <ul className="svc-items">
                   <li>Asset Protection</li>
@@ -228,8 +240,8 @@ export default function ServicesPage() {
                   <li>Document Storage</li>
                 </ul>
               </div>
-              <div className="svc-cell">
-                <span className="svc-idx">S-07</span>
+              <div className="svc-cell" id="financial-reporting">
+                <span className="svc-idx">S-08</span>
                 <h2 className="svc-name">Financial Reporting</h2>
                 <ul className="svc-items">
                   <li>Performance Reporting</li>
@@ -251,7 +263,7 @@ export default function ServicesPage() {
           <div className="band-scrim" aria-hidden="true"></div>
           <div className="band-copy">
             <span className="label reveal">The Inflection Point</span>
-            <p className="band-text reveal" style={{ "--d": ".12s" } as React.CSSProperties}>Every family reaches an inflection point-where wealth becomes complex and legacy structures are no longer compatible. At Inflection, we integrate investments with tax strategy, estate planning, philanthropy, governance, and next generation stewardship-turning a fragmented financial world into one cohesive ecosystem. As a partner-owned firm, our incentives remain fully aligned with yours across generations.</p>
+            <p className="band-text reveal" style={{ "--d": ".12s" } as React.CSSProperties}>Every family reaches an inflection point&mdash;where wealth becomes complex and legacy structures are no longer compatible. At Inflection, we integrate investments with tax strategy, estate planning, philanthropy, governance, and next generation stewardship&mdash;turning a fragmented financial world into one cohesive ecosystem. As a partner-owned firm, our incentives remain fully aligned with yours across generations.</p>
           </div>
           <span className="band-tag">The bay from the Marin Headlands · morning</span>
         </section>

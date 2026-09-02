@@ -4,7 +4,7 @@ export const firm = {
   name: "Inflection Capital Management",
   legalName: "Inflection Capital Management, LLC",
   description:
-    "Partner-owned multi-family office and wealth management firm serving families in Silicon Valley and San Francisco.",
+    "Partner-owned and independent multi-family office and wealth management firm based in San Francisco.",
   telephoneDisplay: "(415) 450-6556",
   telephoneSchema: "+1-415-450-6556",
   address: {
@@ -14,7 +14,7 @@ export const firm = {
     postalCode: "94104",
     addressCountry: "US",
   },
-  areaServed: ["Silicon Valley", "San Francisco", "California"],
+  areaServed: ["San Francisco", "California", "United States"],
   urls: {
     website: siteUrl,
     sec: "https://adviserinfo.sec.gov/firm/summary/333157",

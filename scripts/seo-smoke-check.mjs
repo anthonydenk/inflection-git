@@ -13,12 +13,12 @@ const pages = [
     "name": "home",
     "file": "index.html",
     "title": "Multi-Family Office in San Francisco | Inflection Capital",
-    "description": "Inflection Capital Management is a partner-owned, fee-only multi-family office serving wealth creators, multigenerational families, and single family offices.",
+    "description": "Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.",
     "canonical": "https://inflectioncm.com",
     "jsonLd": "FinancialService",
     "content": [
       "Inflection Capital Management",
-      "partner-owned, fee-only multi-family office",
+      "partner-owned and independent multi-family office",
       "We recognize that our clients are not interchangeable",
       "Meet with the Inflection"
     ]
@@ -27,11 +27,11 @@ const pages = [
     "name": "about",
     "file": "about.html",
     "title": "About the Firm | Inflection Capital Management",
-    "description": "Inflection Capital Management is a partner-owned, fee-only multi-family office in San Francisco serving wealth creators, families, and single family offices.",
+    "description": "Inflection Capital Management is a partner-owned and independent multi-family office in San Francisco serving wealth creators, families, and single family offices.",
     "canonical": "https://inflectioncm.com/about",
     "jsonLd": "BreadcrumbList",
     "content": [
-      "trusted stewards for generations to come",
+      "Trusted stewards at",
       "Our Clients Inspire Us"
     ]
   },
@@ -89,13 +89,15 @@ const pages = [
     "name": "services",
     "file": "services.html",
     "title": "Multi-Family Office Services in San Francisco | Inflection",
-    "description": "Rising generation, philanthropy, governance, lifestyle, investments, trust and tax, and financial reporting \u2014 coordinated by one team in San Francisco.",
+    "description": "Rising generation, philanthropy, governance, liquidity and equity compensation, investments, trust and tax, and financial reporting \u2014 coordinated in San Francisco.",
     "canonical": "https://inflectioncm.com/services",
     "jsonLd": "ItemList",
     "content": [
       "Rising Generation",
       "Philanthropy",
       "Family Governance &amp; Succession",
+      "Liquidity &amp; Equity Compensation Planning",
+      "DAF &amp; Private Foundations",
       "Investment Process",
       "Financial Reporting"
     ]
@@ -104,7 +106,7 @@ const pages = [
     "name": "team",
     "file": "team.html",
     "title": "Our Team \u2014 Partner-Owned Multi-Family Office | Inflection",
-    "description": "Meet the partners and team of Inflection Capital Management, a partner-owned multi-family office in San Francisco, and the TOC-23 joint venture.",
+    "description": "Meet Inflection Capital Management's partner-owned and independent team in San Francisco, alongside its strategic alliance with TOC-23.",
     "canonical": "https://inflectioncm.com/team",
     "jsonLd": "ItemList",
     "content": [
@@ -113,6 +115,7 @@ const pages = [
       "Patrick Hayes",
       "Sophia Mura",
       "Yvonne Freeman",
+      "Strategic Alliance: Inflection &amp;",
       "TOC-23"
     ]
   },
@@ -132,7 +135,7 @@ const pages = [
     "name": "contact",
     "file": "contact.html",
     "title": "Contact Inflection Capital Management | San Francisco",
-    "description": "Meet with the Inflection team. A partner-owned, fee-only multi-family office at 1 Sansome Street, Suite 1400, San Francisco, CA 94104. Call (415) 450-6556.",
+    "description": "Meet with the Inflection team. A partner-owned and independent multi-family office at 1 Sansome Street, Suite 1400, San Francisco, CA 94104. Call (415) 450-6556.",
     "canonical": "https://inflectioncm.com/contact",
     "jsonLd": "ContactPage",
     "content": [
@@ -300,6 +303,14 @@ for (const page of pages) {
     !html.includes("[object Object]"),
     `${page.name}: found broken [object Object] text`
   );
+  assert(
+    !html.toLowerCase().includes("fee-only"),
+    `${page.name}: found retired fee-only language`
+  );
+  assert(
+    !html.toLowerCase().includes("silicon valley"),
+    `${page.name}: found retired Silicon Valley positioning`
+  );
 }
 
 const home = readOut("index.html");
@@ -319,6 +330,18 @@ assert(
   team.includes("/team/justin-kunz"),
   "team: missing internal profile link"
 );
+
+const institutionalFootnote =
+  "Institutional accounts are defined by FINRA Rule 4512(c)";
+for (const file of [
+  "who-we-serve/wealth-creators.html",
+  "who-we-serve/single-family-offices.html",
+]) {
+  assert(
+    readOut(file).includes(institutionalFootnote),
+    `${file}: missing current institutional footnote`
+  );
+}
 
 const footerNap = [
   "Inflection Capital Management, LLC",

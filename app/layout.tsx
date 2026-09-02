@@ -6,11 +6,11 @@ const siteUrl = "https://inflectioncm.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Inflection Capital Management | Multi-Family Office in Silicon Valley",
+    default: "Inflection Capital Management | Multi-Family Office in San Francisco",
     template: "%s | Inflection Capital Management",
   },
   description:
-    "Inflection Capital Management is a partner-owned multi-family office in Silicon Valley helping families preserve, grow, and steward wealth and legacy.",
+    "Inflection Capital Management is a partner-owned and independent multi-family office in San Francisco helping families preserve, grow, and steward wealth and legacy.",
   applicationName: "Inflection Capital Management",
   icons: {
     icon: "/FAVICON.svg",

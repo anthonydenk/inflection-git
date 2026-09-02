@@ -58,7 +58,7 @@ const financialServiceJsonLd = {
   logo: "https://inflectioncm.com/logo512.png",
   image: "https://inflectioncm.com/og-image.jpg",
   description:
-    "Inflection Capital Management is a partner-owned, fee-only multi-family office serving wealth creators, multigenerational families, and single family offices.",
+    "Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.",
   telephone: "+1-415-450-6556",
   address: {
     "@type": "PostalAddress",

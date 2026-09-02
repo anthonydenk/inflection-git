@@ -58,7 +58,7 @@ const financialServiceJsonLd = {
   logo: "https://inflectioncm.com/logo512.png",
   image: "https://inflectioncm.com/og-image.jpg",
   description:
-    "Inflection Capital Management is a partner-owned, fee-only multi-family office serving wealth creators, multigenerational families, and single family offices.",
+    "Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.",
   telephone: "+1-415-450-6556",
   address: {
     "@type": "PostalAddress",
@@ -121,7 +121,7 @@ export default function WealthCreatorsPage() {
                 </div>
               </div>
               <div className="aud-body reveal" style={{ "--d": ".12s" } as React.CSSProperties}>
-                <p>Inflection is a partner-owned, fee-only multi-family office. Very few firms can say what our team can: we spent our careers inside institutions like BlackRock and Fidelity, working directly alongside hundreds of the most sophisticated single family offices in the country.</p>
+                <p>Inflection is a partner-owned and independent multi-family office. Very few firms can say what our team can: we spent our careers inside institutions like BlackRock and Fidelity, working directly alongside hundreds of the most sophisticated single family offices in the country.</p>
               </div>
             </div>
           </div>
@@ -266,7 +266,7 @@ export default function WealthCreatorsPage() {
           </div>
         </section>
       </main>
-      <FooterComponent />
+      <FooterComponent includeInstitutionalFootnote />
     </>
   );
 }

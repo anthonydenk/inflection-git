@@ -20,6 +20,7 @@ export const serviceAreas = [
     description:
       "Inflection supports families as they organize philanthropic goals, assess giving vehicles, and coordinate investment and grantmaking priorities with outside advisers.",
     info: [
+      "DAF & Private Foundations",
       "Foundation Investment Allocation",
       "Grant Analysis",
       "Impact Alignment",
@@ -37,6 +38,19 @@ export const serviceAreas = [
       "Rising Generation Education",
       "Generational Legacy Success",
       "Documenting Family Legacy",
+    ],
+  },
+  {
+    title: "Liquidity & Equity Compensation Planning",
+    legendLabel: "Liquidity &\nEquity Compensation\nPlanning",
+    magnitude: 14.2,
+    description:
+      "We coordinate equity compensation, liquidity-event, tax, and diversification decisions around concentrated company stock.",
+    info: [
+      "Equity Compensation Strategy (RSUs, ISOs & NSOs)",
+      "IPO, Tender Offer & Liquidity Event Planning",
+      "Tax Planning for Vesting & Exercise Decisions",
+      "Concentrated Stock Diversification & Hedging",
     ],
   },
   {
@@ -116,6 +130,6 @@ export const serviceFaqs = [
   {
     question: "Where is Inflection Capital Management based?",
     answer:
-      "Inflection Capital Management, LLC is based in San Francisco and serves families across Silicon Valley, San Francisco, and broader client relationships.",
+      "Inflection Capital Management, LLC is based in San Francisco and serves families across California and broader client relationships.",
   },
 ];

@@ -7,7 +7,7 @@ import { absoluteUrl } from "../../src/data/site";
 
 const TITLE = "About the Firm";
 const DESCRIPTION =
-  "Inflection Capital Management is a partner-owned, fee-only multi-family office in San Francisco serving wealth creators, families, and single family offices.";
+  "Inflection Capital Management is a partner-owned and independent multi-family office in San Francisco serving wealth creators, families, and single family offices.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -73,13 +73,13 @@ export default function AboutPage() {
               className="hero-display hload"
               style={{ "--hd": ".3s" } as React.CSSProperties}
             >
-              We serve as trusted stewards for <em>generations to come.</em>
+              Trusted stewards at <em>every inflection point.</em>
             </h1>
             <p
               className="hero-sub hload"
               style={{ "--hd": ".5s" } as React.CSSProperties}
             >
-              Inflection Capital Management is a partner-owned, fee-only multi-family
+              Inflection Capital Management is a partner-owned and independent multi-family
               office serving wealth creators, multigenerational families, and single
               family offices.
             </p>
@@ -88,7 +88,7 @@ export default function AboutPage() {
             className="plate-tag hload"
             style={{ "--hd": ".9s" } as React.CSSProperties}
           >
-            The south tower in fog, from Fort Point &middot; dawn
+            Fog over San Francisco, from the Marin Headlands &middot; morning
           </span>
         </section>
 
@@ -99,8 +99,8 @@ export default function AboutPage() {
               <div className="reveal">
                 <span className="label">01 &middot; The Firm</span>
                 <h2 className="story-lede">
-                  A partner-owned, fee-only multi-family office{" "}
-                  <em>based in Silicon Valley.</em>
+                  A partner-owned and independent multi-family office{" "}
+                  <em>based in San Francisco.</em>
                 </h2>
               </div>
               <div
@@ -109,25 +109,25 @@ export default function AboutPage() {
               >
                 <p>
                   Inflection Capital Management is a partner-owned and operated
-                  multi-family office based in Silicon Valley, dedicated to working with
+                  multi-family office based in San Francisco, dedicated to working with
                   clients to preserve and grow their wealth and legacy.
                 </p>
                 <p>
                   Our careers have been dedicated to working with wealth creators,
                   families navigating periods of transition, and family offices,
                   including their foundations. With a commitment to personal connection
-                  and a deep understanding of our clients&rsquo; unique goals, we serve
-                  as trusted stewards for generations to come.
+                  and a deep understanding of our clients&rsquo; unique goals, we serve as
+                  trusted stewards at every inflection point.
                 </p>
                 <p className="story-sign">
-                  Trusted stewards, for generations to come
+                  Trusted stewards at every inflection point
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* the bay */}
+        {/* Golden Gate south tower in fog */}
         <section
           className="plate plate-bay"
           aria-label="We meet you at the inflection point of your legacy"
@@ -141,7 +141,7 @@ export default function AboutPage() {
             </p>
           </div>
           <span className="plate-tag">
-            The bay from the Marin Headlands &middot; morning
+            The south tower in fog, from Fort Point &middot; dawn
           </span>
         </section>
 

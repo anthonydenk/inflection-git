@@ -8,7 +8,7 @@ import { teamMembers } from "../../src/data/team";
 
 const TITLE = "Our Team — Partner-Owned Multi-Family Office | Inflection";
 const DESCRIPTION =
-  "Meet the partners and team of Inflection Capital Management, a partner-owned multi-family office in San Francisco, and the TOC-23 joint venture.";
+  "Meet Inflection Capital Management's partner-owned and independent team in San Francisco, alongside its strategic alliance with TOC-23.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -209,7 +209,7 @@ export default function TeamPage() {
                 <span className="label">01 &middot; The Team</span>
                 <h2 className="team-lede" id="team-h">Partner-owned and <em>operated.</em></h2>
               </div>
-              <p className="team-note reveal" style={{ "--d": ".15s" } as React.CSSProperties}>Inflection Capital Management is a partner-owned, fee-only multi-family office serving wealth creators, multigenerational families, and single family offices.</p>
+              <p className="team-note reveal" style={{ "--d": ".15s" } as React.CSSProperties}>Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.</p>
             </div>
 
             {/* the partners — square frames, given the page's largest scale */}
@@ -230,16 +230,16 @@ export default function TeamPage() {
           </div>
         </section>
 
-        {/* ====================== 02 · JOINT VENTURE — TOC-23 ====================== */}
+        {/* ====================== 02 · STRATEGIC ALLIANCE — TOC-23 ====================== */}
         <section className="load jv" id="toc-23" aria-labelledby="jv-h">
           <div className="wrap">
-            <span className="label reveal">02 &middot; Joint Venture</span>
+            <span className="label reveal">02 &middot; Strategic Alliance</span>
             <div className="jv-head">
               <div className="reveal">
-                <h2 className="jv-title" id="jv-h">Joint Venture: Inflection &amp; <em>TOC-23</em></h2>
+                <h2 className="jv-title" id="jv-h">Strategic Alliance: Inflection &amp; <em>TOC-23</em></h2>
                 <p className="jv-dba">The Oglethorpe Collective, LLC (&ldquo;TOC-23&rdquo;)</p>
               </div>
-              <p className="jv-body reveal" style={{ "--d": ".15s" } as React.CSSProperties}>This partnership of Inflection and TOC-23 is the continuation of decades of work together across a cohesive team with complementary strengths covering investment management, estate planning, business transition advisory, and family office services. By combining our expertise, we provide clients with a single, coordinated team that understands the full picture — financial, personal, and generational.</p>
+              <p className="jv-body reveal" style={{ "--d": ".15s" } as React.CSSProperties}>This strategic alliance between Inflection and TOC-23 is the continuation of decades of work together across a cohesive team with complementary strengths covering investment management, estate planning, business transition advisory, and family office services. By combining our expertise, we provide clients with a single, coordinated team that understands the full picture — financial, personal, and generational.</p>
             </div>
 
             <div className="jv-list">

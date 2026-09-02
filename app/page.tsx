@@ -7,7 +7,7 @@ import { absoluteUrl } from "../src/data/site";
 
 const TITLE = "Multi-Family Office in San Francisco | Inflection Capital";
 const DESCRIPTION =
-  "Inflection Capital Management is a partner-owned, fee-only multi-family office serving wealth creators, multigenerational families, and single family offices.";
+  "Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -29,7 +29,7 @@ const schema = {
   logo: "https://inflectioncm.com/logo512.png",
   image: "https://inflectioncm.com/og-image.jpg",
   description:
-    "Inflection Capital Management is a partner-owned, fee-only multi-family office serving wealth creators, multigenerational families, and single family offices.",
+    "Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.",
   telephone: "+1-415-450-6556",
   address: {
     "@type": "PostalAddress",
@@ -51,14 +51,19 @@ const practices = [
     name: "Family Governance & Succession",
     href: "/services#family-governance",
   },
-  { idx: "S-04", name: "Lifestyle", href: "/services#lifestyle" },
-  { idx: "S-05", name: "Investment Process", href: "/services#investment-process" },
   {
-    idx: "S-06",
+    idx: "S-04",
+    name: "Liquidity & Equity Compensation Planning",
+    href: "/services#liquidity-equity",
+  },
+  { idx: "S-05", name: "Lifestyle", href: "/services#lifestyle" },
+  { idx: "S-06", name: "Investment Process", href: "/services#investment-process" },
+  {
+    idx: "S-07",
     name: "Trust, Tax and Estate Planning",
     href: "/services#trust-tax-estate",
   },
-  { idx: "S-07", name: "Financial Reporting", href: "/services#financial-reporting" },
+  { idx: "S-08", name: "Financial Reporting", href: "/services#financial-reporting" },
 ];
 
 export default function Page() {
@@ -75,7 +80,7 @@ export default function Page() {
       <main id="main-content" className="p-home">
         <Reveal />
 
-        {/* PLATE 01 · hero — Golden Gate south tower in fog, dawn */}
+        {/* PLATE 01 · hero — fog over San Francisco from the Marin Headlands */}
         <section
           className="plate plate-hero"
           aria-label="Inflection Capital Management — a multi-family office in San Francisco"
@@ -94,13 +99,13 @@ export default function Page() {
               className="hero-display hload"
               style={{ "--hd": ".3s" } as React.CSSProperties}
             >
-              We serve as trusted stewards for <em>generations to come.</em>
+              Trusted stewards at <em>every inflection point.</em>
             </p>
             <p
               className="hero-sub hload"
               style={{ "--hd": ".5s" } as React.CSSProperties}
             >
-              Inflection Capital Management is a partner-owned, fee-only multi-family
+              Inflection Capital Management is a partner-owned and independent multi-family
               office serving wealth creators, multigenerational families, and single
               family offices.
             </p>
@@ -126,7 +131,7 @@ export default function Page() {
             className="plate-tag hload"
             style={{ "--hd": ".9s" } as React.CSSProperties}
           >
-            The south tower in fog, from Fort Point &middot; dawn
+            Fog over San Francisco, from the Marin Headlands &middot; morning
           </span>
         </section>
 
@@ -137,8 +142,8 @@ export default function Page() {
               <div className="reveal">
                 <span className="label">01 &middot; The Firm</span>
                 <h2 className="story-lede">
-                  A partner-owned, fee-only multi-family office{" "}
-                  <em>based in Silicon Valley.</em>
+                  A partner-owned and independent multi-family office{" "}
+                  <em>based in San Francisco.</em>
                 </h2>
               </div>
               <div
@@ -147,25 +152,25 @@ export default function Page() {
               >
                 <p>
                   Inflection Capital Management is a partner-owned and operated
-                  multi-family office based in Silicon Valley, dedicated to working with
+                  multi-family office based in San Francisco, dedicated to working with
                   clients to preserve and grow their wealth and legacy.
                 </p>
                 <p>
                   Our careers have been dedicated to working with wealth creators,
                   families navigating periods of transition, and family offices,
                   including their foundations. With a commitment to personal connection
-                  and a deep understanding of our clients&rsquo; unique goals, we serve
-                  as trusted stewards for generations to come.
+                  and a deep understanding of our clients&rsquo; unique goals, we serve as
+                  trusted stewards at every inflection point.
                 </p>
                 <p className="story-sign">
-                  Trusted stewards, for generations to come
+                  Trusted stewards at every inflection point
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* PLATE 02 · the bay from the headlands */}
+        {/* PLATE 02 · Golden Gate south tower in fog, dawn */}
         <section
           className="plate plate-bay"
           aria-label="We meet you at the inflection point of your legacy"
@@ -179,7 +184,7 @@ export default function Page() {
             </p>
           </div>
           <span className="plate-tag">
-            The bay from the Marin Headlands &middot; morning
+            The south tower in fog, from Fort Point &middot; dawn
           </span>
         </section>
 
@@ -264,9 +269,9 @@ export default function Page() {
                 className="stat reveal"
                 style={{ "--d": ".24s" } as React.CSSProperties}
               >
-                <div className="stat-num is-word">Fee-only</div>
+                <div className="stat-num is-word">Independent</div>
                 <p className="stat-cap">
-                  And partner-owned, so our incentives remain fully aligned with yours
+                  Partner-owned and independent, so our incentives remain fully aligned with yours
                   across generations.
                 </p>
               </div>
