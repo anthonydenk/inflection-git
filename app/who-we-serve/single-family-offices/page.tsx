@@ -117,7 +117,7 @@ export default function SingleFamilyOfficesPage() {
               <div className="aud-stick">
                 <div className="reveal">
                   <span className="label">01</span>
-                  <h2 className="aud-title" id="sfo-advise">We do not simply advise single family offices.</h2>
+                  <h2 className="aud-title" id="sfo-advise">We do not simply advise single family offices. <em>We come from them.</em></h2>
                 </div>
               </div>
               <div className="aud-body reveal" style={{ "--d": ".12s" } as React.CSSProperties}>
@@ -138,7 +138,7 @@ export default function SingleFamilyOfficesPage() {
                 </div>
               </div>
               <div className="reveal" style={{ "--d": ".12s" } as React.CSSProperties}>
-                <p className="display-line display-wide">Portfolio construction, manager due diligence, consolidated reporting, and day-to-day investment operations, all backed by the connectivity of a team that knows the family office world from the inside. <em>Institutional infrastructure, without the fixed cost of building it.</em></p>
+                <p className="display-line display-wide">Portfolio construction, manager due diligence, consolidated reporting, and day-to-day investment operations, all backed by the connectivity of a team that knows the family office world from the inside. <em>Institutional infrastructure, without the fixed cost of building it*.</em></p>
               </div>
             </div>
           </div>

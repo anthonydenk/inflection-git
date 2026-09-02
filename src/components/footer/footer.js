@@ -51,7 +51,7 @@ const FooterComponent = ({ includeInstitutionalFootnote = false }) => (
         provided. Inflection is not required to update information presented, unless otherwise required by applicable
         law. For more information about Inflection, including our Form ADV Part 2A Brochure, please visit{" "}
         <a href={firm.urls.sec} target="_blank" rel="noopener noreferrer">
-          adviserinfo.sec.gov
+          {firm.urls.sec}
         </a>{" "}
         or contact us at {firm.telephoneDisplay}.
       </p>

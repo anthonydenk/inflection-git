@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -20,6 +21,7 @@ const pages = [
       "Inflection Capital Management",
       "partner-owned and independent multi-family office",
       "We recognize that our clients are not interchangeable",
+      "Using skills honed at some of the largest financial institutions",
       "Meet with the Inflection"
     ]
   },
@@ -32,7 +34,8 @@ const pages = [
     "jsonLd": "BreadcrumbList",
     "content": [
       "Trusted stewards at",
-      "Our Clients Inspire Us"
+      "Our Clients Inspire Us",
+      "Using skills honed at some of the largest financial institutions"
     ]
   },
   {
@@ -58,6 +61,7 @@ const pages = [
     "content": [
       "first-generation wealth",
       "Concentrated and single-stock risk management",
+      "Institutional-grade portfolios with access to boutique and alternative managers usually reserved for the largest family offices*.",
       "Concentrated Stock Analytical Tool"
     ]
   },
@@ -82,7 +86,9 @@ const pages = [
     "jsonLd": "BreadcrumbList",
     "content": [
       "We do not simply advise single family offices",
-      "outsourced CIO"
+      "We come from them.",
+      "outsourced CIO",
+      "Institutional infrastructure, without the fixed cost of building it*."
     ]
   },
   {
@@ -116,7 +122,8 @@ const pages = [
       "Sophia Mura",
       "Yvonne Freeman",
       "Strategic Alliance: Inflection &amp;",
-      "TOC-23"
+      "TOC-23",
+      "This strategic alliance between Inflection and TOC-23 is the continuation of decades of work together across a cohesive team with complementary strengths covering investment management, estate planning, business transition advisory, and family office services. By combining our expertise, we provide clients with a single, coordinated team that understands the full picture — financial, personal, and generational."
     ]
   },
   {
@@ -257,6 +264,12 @@ function countMatches(source, pattern) {
   return source.match(pattern)?.length ?? 0;
 }
 
+function htmlToText(html) {
+  return decodeHtml(html.replace(/<!--.*?-->/g, "").replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 for (const page of pages) {
   const html = readOut(page.file);
 
@@ -314,6 +327,7 @@ for (const page of pages) {
 }
 
 const home = readOut("index.html");
+const homeText = htmlToText(home);
 assert(
   countMatches(home, /<h1\b/g) === 1,
   "home: expected exactly one H1"
@@ -324,6 +338,18 @@ assert(
 );
 assert(/srcSet=|srcset=/.test(home), "home: missing responsive image srcset");
 
+const mainDisclosure =
+  "Information presented is for informational purposes only. Inflection Capital Management, LLC (“Inflection”) is a registered investment adviser. Registration as an investment adviser does not imply a certain level of skill or training. Past performance is not indicative of future results. Investing involves risk, including the possibility of loss of principal. The ideas and opinions expressed herein do not constitute legal, tax, or investment advice or a recommendation of any particular security or strategy. Before making any investment decision, you should seek expert, professional advice and obtain information regarding the legal, fiscal, regulatory and foreign currency requirements for any investment according to the laws of your home country and place of residence. Any forward-looking statements or forecasts are based on assumptions and actual results may vary. Information presented from third parties is believed to be reliable, but no warranty is provided. Inflection is not required to update information presented, unless otherwise required by applicable law. For more information about Inflection, including our Form ADV Part 2A Brochure, please visit https://adviserinfo.sec.gov/firm/summary/333157 or contact us at (415) 450-6556.";
+assert(homeText.includes(mainDisclosure), "footer: general disclosure differs from main");
+for (const href of [
+  "/documents/adv-part-2a",
+  "/documents/adv-part-2b",
+  "/documents/form-crs",
+  "/privacy-policy",
+]) {
+  assert(home.includes(`href="${href}"`), `footer: missing disclosure link ${href}`);
+}
+
 const team = readOut("team.html");
 assert(/srcSet=|srcset=/.test(team), "team: missing responsive image srcset");
 assert(
@@ -332,7 +358,7 @@ assert(
 );
 
 const institutionalFootnote =
-  "Institutional accounts are defined by FINRA Rule 4512(c)";
+  "*Institutional accounts are defined by FINRA Rule 4512(c) as an “investor with total assets of at least $50 million.” When we use the term “institutional-level” or “institutional-grade,” we are referring to the rigorous process and standard of care that would need to be applied to service an account with this level of assets.";
 for (const file of [
   "who-we-serve/wealth-creators.html",
   "who-we-serve/single-family-offices.html",
@@ -341,6 +367,25 @@ for (const file of [
     readOut(file).includes(institutionalFootnote),
     `${file}: missing current institutional footnote`
   );
+}
+assert(
+  !home.includes("Institutional accounts are defined by FINRA Rule 4512(c)"),
+  "home: institutional footnote must remain limited to the two approved audience pages"
+);
+
+const disclosureDocumentHashes = {
+  "documents/ADVpt4.pdf":
+    "f37eb28c65ce8d61852a687c5a94e34945d9ac2ad70d7b46f5173f892a87d331",
+  "documents/adv-part-2b.pdf":
+    "a7137bcf4fc401ca57d9d60a790206b7e47242df034a12389c46d9836f258cd9",
+  "documents/CRSForm2.pdf":
+    "16b52f83d808c5c7c1050d310bb34ed5ad384eec24af83bdb24d0e27fa4f4329",
+};
+for (const [file, expectedHash] of Object.entries(disclosureDocumentHashes)) {
+  const actualHash = createHash("sha256")
+    .update(readFileSync(join(outDir, file)))
+    .digest("hex");
+  assert(actualHash === expectedHash, `${file}: disclosure document differs from main`);
 }
 
 const footerNap = [

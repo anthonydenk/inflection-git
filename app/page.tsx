@@ -215,7 +215,7 @@ export default function Page() {
                 <p className="p-theme">
                   We meet you at the inflection point of your legacy and wealth,
                   collaborating to build the infrastructure to support your family&rsquo;s
-                  unique needs. With institutional-level expertise, we enhance both your
+                  unique needs. Using skills honed at some of the largest financial institutions, we enhance both your
                   financial well-being and personal affairs. Acting as your advocate, we
                   design a refined investment portfolio that aligns precisely with your
                   vision for protecting and growing your assets.

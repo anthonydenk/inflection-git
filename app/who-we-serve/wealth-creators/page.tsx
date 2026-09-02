@@ -176,7 +176,7 @@ export default function WealthCreatorsPage() {
                 </div>
                 <div className="svc reveal" style={{ "--d": ".12s" } as React.CSSProperties}>
                   <dt><span className="svc-n">06</span>Investment management</dt>
-                  <dd>Institutional-grade portfolios with access to boutique and alternative managers usually reserved for the largest family offices.</dd>
+                  <dd>Institutional-grade portfolios with access to boutique and alternative managers usually reserved for the largest family offices*.</dd>
                 </div>
                 <div className="svc reveal" style={{ "--d": ".18s" } as React.CSSProperties}>
                   <dt><span className="svc-n">07</span>Philanthropy and charitable planning</dt>
