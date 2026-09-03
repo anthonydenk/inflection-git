@@ -39,6 +39,34 @@ const pages = [
     ]
   },
   {
+    "name": "insights",
+    "file": "about/insights.html",
+    "title": "Insights | Inflection Capital Management",
+    "description": "Perspectives from Inflection Capital Management on wealth, liquidity, governance, investing, and multigenerational stewardship. Coming soon.",
+    "canonical": "https://inflectioncm.com/about/insights",
+    "jsonLd": "BreadcrumbList",
+    "noindex": true,
+    "content": [
+      "Insights",
+      "Coming soon",
+      "Thoughtful perspectives, in progress."
+    ]
+  },
+  {
+    "name": "news",
+    "file": "about/news.html",
+    "title": "News and Press | Inflection Capital Management",
+    "description": "Read news and press coverage from Inflection Capital Management, a partner-owned and independent multi-family office based in San Francisco.",
+    "canonical": "https://inflectioncm.com/about/news",
+    "jsonLd": "BreadcrumbList",
+    "content": [
+      "News and press",
+      "December 3, 2025",
+      "PR Newswire",
+      "From BlackRock to Boutique: Inflection&#x27;s First Year Rewriting the Wealth Management Playbook"
+    ]
+  },
+  {
     "name": "who we serve",
     "file": "who-we-serve.html",
     "title": "Who We Serve | Inflection Capital Management, San Francisco",
@@ -336,7 +364,59 @@ assert(
   /<h1[^>]*>\s*Inflection Capital Management\b/.test(home),
   "home: H1 must lead with the firm name"
 );
-assert(/srcSet=|srcset=/.test(home), "home: missing responsive image srcset");
+assert(
+  !home.includes("/images/team/justin-kunz") &&
+    !home.includes("/images/team/katie-riley-mahany"),
+  "home: partner portraits should remain on the team page"
+);
+assert(
+  !home.includes('class="story-sign"'),
+  "home: duplicate stewardship signoff should be removed"
+);
+assert(
+  home.includes("Meet the full Inflection team"),
+  "home: missing standalone team prompt"
+);
+assert(
+  home.includes('href="/about/insights"') && home.includes('href="/about/news"'),
+  "header: missing About subpage links"
+);
+
+const about = readOut("about.html");
+assert(
+  !about.includes('class="story-sign"'),
+  "about: duplicate stewardship signoff should be removed"
+);
+
+const services = readOut("services.html");
+const servicesMain = extractFirst(
+  services,
+  /<main\b[^>]*>([\s\S]*?)<\/main>/,
+  "services: missing main content"
+);
+assert(
+  countMatches(htmlToText(servicesMain), /Every family reaches an inflection point/g) === 1,
+  "services: inflection-point introduction should appear once"
+);
+assert(
+  !services.includes('class="banner-sub"'),
+  "services: duplicate firm description should be removed from the hero"
+);
+const globalCss = readFileSync(join(process.cwd(), "app/globals.css"), "utf8");
+assert(
+  globalCss.includes(
+    '.p-services .banner-bg{\n    position:absolute;inset:-2.5%;z-index:0;\n    background:url("/media/plates/bay-1.jpg")'
+  ),
+  "services: hero should use the lighter San Francisco fog image"
+);
+
+const newsPage = readOut("about/news.html");
+assert(
+  newsPage.includes(
+    "https://www.prnewswire.com/news-releases/from-blackrock-to-boutique-inflections-first-year-rewriting-the-wealth-management-playbook-302630993.html"
+  ),
+  "news: missing supplied PR Newswire article link"
+);
 
 const mainDisclosure =
   "Information presented is for informational purposes only. Inflection Capital Management, LLC (“Inflection”) is a registered investment adviser. Registration as an investment adviser does not imply a certain level of skill or training. Past performance is not indicative of future results. Investing involves risk, including the possibility of loss of principal. The ideas and opinions expressed herein do not constitute legal, tax, or investment advice or a recommendation of any particular security or strategy. Before making any investment decision, you should seek expert, professional advice and obtain information regarding the legal, fiscal, regulatory and foreign currency requirements for any investment according to the laws of your home country and place of residence. Any forward-looking statements or forecasts are based on assumptions and actual results may vary. Information presented from third parties is believed to be reliable, but no warranty is provided. Inflection is not required to update information presented, unless otherwise required by applicable law. For more information about Inflection, including our Form ADV Part 2A Brochure, please visit https://adviserinfo.sec.gov/firm/summary/333157 or contact us at (415) 450-6556.";
@@ -420,6 +500,7 @@ assert(
     "https://inflectioncm.com/team/patrick-hayes",
     "https://inflectioncm.com/team/sophia-mura",
     "https://inflectioncm.com/team/yvonne-freeman",
+    "https://inflectioncm.com/about/news",
     "https://inflectioncm.com/privacy-policy",
   ].every((url) => sitemapUrls.includes(url)),
   "sitemap: missing canonical route"
@@ -431,6 +512,10 @@ assert(
 assert(
   !sitemapUrls.includes("https://inflectioncm.com/pre-ipo"),
   "sitemap: draft Pre-IPO hub should remain excluded until compliance approval"
+);
+assert(
+  !sitemapUrls.includes("https://inflectioncm.com/about/insights"),
+  "sitemap: coming-soon insights page should remain excluded"
 );
 assert(
   !sitemapUrls.some((url) => url.includes("/resources")),
@@ -445,6 +530,7 @@ assert(
 
 const llms = readOut("llms.txt");
 assert(llms.includes("Inflection Capital Management"), "llms: missing firm name");
+assert(llms.includes("https://inflectioncm.com/about/news"), "llms: missing news page");
 assert(
   !llms.includes("https://inflectioncm.com/resources"),
   "llms: resources should remain hidden until republished"

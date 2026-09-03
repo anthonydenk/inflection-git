@@ -162,9 +162,6 @@ export default function Page() {
                   and a deep understanding of our clients&rsquo; unique goals, we serve as
                   trusted stewards at every inflection point.
                 </p>
-                <p className="story-sign">
-                  Trusted stewards at every inflection point
-                </p>
               </div>
             </div>
           </div>
@@ -349,63 +346,17 @@ export default function Page() {
                   <span className="label">04 &middot; Our Team</span>
                   <h2 className="partners-title">Partner-owned and operated.</h2>
                 </div>
-                <p className="partners-note">
-                  Our careers have been dedicated to working with wealth creators,
-                  families navigating periods of transition, and family offices, including
-                  their foundations.{" "}
-                  <Link className="inline-link" href="/team">
-                    Meet the full Inflection team
+                <div className="partners-note">
+                  <p>
+                    Our careers have been dedicated to working with wealth creators,
+                    families navigating periods of transition, and family offices, including
+                    their foundations.
+                  </p>
+                  <Link className="team-prompt" href="/team">
+                    <em>Meet the full Inflection team</em>
+                    <span aria-hidden="true">&#8594;</span>
                   </Link>
-                </p>
-              </div>
-
-              <div className="partner-grid">
-                <Link
-                  href="/team/justin-kunz"
-                  className="portal reveal"
-                  aria-label="Justin Kunz — CEO and Founding Partner"
-                >
-                  <div className="portrait-slot">
-                    <img
-                      className="portrait-img"
-                      src="/images/team/justin-kunz-960.webp"
-                      srcSet="/images/team/justin-kunz-480.webp 480w, /images/team/justin-kunz-960.webp 960w, /images/team/justin-kunz-1600.webp 1600w"
-                      sizes="(max-width: 760px) 100vw, 430px"
-                      alt="Justin Kunz"
-                      width={960}
-                      height={804}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="partner-meta">
-                    <h3 className="partner-name">Justin Kunz</h3>
-                    <p className="partner-role">CEO &amp; Founding Partner</p>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/team/katie-riley-mahany"
-                  className="portal reveal"
-                  style={{ "--d": ".15s" } as React.CSSProperties}
-                  aria-label="Katie Riley Mahany — Managing Partner"
-                >
-                  <div className="portrait-slot">
-                    <img
-                      className="portrait-img"
-                      src="/images/team/katie-riley-mahany-960.webp"
-                      srcSet="/images/team/katie-riley-mahany-480.webp 480w, /images/team/katie-riley-mahany-960.webp 960w, /images/team/katie-riley-mahany-1600.webp 1600w"
-                      sizes="(max-width: 760px) 100vw, 430px"
-                      alt="Katie Riley Mahany"
-                      width={960}
-                      height={804}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="partner-meta">
-                    <h3 className="partner-name">Katie Riley Mahany</h3>
-                    <p className="partner-role">Managing Partner</p>
-                  </div>
-                </Link>
+                </div>
               </div>
             </div>
 

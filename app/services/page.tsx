@@ -73,7 +73,7 @@ const servicesJsonLd = {
 export default function ServicesPage() {
   return (
     <>
-      <link rel="preload" as="image" href="/media/plates/cables-1.jpg" fetchPriority="high" />
+      <link rel="preload" as="image" href="/media/plates/bay-1.jpg" fetchPriority="high" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -98,9 +98,8 @@ export default function ServicesPage() {
           <div className="banner-copy">
             <span className="label">Services</span>
             <h1 className="banner-title">Our <em>Services</em></h1>
-            <p className="banner-sub">Inflection Capital Management is a partner-owned and independent multi-family office serving wealth creators, multigenerational families, and single family offices.</p>
           </div>
-          <span className="banner-tag">Cables into cloud, from the bridge deck</span>
+          <span className="banner-tag">Fog over San Francisco, from the Marin Headlands &middot; morning</span>
         </section>
 
         {/* ====================== CLIENT EXPERIENCE + INDEX 01–04 ====================== */}
@@ -254,18 +253,6 @@ export default function ServicesPage() {
             </div>
 
           </div>
-        </section>
-
-        {/* ====================== PHOTOGRAPHIC REST · THE INFLECTION POINT ====================== */}
-        <section className="band" aria-label="The inflection point">
-          <div className="band-bg" aria-hidden="true"></div>
-          <div className="band-grain" aria-hidden="true"></div>
-          <div className="band-scrim" aria-hidden="true"></div>
-          <div className="band-copy">
-            <span className="label reveal">The Inflection Point</span>
-            <p className="band-text reveal" style={{ "--d": ".12s" } as React.CSSProperties}>Every family reaches an inflection point&mdash;where wealth becomes complex and legacy structures are no longer compatible. At Inflection, we integrate investments with tax strategy, estate planning, philanthropy, governance, and next generation stewardship&mdash;turning a fragmented financial world into one cohesive ecosystem. As a partner-owned firm, our incentives remain fully aligned with yours across generations.</p>
-          </div>
-          <span className="band-tag">The bay from the Marin Headlands · morning</span>
         </section>
 
         {/* ====================== CLOSING CTA ====================== */}

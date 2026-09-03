@@ -8,6 +8,7 @@ Inflection Capital Management is a partner-owned and independent multi-family of
 - About: https://inflectioncm.com/about
 - Services: https://inflectioncm.com/services
 - Team: https://inflectioncm.com/team
+- News: https://inflectioncm.com/about/news
 - Privacy Notice: https://inflectioncm.com/privacy-policy
 - Sitemap: https://inflectioncm.com/sitemap.xml
 - SEC adviser profile: https://adviserinfo.sec.gov/firm/summary/333157

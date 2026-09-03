@@ -119,9 +119,6 @@ export default function AboutPage() {
                   and a deep understanding of our clients&rsquo; unique goals, we serve as
                   trusted stewards at every inflection point.
                 </p>
-                <p className="story-sign">
-                  Trusted stewards at every inflection point
-                </p>
               </div>
             </div>
           </div>
