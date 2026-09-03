@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflection Capital Management — A Multi-Family Office of San Francisco</title>
+<meta name="description" content="Inflection Capital Management is a partner-owned multi-family office based in Silicon Valley, serving as trusted stewards for wealth creators and families for generations to come.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   INFLECTION CAPITAL MANAGEMENT — Round 1b, Variant 5b
+   Lens: Coastal Terroir — Northern California nature as texture
+   ============================================================ */
+
+:root{
+  --grove-deep:  #071F15;   /* deepest evergreen — night grove   */
+  --grove:       #0B2E20;   /* brand evergreen anchor            */
+  --grove-mid:   #14392A;   /* lifted evergreen                  */
+  --grove-soft:  #1E4634;   /* canopy light                      */
+  --mint:        #D6E7DD;   /* brand pale mint                   */
+  --mint-warm:   #E6EFE4;   /* warm mint paper                   */
+  --paper:       #F1F5EE;   /* warmest paper                     */
+  --seafoam:     #A9C9B6;   /* tide-pool mid tone                */
+  --sky:         #D9E7E3;   /* fog-lit sky                       */
+  --ink:         #10281D;   /* body ink on light                 */
+  --ink-soft:    #3E5A4C;   /* secondary ink                     */
+  --mint-ghost:  rgba(214,231,221,.14);
+  --mint-line:   rgba(214,231,221,.28);
+  --grove-line:  rgba(11,46,32,.16);
+
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans:  "Karla", "Gill Sans", "Avenir Next", sans-serif;
+
+  --step--1: clamp(.78rem, .74rem + .18vw, .875rem);
+  --step-0:  clamp(1rem, .95rem + .3vw, 1.125rem);
+  --step-1:  clamp(1.2rem, 1.1rem + .55vw, 1.5rem);
+  --step-2:  clamp(1.55rem, 1.35rem + 1vw, 2.1rem);
+  --step-3:  clamp(2rem, 1.6rem + 2vw, 3.1rem);
+  --step-4:  clamp(2.6rem, 1.9rem + 3.4vw, 4.4rem);
+  --step-5:  clamp(2.9rem, 1.9rem + 4.2vw, 5rem);
+
+  --pad-x: clamp(1.35rem, 5vw, 6rem);
+  --measure: 34em;
+  --ease-tide: cubic-bezier(.22,.7,.28,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
+body{
+  font-family:var(--sans);
+  font-size:var(--step-0);
+  font-weight:400;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--mint-warm);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+::selection{background:var(--grove);color:var(--mint)}
+
+a{color:inherit;text-decoration:none}
+a:focus-visible, button:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:4px;
+  border-radius:2px;
+}
+img,svg{display:block;max-width:100%}
+ul{list-style:none}
+
+.serif{font-family:var(--serif)}
+
+/* ---------- reveal system: tide coming in, once ---------- */
+.tide{
+  opacity:0;
+  transform:translateY(34px);
+  transition:opacity 1.4s var(--ease-tide), transform 1.6s var(--ease-tide);
+  transition-delay:var(--d, 0s);
+}
+.tide.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .tide{opacity:1;transform:none;transition:none}
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+header.nav{
+  position:absolute;
+  top:0;left:0;right:0;
+  z-index:40;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  padding:1.6rem var(--pad-x);
+  color:var(--mint);
+}
+.wordmark{display:flex;flex-direction:column;line-height:1.05}
+.wordmark .wm-main{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(1.45rem, 1.3rem + .8vw, 1.9rem);
+  letter-spacing:.01em;
+}
+.wordmark .wm-sub{
+  font-size:.62rem;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  margin-top:.35rem;
+  opacity:.72;
+  font-weight:500;
+}
+nav.primary{display:flex;align-items:center;gap:clamp(1.1rem,2.4vw,2.4rem)}
+nav.primary a{
+  font-size:.82rem;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  font-weight:500;
+  opacity:.85;
+  padding:.35rem 0;
+  position:relative;
+  transition:opacity .3s;
+}
+nav.primary a::after{
+  content:"";
+  position:absolute;
+  left:0;right:100%;bottom:0;
+  height:1px;
+  background:currentColor;
+  transition:right .45s var(--ease-tide);
+}
+nav.primary a:hover{opacity:1}
+nav.primary a:hover::after{right:0}
+.nav-login{
+  border:1px solid var(--mint-line);
+  border-radius:99px;
+  padding:.45rem 1.15rem !important;
+  transition:background .35s,color .35s,opacity .3s;
+}
+.nav-login:hover{background:var(--mint);color:var(--grove)}
+.nav-login::after{display:none}
+@media (max-width: 880px){
+  nav.primary a:not(.nav-login){display:none}
+}
+
+/* ============================================================
+   HERO — fog through the headlands, Pacific horizon
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100svh;
+  background:linear-gradient(180deg, #0A2A1D 0%, var(--grove) 46%, #0E3424 78%, #123A29 100%);
+  color:var(--mint);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.hero-art{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-layer{will-change:transform}
+
+/* fog bands drift, glacially */
+@keyframes fogDrift{
+  from{transform:translateX(-3.5%)}
+  to{transform:translateX(3.5%)}
+}
+.fog-a{animation:fogDrift 46s ease-in-out infinite alternate}
+.fog-b{animation:fogDrift 62s ease-in-out infinite alternate-reverse}
+@keyframes leafSway{
+  from{transform:rotate(-.7deg)}
+  to{transform:rotate(.9deg)}
+}
+.euc-sway{transform-origin:10% 0%;animation:leafSway 18s ease-in-out infinite alternate}
+.euc-sway-b{transform-origin:90% 0%;animation:leafSway 23s ease-in-out infinite alternate-reverse}
+@media (prefers-reduced-motion: reduce){
+  .fog-a,.fog-b,.euc-sway,.euc-sway-b{animation:none}
+}
+
+.hero-inner{
+  position:relative;
+  z-index:5;
+  margin-top:auto;
+  margin-bottom:auto;
+  padding:7.5rem var(--pad-x) 8rem;
+  max-width:1200px;
+}
+.hero-kicker{
+  font-size:.72rem;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--seafoam);
+  display:flex;
+  align-items:center;
+  gap:1.1rem;
+  margin-bottom:2.2rem;
+}
+.hero-kicker::before{
+  content:"";
+  width:3.2rem;height:1px;
+  background:var(--mint-line);
+}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:300;
+  max-width:19em;
+}
+.hero h1 .h1-firm{
+  display:block;
+  font-size:var(--step-1);
+  font-weight:400;
+  letter-spacing:.02em;
+  color:var(--seafoam);
+  margin-bottom:1.4rem;
+}
+.hero h1 .h1-line{
+  display:block;
+  font-size:var(--step-5);
+  line-height:1.06;
+  letter-spacing:-.01em;
+}
+.hero h1 .h1-line em{
+  font-style:italic;
+  font-weight:300;
+  color:#BFDCCB;
+}
+.hero-promise{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:var(--step-1);
+  color:var(--seafoam);
+  margin-top:2.4rem;
+  max-width:26em;
+  line-height:1.5;
+}
+.hero-actions{
+  margin-top:3.2rem;
+  display:flex;
+  align-items:center;
+  gap:2.2rem;
+  flex-wrap:wrap;
+}
+.btn-tide{
+  display:inline-flex;
+  align-items:center;
+  gap:.9rem;
+  font-family:var(--serif);
+  font-size:1.05rem;
+  font-weight:400;
+  color:var(--grove);
+  background:var(--mint);
+  border-radius:99px;
+  padding:.95rem 2rem;
+  transition:background .4s var(--ease-tide), transform .4s var(--ease-tide);
+}
+.btn-tide svg{width:1.05rem;height:auto;transition:transform .4s var(--ease-tide)}
+.btn-tide:hover{background:#fff;transform:translateY(-2px)}
+.btn-tide:hover svg{transform:translateX(4px)}
+.hero-scroll{
+  font-size:.72rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--seafoam);
+  font-weight:500;
+  opacity:.8;
+}
+
+/* coastline sweep out of hero */
+.sweep{
+  position:relative;
+  z-index:6;
+  margin-top:-1px;
+  line-height:0;
+}
+.sweep svg{width:100%;height:clamp(56px, 9vw, 130px)}
+
+/* ============================================================
+   STORY — mint paper, eucalyptus margin
+   ============================================================ */
+.story{
+  position:relative;
+  background:var(--mint-warm);
+  padding:clamp(4.5rem,9vw,8.5rem) var(--pad-x) clamp(5rem,10vw,9rem);
+  overflow:hidden;
+}
+.story-euc{
+  position:absolute;
+  top:-2rem;
+  right:-4rem;
+  width:clamp(240px, 30vw, 480px);
+  opacity:.5;
+  pointer-events:none;
+}
+.story-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap:clamp(2.5rem,6vw,7rem);
+  max-width:1200px;
+}
+.eyebrow{
+  font-size:.72rem;
+  letter-spacing:.36em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-soft);
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+.eyebrow::before{content:"";width:2.6rem;height:1px;background:var(--grove-line)}
+.story-side h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:var(--step-3);
+  line-height:1.14;
+  margin-top:1.6rem;
+  letter-spacing:-.005em;
+}
+.story-side h2 em{font-style:italic;font-weight:300;color:var(--ink-soft)}
+.story-body p{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:var(--step-1);
+  line-height:1.62;
+  max-width:var(--measure);
+  color:var(--ink);
+}
+.story-body p + p{margin-top:1.6em}
+.story-body .drop::first-letter{
+  font-size:3.2em;
+  float:left;
+  line-height:.82;
+  padding-right:.13em;
+  font-weight:400;
+  color:var(--grove);
+}
+.story-place{
+  margin-top:2.8rem;
+  padding-top:1.8rem;
+  border-top:1px solid var(--grove-line);
+  display:flex;
+  gap:2.6rem;
+  flex-wrap:wrap;
+}
+.story-place div{max-width:15em}
+.story-place .pl-k{
+  font-size:.7rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-soft);
+  margin-bottom:.4rem;
+}
+.story-place .pl-v{
+  font-family:var(--serif);
+  font-size:1.02rem;
+  line-height:1.45;
+}
+@media (max-width: 880px){
+  .story-grid{grid-template-columns:1fr}
+}
+
+/* ============================================================
+   TERROIR INTERSTITIAL — full-bleed texture + promise line
+   ============================================================ */
+.terroir{
+  position:relative;
+  background:var(--grove);
+  color:var(--mint);
+  overflow:hidden;
+  min-height:clamp(420px, 62vh, 640px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.terroir-art{position:absolute;inset:0;pointer-events:none}
+.terroir-art svg{position:absolute;inset:0;width:100%;height:100%}
+.terroir-inner{
+  position:relative;
+  z-index:4;
+  text-align:center;
+  padding:6rem var(--pad-x);
+  max-width:900px;
+}
+.terroir-inner .promise{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:var(--step-4);
+  line-height:1.18;
+  letter-spacing:-.005em;
+}
+.terroir-inner .promise-sub{
+  margin-top:2rem;
+  font-size:.78rem;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--seafoam);
+}
+
+/* ============================================================
+   PRINCIPLES — botanical plates along a coast path
+   ============================================================ */
+.principles{
+  position:relative;
+  background:var(--paper);
+  padding:clamp(5rem,10vw,9rem) var(--pad-x) clamp(6rem,11vw,10rem);
+  overflow:hidden;
+}
+.principles-head{max-width:1200px;margin-bottom:clamp(3.5rem,7vw,6rem)}
+.principles-head h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:var(--step-3);
+  line-height:1.15;
+  margin-top:1.6rem;
+  max-width:16em;
+}
+.coastpath{
+  position:absolute;
+  left:50%;
+  top:16rem;
+  bottom:4rem;
+  width:1px;
+  background:linear-gradient(180deg, transparent, var(--grove-line) 12%, var(--grove-line) 88%, transparent);
+  pointer-events:none;
+}
+.plates{max-width:1200px;display:flex;flex-direction:column;gap:clamp(3rem,6vw,5.5rem)}
+.plate{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(2rem,5vw,5rem);
+  align-items:center;
+}
+.plate:nth-child(even) .plate-art{order:2}
+.plate-art{
+  position:relative;
+  border-radius:52% 48% 46% 54% / 42% 44% 56% 58%;
+  overflow:hidden;
+  background:var(--grove);
+  aspect-ratio:5/4;
+  max-width:460px;
+}
+.plate:nth-child(2) .plate-art{border-radius:46% 54% 55% 45% / 55% 46% 54% 45%}
+.plate:nth-child(3) .plate-art{border-radius:55% 45% 48% 52% / 46% 56% 44% 54%}
+.plate-art svg{position:absolute;inset:0;width:100%;height:100%}
+.plate-no{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:.95rem;
+  color:var(--ink-soft);
+  margin-bottom:1.1rem;
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+}
+.plate-no::after{content:"";width:2.4rem;height:1px;background:var(--grove-line)}
+.plate h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:var(--step-2);
+  line-height:1.18;
+  margin-bottom:1.1rem;
+}
+.plate p{max-width:30em;color:var(--ink-soft);font-size:var(--step-0)}
+@media (max-width: 880px){
+  .plate{grid-template-columns:1fr}
+  .plate:nth-child(even) .plate-art{order:0}
+  .plate-art{max-width:340px}
+  .coastpath{display:none}
+}
+
+/* ============================================================
+   APPROACH — deep grove, tide-line practice list
+   ============================================================ */
+.approach{
+  position:relative;
+  background:linear-gradient(180deg, var(--grove) 0%, var(--grove-deep) 100%);
+  color:var(--mint);
+  padding:clamp(5rem,10vw,9rem) var(--pad-x) clamp(5.5rem,10vw,9rem);
+  overflow:hidden;
+}
+.approach-euc{
+  position:absolute;
+  bottom:-3rem;
+  left:-5rem;
+  width:clamp(260px, 30vw, 520px);
+  opacity:.35;
+  pointer-events:none;
+}
+.approach-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+  gap:clamp(3rem,7vw,8rem);
+  max-width:1240px;
+}
+.approach .eyebrow{color:var(--seafoam)}
+.approach .eyebrow::before{background:var(--mint-line)}
+.approach h2{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:var(--step-3);
+  line-height:1.16;
+  margin-top:1.6rem;
+}
+.approach h2 em{font-style:italic;color:var(--seafoam)}
+.approach-lede{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:var(--step-1);
+  line-height:1.6;
+  color:#C9DED2;
+  margin-top:1.8rem;
+  max-width:26em;
+}
+.approach-note{
+  margin-top:2.2rem;
+  max-width:28em;
+  color:var(--seafoam);
+  font-size:var(--step--1);
+  letter-spacing:.02em;
+  line-height:1.8;
+}
+.tideline-list{margin-top:.4rem}
+.tideline-list li{
+  position:relative;
+  display:flex;
+  align-items:baseline;
+  gap:1.4rem;
+  padding:1.15rem .35rem;
+  border-bottom:1px solid var(--mint-ghost);
+  transition:padding-left .45s var(--ease-tide), background .45s;
+}
+.tideline-list li:first-child{border-top:1px solid var(--mint-ghost)}
+.tideline-list li:hover{padding-left:1.1rem;background:rgba(214,231,221,.04)}
+.tideline-list .leaf{
+  flex:none;
+  width:.85rem;height:.85rem;
+  align-self:center;
+  color:var(--seafoam);
+  opacity:.9;
+}
+.tideline-list .ti{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.1rem, 1rem + .5vw, 1.4rem);
+}
+.tideline-list .td{
+  margin-left:auto;
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--seafoam);
+  opacity:.75;
+  font-weight:500;
+  white-space:nowrap;
+}
+@media (max-width: 880px){
+  .approach-grid{grid-template-columns:1fr}
+  .tideline-list .td{display:none}
+}
+
+/* ============================================================
+   PARTNERS — arched frames, fog portrait placeholders
+   ============================================================ */
+.partners{
+  position:relative;
+  background:var(--mint);
+  padding:clamp(5rem,10vw,9rem) var(--pad-x);
+  overflow:hidden;
+}
+.partners-head{max-width:1200px;margin-bottom:clamp(3rem,6vw,5rem)}
+.partners-head h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:var(--step-3);
+  margin-top:1.6rem;
+  line-height:1.15;
+  max-width:16em;
+}
+.partners-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:clamp(2.5rem,5vw,5rem);
+  max-width:1080px;
+}
+.partner{max-width:440px}
+.partner:nth-child(2){margin-top:clamp(1.5rem,5vw,4.5rem)}
+.partner-frame{
+  position:relative;
+  aspect-ratio:4/5;
+  border-radius:999px 999px 22px 22px;
+  overflow:hidden;
+  background:var(--grove);
+  transition:transform .6s var(--ease-tide);
+}
+.partner-frame svg{position:absolute;inset:0;width:100%;height:100%;transition:transform 1.2s var(--ease-tide)}
+.partner:hover .partner-frame svg{transform:scale(1.045)}
+.partner-meta{padding:1.6rem .2rem 0}
+.partner-meta h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:var(--step-2);
+  line-height:1.15;
+}
+.partner-meta .role{
+  font-size:.74rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-soft);
+  margin-top:.55rem;
+}
+.partner-meta p{
+  margin-top:1rem;
+  color:var(--ink-soft);
+  font-size:var(--step--1);
+  line-height:1.75;
+  max-width:26em;
+}
+.partner-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  margin-top:1.2rem;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1rem;
+  color:var(--grove);
+  border-bottom:1px solid var(--grove-line);
+  padding-bottom:.15rem;
+  transition:border-color .35s;
+}
+.partner-link:hover{border-color:var(--grove)}
+@media (max-width: 760px){
+  .partners-grid{grid-template-columns:1fr}
+  .partner:nth-child(2){margin-top:0}
+}
+
+/* ============================================================
+   WRITING — field notes
+   ============================================================ */
+.writing{
+  background:var(--paper);
+  padding:clamp(5rem,9vw,8rem) var(--pad-x);
+}
+.writing-inner{max-width:1100px}
+.writing-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:2rem;
+  margin-bottom:2.6rem;
+  flex-wrap:wrap;
+}
+.writing-head h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:var(--step-3);
+  margin-top:1.4rem;
+  line-height:1.12;
+}
+.writing-all{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.02rem;
+  color:var(--ink-soft);
+  border-bottom:1px solid var(--grove-line);
+  padding-bottom:.15rem;
+  transition:color .3s, border-color .3s;
+  white-space:nowrap;
+}
+.writing-all:hover{color:var(--grove);border-color:var(--grove)}
+.note-list li{border-top:1px solid var(--grove-line)}
+.note-list li:last-child{border-bottom:1px solid var(--grove-line)}
+.note-link{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:baseline;
+  gap:clamp(1.2rem,3vw,3rem);
+  padding:1.7rem .3rem;
+  transition:padding-left .5s var(--ease-tide);
+}
+.note-link:hover{padding-left:1.3rem}
+.note-link .n-no{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:.95rem;
+}
+.note-link .n-ti{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.25rem, 1.1rem + .9vw, 1.8rem);
+  line-height:1.25;
+  transition:color .3s;
+}
+.note-link:hover .n-ti{color:var(--grove-soft)}
+.note-link .n-tag{
+  font-size:.7rem;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-soft);
+  white-space:nowrap;
+}
+@media (max-width: 640px){
+  .note-link{grid-template-columns:auto 1fr}
+  .note-link .n-tag{display:none}
+}
+
+/* ============================================================
+   CTA — the shoreline at dusk
+   ============================================================ */
+.cta{
+  position:relative;
+  background:linear-gradient(180deg, var(--grove-mid) 0%, var(--grove) 45%, var(--grove-deep) 100%);
+  color:var(--mint);
+  overflow:hidden;
+  padding:clamp(6rem,12vw,11rem) var(--pad-x) clamp(6rem,11vw,10rem);
+}
+.cta-art{position:absolute;inset:0;pointer-events:none}
+.cta-art svg{position:absolute;inset:0;width:100%;height:100%}
+.cta-inner{
+  position:relative;
+  z-index:4;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  gap:clamp(3rem,7vw,7rem);
+  align-items:end;
+}
+.cta .eyebrow{color:var(--seafoam)}
+.cta .eyebrow::before{background:var(--mint-line)}
+.cta h2{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:var(--step-4);
+  line-height:1.1;
+  margin-top:1.8rem;
+  letter-spacing:-.008em;
+}
+.cta h2 em{font-style:italic;color:#BFDCCB}
+.cta-lede{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:var(--step-1);
+  color:#C9DED2;
+  margin-top:1.6rem;
+  max-width:24em;
+  line-height:1.55;
+}
+.cta-actions{margin-top:2.8rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.cta-card{
+  border-left:1px solid var(--mint-line);
+  padding-left:clamp(1.5rem,3vw,2.5rem);
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+.cta-card .cc-k{
+  font-size:.68rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--seafoam);
+  margin-bottom:.4rem;
+}
+.cta-card .cc-v{
+  font-family:var(--serif);
+  font-size:1.08rem;
+  line-height:1.5;
+}
+.cta-card a.cc-v{border-bottom:1px solid var(--mint-line);padding-bottom:.1rem;transition:border-color .3s}
+.cta-card a.cc-v:hover{border-color:var(--mint)}
+@media (max-width: 880px){
+  .cta-inner{grid-template-columns:1fr}
+  .cta-card{border-left:none;border-top:1px solid var(--mint-line);padding-left:0;padding-top:2rem}
+}
+
+/* ============================================================
+   FOOTER — compliance
+   ============================================================ */
+footer{
+  background:var(--grove-deep);
+  color:var(--seafoam);
+  padding:3.2rem var(--pad-x) 3.6rem;
+  font-size:.8rem;
+  line-height:1.8;
+}
+.foot-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:2rem;
+  flex-wrap:wrap;
+  padding-bottom:2.2rem;
+  border-bottom:1px solid var(--mint-ghost);
+}
+.foot-wordmark{
+  font-family:var(--serif);
+  font-size:1.35rem;
+  color:var(--mint);
+}
+.foot-wordmark span{
+  display:block;
+  font-family:var(--sans);
+  font-size:.58rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  margin-top:.4rem;
+  opacity:.7;
+}
+.foot-links{display:flex;gap:1.8rem;flex-wrap:wrap;align-items:center}
+.foot-links a{
+  letter-spacing:.06em;
+  border-bottom:1px solid transparent;
+  transition:color .3s,border-color .3s;
+}
+.foot-links a:hover{color:var(--mint);border-color:var(--mint-line)}
+.foot-legal{
+  padding-top:2rem;
+  max-width:62em;
+  opacity:.78;
+}
+.foot-meta{
+  margin-top:1.4rem;
+  display:flex;
+  gap:1.6rem;
+  flex-wrap:wrap;
+  opacity:.9;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <a href="#" class="wordmark" aria-label="Inflection Capital Management — home">
+    <span class="wm-main">Inflection</span>
+    <span class="wm-sub">Capital Management</span>
+  </a>
+  <nav class="primary" aria-label="Primary">
+    <a href="#story">Who We Serve</a>
+    <a href="#approach">Services</a>
+    <a href="#partners">Team</a>
+    <a href="#story">About Us</a>
+    <a href="#conversation">Contact</a>
+    <a href="#" class="nav-login">Log In</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-art" aria-hidden="true">
+    <!-- Layer 1: Pacific horizon + headlands -->
+    <svg class="hero-layer" id="lyr-headlands" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0A2A1D"/>
+          <stop offset=".55" stop-color="#0C3122"/>
+          <stop offset="1" stop-color="#0E3424"/>
+        </linearGradient>
+        <linearGradient id="seaSheen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#A9C9B6" stop-opacity=".34"/>
+          <stop offset=".2" stop-color="#A9C9B6" stop-opacity=".1"/>
+          <stop offset="1" stop-color="#A9C9B6" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="900" fill="url(#skyFade)"/>
+      <!-- the long Pacific horizon -->
+      <line x1="0" y1="470" x2="1440" y2="470" stroke="#BFDCCB" stroke-opacity=".5" stroke-width="1.2"/>
+      <rect x="0" y="470" width="1440" height="180" fill="url(#seaSheen)"/>
+      <!-- far headland -->
+      <path d="M0,478 C170,436 340,462 520,448 C700,434 860,470 1040,452 C1220,436 1330,464 1440,446 L1440,900 L0,900 Z"
+            fill="#0A2A1E" opacity=".85"/>
+      <!-- near headland -->
+      <path d="M0,560 C200,516 380,556 560,534 C760,510 940,562 1140,536 C1280,518 1370,548 1440,532 L1440,900 L0,900 Z"
+            fill="#082418"/>
+      <!-- tide lines on the near shore -->
+      <g stroke="#A9C9B6" fill="none" stroke-width="1">
+        <path d="M-20,640 C220,616 460,656 720,634 C980,612 1220,652 1460,630" opacity=".22"/>
+        <path d="M-20,690 C240,668 480,704 740,684 C1000,664 1240,700 1460,680" opacity=".15"/>
+        <path d="M-20,742 C260,722 500,752 760,734 C1020,716 1260,748 1460,730" opacity=".09"/>
+        <path d="M-20,796 C280,778 520,804 780,788 C1040,772 1280,800 1460,784" opacity=".05"/>
+      </g>
+    </svg>
+
+    <!-- Layer 2: fog banks, drifting -->
+    <svg class="hero-layer" id="lyr-fog" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="fogG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#D9E7E3" stop-opacity="0"/>
+          <stop offset=".3" stop-color="#D9E7E3" stop-opacity=".16"/>
+          <stop offset=".65" stop-color="#D9E7E3" stop-opacity=".07"/>
+          <stop offset="1" stop-color="#D9E7E3" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="fogG2" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0" stop-color="#D6E7DD" stop-opacity="0"/>
+          <stop offset=".4" stop-color="#D6E7DD" stop-opacity=".12"/>
+          <stop offset="1" stop-color="#D6E7DD" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="soft" x="-20%" y="-60%" width="140%" height="220%">
+          <feGaussianBlur stdDeviation="22"/>
+        </filter>
+      </defs>
+      <g class="fog-a">
+        <ellipse cx="480" cy="430" rx="640" ry="70" fill="url(#fogG)" filter="url(#soft)"/>
+        <ellipse cx="1150" cy="500" rx="520" ry="52" fill="url(#fogG2)" filter="url(#soft)"/>
+      </g>
+      <g class="fog-b">
+        <ellipse cx="900" cy="360" rx="700" ry="58" fill="url(#fogG)" filter="url(#soft)"/>
+        <ellipse cx="260" cy="545" rx="480" ry="46" fill="url(#fogG2)" filter="url(#soft)"/>
+      </g>
+    </svg>
+
+    <!-- Layer 3: wind-bent cypress, right shoulder -->
+    <svg class="hero-layer" id="lyr-cypress" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMax slice">
+      <g fill="#051B12">
+        <!-- trunk, leaning with the wind -->
+        <path d="M1236,900 C1240,820 1234,760 1222,700 C1214,660 1218,640 1236,616 L1250,622 C1238,648 1240,668 1248,706 C1258,764 1262,824 1260,900 Z"/>
+        <!-- canopy masses, swept left-to-right -->
+        <path d="M1130,640 C1108,606 1130,566 1176,558 C1170,522 1210,494 1258,502 C1268,462 1330,448 1378,470 C1428,452 1478,480 1470,522 C1512,538 1512,588 1470,606 C1478,644 1432,672 1382,660 C1364,690 1308,696 1272,676 C1236,700 1160,690 1130,640 Z"/>
+        <path d="M1210,540 C1196,514 1214,486 1250,482 C1252,454 1290,438 1324,450 C1344,428 1392,432 1408,458 C1444,452 1470,480 1456,506 C1478,524 1466,556 1432,562 C1424,588 1380,598 1348,584 C1318,602 1256,596 1236,568 C1222,564 1214,554 1210,540 Z" opacity=".92"/>
+      </g>
+    </svg>
+
+    <!-- Layer 4: eucalyptus linework, upper left -->
+    <svg class="hero-layer euc-sway" id="lyr-euc" viewBox="0 0 1440 900" preserveAspectRatio="xMinYMin slice" style="opacity:.5">
+      <g fill="none" stroke="#A9C9B6" stroke-width="1.1" stroke-linecap="round">
+        <path d="M-30,-20 C60,110 130,220 170,360"/>
+        <path d="M40,-30 C110,90 160,190 185,320"/>
+        <!-- leaves: lanceolate pairs along the stems -->
+        <g stroke-width="1">
+          <path d="M78,96 q42,-8 66,18 q-40,12 -66,-18Z"/>
+          <path d="M96,150 q-44,2 -62,34 q44,4 62,-34Z"/>
+          <path d="M118,206 q40,-4 58,24 q-38,10 -58,-24Z"/>
+          <path d="M135,262 q-42,4 -56,38 q42,2 56,-38Z"/>
+          <path d="M154,320 q38,-2 52,28 q-36,8 -52,-28Z"/>
+          <path d="M122,60 q36,-16 66,2 q-30,20 -66,-2Z"/>
+          <path d="M148,118 q-38,-6 -60,20 q36,10 60,-20Z"/>
+          <path d="M164,178 q36,-10 62,10 q-30,16 -62,-10Z"/>
+          <path d="M176,240 q-36,0 -52,30 q36,4 52,-30Z"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <p class="hero-kicker tide">San Francisco, California</p>
+    <h1 class="tide" style="--d:.15s">
+      <span class="h1-firm">Inflection Capital Management</span>
+      <span class="h1-line">What lasts in this <em>landscape</em> is tended.</span>
+    </h1>
+    <p class="hero-promise tide" style="--d:.35s">A partner-owned multi-family office on the edge of the Pacific, serving as trusted stewards for generations to come.</p>
+    <div class="hero-actions tide" style="--d:.5s">
+      <a class="btn-tide" href="#conversation">
+        Begin a conversation
+        <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 6h21M16 1l6 5-6 5"/></svg>
+      </a>
+      <span class="hero-scroll">The story below</span>
+    </div>
+  </div>
+</section>
+
+<!-- coastline sweep: evergreen into mint -->
+<div class="sweep" aria-hidden="true" style="background:#123A29">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,74 C180,38 330,92 520,66 C720,38 860,90 1060,62 C1220,40 1330,72 1440,52 L1440,120 L0,120 Z" fill="#E6EFE4"/>
+    <path d="M0,84 C190,52 340,100 530,76 C730,50 870,98 1070,72 C1230,52 1335,80 1440,62" fill="none" stroke="#A9C9B6" stroke-opacity=".45" stroke-width="1"/>
+  </svg>
+</div>
+
+<!-- ================= STORY ================= -->
+<section class="story" id="story">
+  <svg class="story-euc" viewBox="0 0 480 620" aria-hidden="true">
+    <g fill="none" stroke="#0B2E20" stroke-opacity=".28" stroke-width="1.2" stroke-linecap="round">
+      <path d="M420,-20 C360,140 320,300 310,500"/>
+      <path d="M470,10 C420,160 390,320 385,520"/>
+      <g stroke-width="1.05">
+        <path d="M382,120 q-52,-6 -78,28 q50,12 78,-28Z"/>
+        <path d="M366,196 q54,0 76,36 q-52,8 -76,-36Z"/>
+        <path d="M348,278 q-50,4 -68,42 q50,6 68,-42Z"/>
+        <path d="M336,360 q50,-2 68,36 q-48,8 -68,-36Z"/>
+        <path d="M326,444 q-46,6 -60,44 q46,2 60,-44Z"/>
+        <path d="M438,90 q-48,-14 -80,12 q42,20 80,-12Z"/>
+        <path d="M424,170 q50,-4 72,28 q-46,14 -72,-28Z"/>
+        <path d="M408,254 q-48,-2 -66,34 q46,10 66,-34Z"/>
+        <path d="M398,340 q46,-6 64,28 q-44,12 -64,-28Z"/>
+        <path d="M390,428 q-44,2 -58,38 q44,4 58,-38Z"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="story-grid">
+    <div class="story-side">
+      <p class="eyebrow tide">The Firm</p>
+      <h2 class="tide" style="--d:.1s">Of this place, <em>for the long term.</em></h2>
+    </div>
+    <div class="story-body">
+      <p class="drop tide" style="--d:.15s">Inflection Capital Management is a partner-owned and operated multi-family office based in Silicon Valley, dedicated to working with clients to preserve and grow their wealth and legacy.</p>
+      <p class="tide" style="--d:.25s">Our careers have been dedicated to working with wealth creators, families navigating periods of transition, and family offices, including their foundations. With a commitment to personal connection and a deep understanding of our clients' unique goals, we serve as trusted stewards for generations to come.</p>
+      <div class="story-place tide" style="--d:.35s">
+        <div>
+          <p class="pl-k">Who we serve</p>
+          <p class="pl-v serif">Wealth creators, families in transition, single family offices and their foundations</p>
+        </div>
+        <div>
+          <p class="pl-k">Where we stand</p>
+          <p class="pl-v serif">San Francisco — where the fog, the grove, and the Valley's ambition meet</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TERROIR INTERSTITIAL ================= -->
+<section class="terroir">
+  <div class="terroir-art" aria-hidden="true">
+    <svg viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="terrFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0B2E20"/>
+          <stop offset="1" stop-color="#082518"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="640" fill="url(#terrFade)"/>
+      <!-- layered eucalyptus canopy linework, both flanks -->
+      <g fill="none" stroke="#A9C9B6" stroke-linecap="round" opacity=".38">
+        <g stroke-width="1.1" class="euc-sway">
+          <path d="M-40,660 C60,480 140,340 260,220 C340,140 420,90 520,60"/>
+          <path d="M20,680 C130,500 220,370 340,260"/>
+          <path d="M156,430 q-58,-10 -90,28 q56,16 90,-28Z"/>
+          <path d="M196,368 q58,4 82,44 q-56,6 -82,-44Z"/>
+          <path d="M244,306 q-54,-6 -80,32 q52,12 80,-32Z"/>
+          <path d="M300,250 q54,0 76,40 q-52,8 -76,-40Z"/>
+          <path d="M360,200 q-50,-8 -76,28 q48,14 76,-28Z"/>
+          <path d="M424,156 q50,-2 70,36 q-48,10 -70,-36Z"/>
+          <path d="M92,510 q-54,-2 -76,36 q52,8 76,-36Z"/>
+          <path d="M120,560 q52,6 70,46 q-50,2 -70,-46Z"/>
+        </g>
+        <g stroke-width="1.1" class="euc-sway-b">
+          <path d="M1480,700 C1380,510 1300,370 1180,250 C1100,170 1020,110 920,80"/>
+          <path d="M1420,720 C1310,530 1220,400 1100,290"/>
+          <path d="M1284,460 q58,-10 90,28 q-56,16 -90,-28Z"/>
+          <path d="M1244,398 q-58,4 -82,44 q56,6 82,-44Z"/>
+          <path d="M1196,336 q54,-6 80,32 q-52,12 -80,-32Z"/>
+          <path d="M1140,280 q-54,0 -76,40 q52,8 76,-40Z"/>
+          <path d="M1080,230 q50,-8 76,28 q-48,14 -76,-28Z"/>
+          <path d="M1016,186 q-50,-2 -70,36 q48,10 70,-36Z"/>
+          <path d="M1348,540 q54,-2 76,36 q-52,8 -76,-36Z"/>
+        </g>
+      </g>
+      <!-- faint tide band beneath the words -->
+      <g stroke="#A9C9B6" fill="none" stroke-width="1">
+        <path d="M-20,540 C240,518 480,552 740,532 C1000,512 1240,548 1460,528" opacity=".18"/>
+        <path d="M-20,576 C260,558 500,586 760,570 C1020,554 1260,582 1460,566" opacity=".1"/>
+      </g>
+    </svg>
+  </div>
+  <div class="terroir-inner">
+    <p class="promise tide">Rooted here. <br>Growing for generations.</p>
+    <p class="promise-sub tide" style="--d:.25s">Things that last in this landscape are tended — so is wealth</p>
+  </div>
+</section>
+
+<!-- coastline sweep: evergreen into paper -->
+<div class="sweep" aria-hidden="true" style="background:#082518">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,60 C200,92 380,44 560,70 C760,98 900,48 1100,74 C1260,94 1350,64 1440,80 L1440,120 L0,120 Z" fill="#F1F5EE"/>
+  </svg>
+</div>
+
+<!-- ================= PRINCIPLES ================= -->
+<section class="principles">
+  <div class="coastpath" aria-hidden="true"></div>
+  <div class="principles-head">
+    <p class="eyebrow tide">How we hold the work</p>
+    <h2 class="tide" style="--d:.1s">Three things we know to be true, from decades on this coast.</h2>
+  </div>
+
+  <div class="plates">
+    <!-- Plate I -->
+    <article class="plate">
+      <div class="plate-art tide" aria-hidden="true">
+        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="400" fill="#0B2E20"/>
+          <!-- horizon and sun-through-fog -->
+          <circle cx="250" cy="168" r="64" fill="#D6E7DD" opacity=".16"/>
+          <circle cx="250" cy="168" r="38" fill="#D6E7DD" opacity=".2"/>
+          <line x1="0" y1="216" x2="500" y2="216" stroke="#A9C9B6" stroke-opacity=".5"/>
+          <g stroke="#A9C9B6" fill="none">
+            <path d="M0,258 C120,246 240,266 380,254 C440,248 480,258 500,254" opacity=".3"/>
+            <path d="M0,300 C140,290 260,306 400,296 C450,292 486,300 500,296" opacity=".18"/>
+            <path d="M0,344 C160,336 280,348 420,340" opacity=".1"/>
+          </g>
+        </svg>
+      </div>
+      <div class="plate-copy">
+        <p class="plate-no tide">Plate I</p>
+        <h3 class="tide" style="--d:.1s">Our Clients Inspire Us</h3>
+        <p class="tide" style="--d:.2s">The families we serve have built remarkable things. Our work is to hold the complexity, so they have space to focus on what matters most — the people, pursuits, and places that give wealth its meaning.</p>
+      </div>
+    </article>
+
+    <!-- Plate II -->
+    <article class="plate">
+      <div class="plate-art tide" aria-hidden="true">
+        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="400" fill="#0B2E20"/>
+          <!-- two wind-bent cypress leaning together -->
+          <g fill="#051B12">
+            <path d="M160,400 C166,330 160,280 150,232 L166,226 C176,276 182,330 180,400 Z"/>
+            <path d="M96,262 C76,234 96,200 138,194 C136,162 176,140 216,152 C238,128 292,136 306,166 C342,162 366,192 350,220 C370,240 356,272 320,278 C310,304 262,312 230,296 C196,316 118,308 96,262 Z"/>
+            <path d="M330,400 C334,344 330,304 322,266 L336,262 C344,302 348,346 346,400 Z" opacity=".92"/>
+            <path d="M282,296 C266,272 282,244 316,240 C316,214 348,198 380,208 C398,190 440,196 450,220 C478,218 496,242 482,264 C496,280 484,304 456,308 C448,328 410,336 384,324 C358,338 298,332 282,296 Z" opacity=".92"/>
+          </g>
+          <g stroke="#A9C9B6" fill="none">
+            <path d="M0,352 C140,340 280,356 420,346 C452,344 484,350 500,347" opacity=".22"/>
+          </g>
+        </svg>
+      </div>
+      <div class="plate-copy">
+        <p class="plate-no tide">Plate II</p>
+        <h3 class="tide" style="--d:.1s">Our Partnership</h3>
+        <p class="tide" style="--d:.2s">We meet you at the inflection point of your legacy — with institutional-level expertise, and with your interests as our only compass. Partner-owned, partner-operated, and at your side of the table.</p>
+      </div>
+    </article>
+
+    <!-- Plate III -->
+    <article class="plate">
+      <div class="plate-art tide" aria-hidden="true">
+        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="400" fill="#0B2E20"/>
+          <!-- concentric growth rings -->
+          <g fill="none" stroke="#A9C9B6">
+            <circle cx="250" cy="200" r="150" opacity=".1"/>
+            <circle cx="250" cy="200" r="122" opacity=".14"/>
+            <circle cx="250" cy="200" r="96" opacity=".18"/>
+            <circle cx="250" cy="200" r="72" opacity=".24"/>
+            <circle cx="250" cy="200" r="50" opacity=".32"/>
+            <circle cx="250" cy="200" r="30" opacity=".42"/>
+            <circle cx="250" cy="200" r="13" opacity=".55"/>
+          </g>
+          <circle cx="250" cy="200" r="4" fill="#D6E7DD" opacity=".85"/>
+        </svg>
+      </div>
+      <div class="plate-copy">
+        <p class="plate-no tide">Plate III</p>
+        <h3 class="tide" style="--d:.1s">Success Together</h3>
+        <p class="tide" style="--d:.2s">Decades of experience with hundreds of single family offices has taught us that success is measured in generations, not quarters — clarity and direction that carry a family across them.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- coastline sweep: paper into evergreen -->
+<div class="sweep" aria-hidden="true" style="background:#F1F5EE">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,52 C190,86 360,40 560,66 C760,94 920,46 1120,70 C1270,88 1360,60 1440,74 L1440,120 L0,120 Z" fill="#0B2E20"/>
+  </svg>
+</div>
+
+<!-- ================= APPROACH ================= -->
+<section class="approach" id="approach">
+  <svg class="approach-euc" viewBox="0 0 520 620" aria-hidden="true">
+    <g fill="none" stroke="#A9C9B6" stroke-opacity=".5" stroke-width="1.2" stroke-linecap="round">
+      <path d="M60,640 C120,480 170,320 190,120"/>
+      <path d="M10,620 C80,470 130,330 155,150"/>
+      <g stroke-width="1.05">
+        <path d="M172,220 q56,-6 82,32 q-54,10 -82,-32Z"/>
+        <path d="M160,300 q-56,2 -78,40 q54,6 78,-40Z"/>
+        <path d="M146,382 q52,-2 72,38 q-50,8 -72,-38Z"/>
+        <path d="M130,464 q-50,6 -66,44 q50,2 66,-44Z"/>
+        <path d="M188,148 q52,-14 84,14 q-46,20 -84,-14Z"/>
+        <path d="M118,250 q-50,-8 -76,26 q46,16 76,-26Z"/>
+        <path d="M104,332 q48,-4 68,32 q-46,12 -68,-32Z"/>
+        <path d="M88,416 q-46,0 -62,36 q46,6 62,-36Z"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="approach-grid">
+    <div>
+      <p class="eyebrow tide">Our Approach</p>
+      <h2 class="tide" style="--d:.1s">Tended like the coast itself — <em>patiently, and with intention.</em></h2>
+      <p class="approach-lede tide" style="--d:.2s">25+ years advising single-family offices, foundations, and institutional allocators. Transparent fees, intuitive reporting, education tailored to your needs.</p>
+      <p class="approach-note tide" style="--d:.3s">We bring order and intention to the complexity that comes with meaningful wealth — the way a gardener brings order to a hillside: not by force, but by knowing the ground.</p>
+    </div>
+    <div>
+      <ul class="tideline-list">
+        <li class="tide"><svg class="leaf" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14 Q2 4 14 2 Q12 14 2 14Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg><span class="ti serif">Rising Generation</span><span class="td">Practice</span></li>
+        <li class="tide" style="--d:.06s"><svg class="leaf" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14 Q2 4 14 2 Q12 14 2 14Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg><span class="ti serif">Philanthropy</span><span class="td">Practice</span></li>
+        <li class="tide" style="--d:.12s"><svg class="leaf" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14 Q2 4 14 2 Q12 14 2 14Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg><span class="ti serif">Family Governance &amp; Succession</span><span class="td">Practice</span></li>
+        <li class="tide" style="--d:.18s"><svg class="leaf" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14 Q2 4 14 2 Q12 14 2 14Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg><span class="ti serif">Investment Process</span><span class="td">Practice</span></li>
+        <li class="tide" style="--d:.24s"><svg class="leaf" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14 Q2 4 14 2 Q12 14 2 14Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg><span class="ti serif">Trust, Tax &amp; Estate Planning</span><span class="td">Practice</span></li>
+        <li class="tide" style="--d:.3s"><svg class="leaf" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14 Q2 4 14 2 Q12 14 2 14Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg><span class="ti serif">Financial Reporting</span><span class="td">Practice</span></li>
+        <li class="tide" style="--d:.36s"><svg class="leaf" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14 Q2 4 14 2 Q12 14 2 14Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg><span class="ti serif">Pre-IPO &amp; Equity Planning</span><span class="td">Practice</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- coastline sweep: deep grove into mint -->
+<div class="sweep" aria-hidden="true" style="background:#071F15">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,70 C170,42 340,88 540,64 C740,40 880,86 1080,62 C1240,44 1350,70 1440,56 L1440,120 L0,120 Z" fill="#D6E7DD"/>
+    <path d="M0,80 C180,54 350,96 550,74 C750,52 890,94 1090,72 C1245,54 1352,78 1440,66" fill="none" stroke="#0B2E20" stroke-opacity=".2" stroke-width="1"/>
+  </svg>
+</div>
+
+<!-- ================= PARTNERS ================= -->
+<section class="partners" id="partners">
+  <div class="partners-head">
+    <p class="eyebrow tide">The Partners</p>
+    <h2 class="tide" style="--d:.1s">Two stewards, one standard of care.</h2>
+  </div>
+  <div class="partners-grid">
+    <article class="partner tide">
+      <div class="partner-frame" aria-label="Portrait placeholder for Justin Kunz">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="pFadeA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#14392A"/>
+              <stop offset="1" stop-color="#0B2E20"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="500" fill="url(#pFadeA)"/>
+          <line x1="0" y1="238" x2="400" y2="238" stroke="#A9C9B6" stroke-opacity=".45"/>
+          <path d="M0,300 C90,282 180,306 280,292 C330,284 372,296 400,290 L400,500 L0,500 Z" fill="#082418"/>
+          <g fill="#051B12">
+            <path d="M292,500 C296,440 292,398 284,356 L298,352 C306,396 310,442 308,500 Z"/>
+            <path d="M244,386 C228,362 244,334 278,330 C278,304 310,288 342,298 C360,280 402,286 412,310 C428,326 414,354 388,358 C380,378 342,386 316,374 C290,388 258,382 244,386 Z"/>
+          </g>
+          <g stroke="#A9C9B6" fill="none">
+            <path d="M0,340 C110,330 220,344 340,336 C362,334 386,338 400,336" opacity=".22"/>
+            <path d="M0,392 C130,384 240,394 360,388" opacity=".13"/>
+          </g>
+          <text x="200" y="180" text-anchor="middle" fill="#A9C9B6" opacity=".55" font-family="Newsreader, serif" font-style="italic" font-size="15">Portrait — Lands End light</text>
+        </svg>
+      </div>
+      <div class="partner-meta">
+        <h3 class="serif">Justin Kunz</h3>
+        <p class="role">CEO &amp; Founding Partner</p>
+        <p>A career spent alongside wealth creators and single family offices — building the kind of trust that is earned in decades and honored across generations.</p>
+        <a class="partner-link" href="#">Read Justin's story<span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <article class="partner tide" style="--d:.15s">
+      <div class="partner-frame" aria-label="Portrait placeholder for Katie Riley Mahany">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="pFadeB" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#123527"/>
+              <stop offset="1" stop-color="#0A2A1D"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="500" fill="url(#pFadeB)"/>
+          <circle cx="200" cy="190" r="58" fill="#D6E7DD" opacity=".14"/>
+          <line x1="0" y1="252" x2="400" y2="252" stroke="#A9C9B6" stroke-opacity=".45"/>
+          <path d="M0,310 C100,294 200,316 300,302 C348,296 380,306 400,302 L400,500 L0,500 Z" fill="#07231A"/>
+          <g fill="none" stroke="#A9C9B6" stroke-linecap="round" opacity=".5">
+            <path d="M60,470 C90,400 120,340 160,290" stroke-width="1.2"/>
+            <path d="M118,380 q-44,-6 -66,26 q42,12 66,-26Z" stroke-width="1"/>
+            <path d="M142,332 q44,2 60,36 q-42,6 -60,-36Z" stroke-width="1"/>
+            <path d="M96,428 q-42,0 -58,32 q42,6 58,-32Z" stroke-width="1"/>
+          </g>
+          <text x="200" y="180" text-anchor="middle" fill="#A9C9B6" opacity=".55" font-family="Newsreader, serif" font-style="italic" font-size="15">Portrait — fog through eucalyptus</text>
+        </svg>
+      </div>
+      <div class="partner-meta">
+        <h3 class="serif">Katie Riley Mahany</h3>
+        <p class="role">Managing Partner</p>
+        <p>Advisor to families navigating transition and the institutions they build — bringing clarity, candor, and continuity to every generation at the table.</p>
+        <a class="partner-link" href="#">Read Katie's story<span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= WRITING ================= -->
+<section class="writing">
+  <div class="writing-inner">
+    <div class="writing-head">
+      <div>
+        <p class="eyebrow tide">Field Notes</p>
+        <h2 class="tide" style="--d:.1s">Selected writing</h2>
+      </div>
+      <a class="writing-all tide" style="--d:.2s" href="#">All notes from the firm →</a>
+    </div>
+    <ul class="note-list">
+      <li class="tide">
+        <a class="note-link" href="#">
+          <span class="n-no">i.</span>
+          <span class="n-ti">Planning After a Liquidity Event</span>
+          <span class="n-tag">Transitions</span>
+        </a>
+      </li>
+      <li class="tide" style="--d:.1s">
+        <a class="note-link" href="#">
+          <span class="n-no">ii.</span>
+          <span class="n-ti">What to Expect from a Multi-Family Office</span>
+          <span class="n-tag">The Firm</span>
+        </a>
+      </li>
+      <li class="tide" style="--d:.2s">
+        <a class="note-link" href="#">
+          <span class="n-no">iii.</span>
+          <span class="n-ti">Family Governance for the Long Term</span>
+          <span class="n-tag">Generations</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- coastline sweep: paper into dusk grove -->
+<div class="sweep" aria-hidden="true" style="background:#F1F5EE">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,58 C200,88 380,42 580,68 C780,94 940,48 1140,72 C1280,88 1370,62 1440,74 L1440,120 L0,120 Z" fill="#14392A"/>
+  </svg>
+</div>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="conversation">
+  <div class="cta-art" aria-hidden="true">
+    <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="ctaLineFade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#BFDCCB" stop-opacity="0"/>
+          <stop offset=".55" stop-color="#BFDCCB" stop-opacity=".06"/>
+          <stop offset=".8" stop-color="#BFDCCB" stop-opacity=".3"/>
+          <stop offset="1" stop-color="#BFDCCB" stop-opacity=".38"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="300" x2="1440" y2="300" stroke="url(#ctaLineFade)"/>
+      <circle cx="1120" cy="300" r="90" fill="#D6E7DD" opacity=".07"/>
+      <circle cx="1120" cy="300" r="52" fill="#D6E7DD" opacity=".08"/>
+      <g stroke="url(#ctaLineFade)" fill="none" stroke-width="1">
+        <path d="M-20,470 C240,448 480,482 740,462 C1000,442 1240,478 1460,458"/>
+        <path d="M-20,540 C260,522 500,550 760,534 C1020,518 1260,546 1460,530"/>
+        <path d="M-20,616 C280,600 520,624 780,610 C1040,596 1280,620 1460,606"/>
+      </g>
+    </svg>
+  </div>
+  <div class="cta-inner">
+    <div>
+      <p class="eyebrow tide">A first meeting, without obligation</p>
+      <h2 class="tide" style="--d:.1s">Begin a <em>conversation.</em></h2>
+      <p class="cta-lede tide" style="--d:.2s">The best relationships in our work begin quietly — a walk through your circumstances, your questions, and whether we are the right stewards for what you have built.</p>
+      <div class="cta-actions tide" style="--d:.3s">
+        <a class="btn-tide" href="mailto:hello@inflectioncm.com">
+          Meet with the team
+          <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 6h21M16 1l6 5-6 5"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="cta-card tide" style="--d:.35s">
+      <div>
+        <p class="cc-k">Visit</p>
+        <p class="cc-v serif">San Francisco, California</p>
+      </div>
+      <div>
+        <p class="cc-k">Call</p>
+        <a class="cc-v serif" href="tel:+14154506556">(415) 450-6556</a>
+      </div>
+      <div>
+        <p class="cc-k">Write</p>
+        <a class="cc-v serif" href="mailto:hello@inflectioncm.com">hello@inflectioncm.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-top">
+    <p class="foot-wordmark serif">Inflection<span>Capital Management</span></p>
+    <div class="foot-links">
+      <a href="#">ADV Part 2A</a>
+      <a href="#">ADV Part 2B</a>
+      <a href="#">Form CRS</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <p class="foot-legal">Inflection Capital Management, LLC is a registered investment adviser. Registration does not imply a certain level of skill or training. Past performance is not indicative of future results. Investing involves risk, including possible loss of principal.</p>
+  <div class="foot-meta">
+    <span>San Francisco, CA</span>
+    <span>(415) 450-6556</span>
+    <span>© 2026 Inflection Capital Management, LLC</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- once-only tide reveals ---- */
+  var tides = document.querySelectorAll(".tide");
+  if (reduced || !("IntersectionObserver" in window)) {
+    tides.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: "0px 0px -6% 0px" });
+    tides.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---- glacial hero parallax ---- */
+  if (!reduced) {
+    var euc = document.getElementById("lyr-euc"),
+        fog = document.getElementById("lyr-fog"),
+        cyp = document.getElementById("lyr-cypress"),
+        head = document.getElementById("lyr-headlands"),
+        ticking = false;
+    var onScroll = function(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY;
+        if (y < window.innerHeight * 1.4) {
+          head.style.transform = "translateY(" + (y * 0.06) + "px)";
+          fog.style.transform  = "translateY(" + (y * 0.12) + "px)";
+          cyp.style.transform  = "translateY(" + (y * 0.03) + "px)";
+          euc.style.transform  = "translateY(" + (y * 0.16) + "px)";
+        }
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflection Capital Management — A Multi-Family Office</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..560,0..100;1,9..144,300..560,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   INFLECTION — v3 "Soft Luxury / Tactile Stone"
+   cream · stone · clay · umber · one sage thread
+   ============================================================ */
+:root{
+  --cream:      #F5F0E7;
+  --cream-deep: #EFE8DB;
+  --greige:     #E5DCCC;
+  --stone:      #D6C9B4;
+  --stone-deep: #C4B49C;
+  --clay:       #A87E64;
+  --clay-deep:  #8E6650;
+  --umber:      #3A2E25;
+  --umber-soft: #57483C;
+  --umber-faint:#7C6B5C;
+  --sage:       #7E8F73;
+  --sage-deep:  #67785D;
+  --hairline:   rgba(58,46,37,.16);
+  --shadow-soft: 0 40px 80px -32px rgba(58,46,37,.28);
+  --shadow-low:  0 24px 48px -24px rgba(58,46,37,.22);
+  --ease-silk: cubic-bezier(.22,.9,.28,1);
+  --dur: 800ms;
+  --display: "Fraunces", "Iowan Old Style", serif;
+  --text: "Newsreader", Georgia, serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  font-family: var(--text);
+  font-optical-sizing: auto;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--umber);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* mineral grain over everything — the tactile film */
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: .05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection{ background: var(--sage); color: var(--cream); }
+
+a{ color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--sage-deep);
+  outline-offset: 4px;
+}
+
+img, svg{ display:block; max-width:100%; }
+
+/* ---------- type scale ---------- */
+h1,h2,h3{ font-family: var(--display); font-weight: 340; line-height: 1.08; letter-spacing: -0.01em; }
+
+.eyebrow{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 60;
+  font-size: .72rem;
+  font-weight: 480;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--umber-faint);
+}
+.eyebrow .tick{
+  display:inline-block;
+  width: 2.25rem; height: 1px;
+  background: var(--sage);
+  vertical-align: middle;
+  margin-right: .9rem;
+}
+
+/* ---------- reveal choreography ---------- */
+.rv{
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur) var(--ease-silk), transform var(--dur) var(--ease-silk);
+  transition-delay: calc(var(--d, 0) * 110ms);
+}
+.rv.is-in{ opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){
+  .rv{ opacity:1; transform:none; transition:none; }
+}
+
+/* ============================================================
+   NAV — whisper quiet
+   ============================================================ */
+.nav{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.6rem clamp(1.25rem, 5vw, 4.5rem) 1.3rem;
+  background: color-mix(in srgb, var(--cream) 78%, transparent);
+  backdrop-filter: blur(14px) saturate(1.05);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease-silk), background var(--dur) var(--ease-silk);
+}
+.nav.is-scrolled{ border-bottom-color: var(--hairline); }
+
+.wordmark{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 40, "SOFT" 40;
+  font-size: 1.18rem;
+  font-weight: 420;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.wordmark em{
+  font-style: italic;
+  font-weight: 340;
+  color: var(--clay-deep);
+}
+.wordmark .co{
+  font-family: var(--text);
+  font-size: .66rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--umber-faint);
+  margin-left: .8rem;
+}
+
+.nav-links{
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1.1rem, 2.4vw, 2.2rem);
+  list-style: none;
+}
+.nav-links a{
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--umber-soft);
+  padding-bottom: .3rem;
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur) var(--ease-silk), border-color var(--dur) var(--ease-silk);
+}
+.nav-links a:hover{ color: var(--umber); border-bottom-color: var(--sage); }
+.nav-links .login{
+  color: var(--umber-faint);
+  font-style: italic;
+  font-family: var(--text);
+  text-transform: none;
+  letter-spacing: .04em;
+  font-size: .88rem;
+}
+.nav-links .login:hover{ color: var(--sage-deep); border-bottom-color: transparent; }
+
+@media (max-width: 860px){
+  .nav-links li:nth-child(n+2):not(:last-child){ display:none; }
+}
+
+/* ============================================================
+   HERO — full-bleed sediment strata
+   ============================================================ */
+.hero{
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  background: var(--cream);
+}
+.hero-art{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-art svg{
+  width: 100%;
+  height: 100%;
+}
+.strata{ will-change: transform; }
+
+.hero-inner{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 clamp(1.25rem, 5vw, 4.5rem) clamp(3.5rem, 9vh, 7rem);
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 3rem;
+  align-items: end;
+}
+.hero h1{
+  font-size: clamp(2.35rem, 5.4vw, 4.9rem);
+  font-variation-settings: "opsz" 120, "SOFT" 75;
+  max-width: 17ch;
+  color: var(--umber);
+}
+.hero h1 em{
+  font-style: italic;
+  font-weight: 320;
+  color: var(--clay-deep);
+}
+.hero h1 .thread{
+  font-style: italic;
+  color: var(--sage-deep);
+}
+.hero-kicker{ margin-bottom: 1.6rem; }
+.hero-aside{
+  max-width: 30ch;
+  font-size: .98rem;
+  line-height: 1.7;
+  color: var(--umber-soft);
+  border-left: 1px solid var(--hairline);
+  padding-left: 1.5rem;
+  padding-bottom: .35rem;
+}
+.hero-aside .goto{
+  display: inline-block;
+  margin-top: 1.15rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: "opsz" 30, "SOFT" 60;
+  font-size: 1.02rem;
+  color: var(--umber);
+  border-bottom: 1px solid var(--sage);
+  padding-bottom: .15rem;
+  transition: color var(--dur) var(--ease-silk), border-color var(--dur) var(--ease-silk);
+}
+.hero-aside .goto:hover{ color: var(--sage-deep); border-bottom-color: var(--sage-deep); }
+
+.hero-meta{
+  position: absolute;
+  z-index: 2;
+  top: clamp(6rem, 14vh, 8.5rem);
+  right: clamp(1.25rem, 5vw, 4.5rem);
+  text-align: right;
+  font-size: .72rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--umber-faint);
+  line-height: 2.2;
+}
+
+@media (max-width: 860px){
+  .hero-inner{ grid-template-columns: 1fr; gap: 2rem; }
+  .hero-aside{ border-left: none; padding-left: 0; border-top: 1px solid var(--hairline); padding-top: 1.4rem; }
+  .hero-meta{ display:none; }
+}
+
+/* ============================================================
+   SECTION SCAFFOLD
+   ============================================================ */
+.shell{
+  width: min(1200px, 100% - clamp(2.5rem, 10vw, 9rem));
+  margin-inline: auto;
+}
+
+/* ---------- STORY — text sitting on a raised cream plane ---------- */
+.story{
+  position: relative;
+  padding: clamp(5rem, 12vh, 9rem) 0 clamp(4rem, 10vh, 7rem);
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+}
+.story-grid{
+  display: grid;
+  grid-template-columns: minmax(0,4fr) minmax(0,7fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.story-label{ padding-top: .5rem; }
+.story-label .roman{
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(3.4rem, 6vw, 5.2rem);
+  font-weight: 300;
+  color: var(--stone-deep);
+  line-height: 1;
+  display: block;
+  margin-top: 1.4rem;
+}
+.story-copy p{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 34, "SOFT" 70;
+  font-size: clamp(1.35rem, 2.3vw, 1.9rem);
+  font-weight: 330;
+  line-height: 1.5;
+  color: var(--umber);
+}
+.story-copy p + p{ margin-top: 1.6rem; }
+.story-copy em{ font-style: italic; color: var(--clay-deep); }
+.story-sig{
+  margin-top: 2.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  color: var(--umber-faint);
+  font-size: .8rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.story-sig::before{
+  content:"";
+  width: 3.5rem; height:1px;
+  background: var(--sage);
+}
+@media (max-width: 860px){
+  .story-grid{ grid-template-columns: 1fr; }
+}
+
+/* ---------- PRINCIPLES — offset ledger, not cards ---------- */
+.principles{
+  position: relative;
+  background: var(--umber);
+  color: var(--cream);
+  padding: clamp(5rem, 13vh, 9.5rem) 0;
+  overflow: hidden;
+}
+/* faint contour drift behind the dark section */
+.principles .contour-bg{
+  position: absolute;
+  inset: -10% -5%;
+  z-index: 0;
+  opacity: .14;
+  pointer-events: none;
+}
+.principles .shell{ position: relative; z-index: 1; }
+.principles-head{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(3rem, 7vh, 5rem);
+}
+.principles-head h2{
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-variation-settings: "opsz" 90, "SOFT" 70;
+  color: var(--cream);
+}
+.principles-head h2 em{ font-style: italic; color: var(--stone); }
+.principles-head .eyebrow{ color: var(--stone-deep); }
+.principles-head .eyebrow .tick{ background: var(--sage); }
+
+.principle{
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,2fr) minmax(0,6fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  padding: 2.4rem 0;
+  border-top: 1px solid rgba(245,240,231,.16);
+  transition: background var(--dur) var(--ease-silk);
+}
+.principle:last-of-type{ border-bottom: 1px solid rgba(245,240,231,.16); }
+.principle:hover{ background: rgba(245,240,231,.035); }
+/* the offset plot: each row indents one step */
+.principle:nth-of-type(2){ padding-left: clamp(0rem, 4vw, 3.5rem); }
+.principle:nth-of-type(3){ padding-left: clamp(0rem, 8vw, 7rem); }
+
+.principle .num{
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--sage);
+}
+.principle h3{
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-variation-settings: "opsz" 48, "SOFT" 65;
+  color: var(--cream);
+}
+.principle p{
+  color: var(--greige);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 52ch;
+}
+.principle p em{ font-style: italic; color: var(--stone); }
+@media (max-width: 860px){
+  .principle{ grid-template-columns: minmax(0,1fr) minmax(0,5fr); }
+  .principle p{ grid-column: 2; }
+  .principle:nth-of-type(2), .principle:nth-of-type(3){ padding-left: 0; }
+}
+
+/* ---------- APPROACH — practice ledger over a strata edge ---------- */
+.approach{
+  position: relative;
+  background: var(--cream);
+  padding: clamp(5rem, 13vh, 9.5rem) 0;
+}
+.approach-grid{
+  display: grid;
+  grid-template-columns: minmax(0,5fr) minmax(0,7fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+.approach-sticky{ position: sticky; top: 7rem; }
+.approach-sticky h2{
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-variation-settings: "opsz" 90, "SOFT" 70;
+  margin: 1.4rem 0 1.5rem;
+  max-width: 15ch;
+}
+.approach-sticky h2 em{ font-style: italic; color: var(--clay-deep); }
+.approach-sticky p{
+  color: var(--umber-soft);
+  max-width: 40ch;
+}
+.approach-sticky .stat{
+  margin-top: 2.4rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  gap: 1.4rem;
+  align-items: baseline;
+}
+.approach-sticky .stat b{
+  font-family: var(--display);
+  font-weight: 320;
+  font-style: italic;
+  font-size: 2.6rem;
+  color: var(--sage-deep);
+}
+.approach-sticky .stat span{
+  font-size: .8rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--umber-faint);
+  max-width: 20ch;
+  line-height: 1.8;
+}
+
+.practice-list{ list-style: none; counter-reset: practice; }
+.practice-list li{
+  counter-increment: practice;
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0,1fr) auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.15rem .9rem 1.15rem .4rem;
+  border-top: 1px solid var(--hairline);
+  transition: background var(--dur) var(--ease-silk), padding-left var(--dur) var(--ease-silk);
+}
+.practice-list li:last-child{ border-bottom: 1px solid var(--hairline); }
+.practice-list li::before{
+  content: counter(practice, decimal-leading-zero);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: .92rem;
+  color: var(--clay);
+}
+.practice-list li:hover{
+  background: var(--cream-deep);
+  padding-left: 1rem;
+}
+.practice-list .p-name{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36, "SOFT" 60;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 350;
+}
+.practice-list .p-tag{
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--umber-faint);
+}
+.practice-list li:hover .p-tag{ color: var(--sage-deep); }
+@media (max-width: 860px){
+  .approach-grid{ grid-template-columns: 1fr; }
+  .approach-sticky{ position: static; }
+  .practice-list .p-tag{ display:none; }
+}
+
+/* ---------- PARTNERS — overlapping planes ---------- */
+.partners{
+  position: relative;
+  background: var(--greige);
+  padding: clamp(5rem, 13vh, 9.5rem) 0 clamp(6rem, 14vh, 10rem);
+  overflow: hidden;
+}
+.partners-head{ margin-bottom: clamp(3rem, 7vh, 4.5rem); max-width: 30ch; }
+.partners-head h2{
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-variation-settings: "opsz" 90, "SOFT" 70;
+  margin-top: 1.3rem;
+}
+.partners-head h2 em{ font-style: italic; color: var(--clay-deep); }
+
+.partners-row{
+  display: grid;
+  grid-template-columns: minmax(0,6fr) minmax(0,6fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.partner{
+  position: relative;
+  background: var(--cream);
+  box-shadow: var(--shadow-soft);
+}
+.partner:nth-child(2){ margin-top: clamp(2rem, 8vh, 5.5rem); }
+.partner .frame{
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+  background: var(--stone);
+}
+.partner .frame svg{ width: 100%; height: 100%; transition: transform 1200ms var(--ease-silk); }
+.partner:hover .frame svg{ transform: scale(1.035); }
+.partner figcaption{
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.5rem 1.7rem 1.7rem;
+}
+.partner .p-nm{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 44, "SOFT" 60;
+  font-size: 1.45rem;
+  font-weight: 360;
+}
+.partner .p-rl{
+  display: block;
+  margin-top: .4rem;
+  font-style: italic;
+  font-family: var(--text);
+  color: var(--umber-faint);
+  font-size: .98rem;
+}
+.partner .p-ix{
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--sage-deep);
+  font-size: .95rem;
+}
+@media (max-width: 860px){
+  .partners-row{ grid-template-columns: 1fr; }
+  .partner:nth-child(2){ margin-top: 0; }
+}
+
+/* ---------- WRITING — index of essays ---------- */
+.writing{
+  background: var(--cream);
+  padding: clamp(5rem, 12vh, 8.5rem) 0;
+}
+.writing-head{
+  display:flex; align-items: baseline; justify-content: space-between; gap: 2rem;
+  margin-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+.writing-head h2{
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  font-variation-settings: "opsz" 90, "SOFT" 70;
+}
+.writing-head h2 em{ font-style: italic; color: var(--clay-deep); }
+.essay{
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 7fr) auto;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: baseline;
+  padding: 1.9rem .5rem;
+  border-top: 1px solid var(--hairline);
+  transition: background var(--dur) var(--ease-silk);
+}
+.essay:last-of-type{ border-bottom: 1px solid var(--hairline); }
+.essay:hover{ background: var(--cream-deep); }
+.essay .e-kind{
+  font-size: .72rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--umber-faint);
+}
+.essay .e-title{
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: "opsz" 50, "SOFT" 65;
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-weight: 340;
+  transition: color var(--dur) var(--ease-silk);
+}
+.essay:hover .e-title{ color: var(--clay-deep); }
+.essay .e-go{
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--sage-deep);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity var(--dur) var(--ease-silk), transform var(--dur) var(--ease-silk);
+}
+.essay:hover .e-go, .essay:focus-visible .e-go{ opacity: 1; transform: none; }
+@media (max-width: 860px){
+  .essay{ grid-template-columns: 1fr; gap: .5rem; }
+  .essay .e-go{ display: none; }
+}
+@media (prefers-reduced-motion: reduce){
+  .essay .e-go{ opacity: 1; transform:none; }
+}
+
+/* ---------- CTA — the conversation block ---------- */
+.cta{
+  position: relative;
+  background: var(--cream-deep);
+  padding: clamp(4rem, 11vh, 8rem) 0 clamp(5rem, 13vh, 9rem);
+  overflow: hidden;
+}
+.cta-plate{
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,7fr) minmax(0,5fr);
+  background: var(--umber);
+  color: var(--cream);
+  box-shadow: var(--shadow-soft);
+}
+.cta-left{
+  padding: clamp(2.5rem, 6vw, 5rem);
+  position: relative;
+  overflow: hidden;
+}
+.cta-left .cta-strata{
+  position: absolute; inset: 0; opacity: .22; pointer-events: none;
+}
+.cta-left > *{ position: relative; }
+.cta-left .eyebrow{ color: var(--stone-deep); }
+.cta-left h2{
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-variation-settings: "opsz" 100, "SOFT" 75;
+  color: var(--cream);
+  margin: 1.4rem 0 1.4rem;
+  max-width: 16ch;
+}
+.cta-left h2 em{ font-style: italic; color: var(--stone); }
+.cta-left p{ color: var(--greige); max-width: 42ch; }
+.cta-link{
+  display: inline-flex;
+  align-items: baseline;
+  gap: .9rem;
+  margin-top: 2.4rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-variation-settings: "opsz" 40, "SOFT" 60;
+  font-size: 1.35rem;
+  color: var(--cream);
+  border-bottom: 1px solid var(--sage);
+  padding-bottom: .3rem;
+  transition: color var(--dur) var(--ease-silk), border-color var(--dur) var(--ease-silk), gap var(--dur) var(--ease-silk);
+}
+.cta-link:hover{ color: var(--sage); gap: 1.3rem; }
+.cta-link .arr{ font-style: normal; font-family: var(--text); }
+
+.cta-right{
+  border-left: 1px solid rgba(245,240,231,.16);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  background: rgba(245,240,231,.03);
+}
+.cta-right dl div + div{ margin-top: 1.9rem; }
+.cta-right dt{
+  font-size: .7rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--stone-deep);
+  margin-bottom: .45rem;
+}
+.cta-right dd{
+  font-family: var(--display);
+  font-variation-settings: "opsz" 30, "SOFT" 55;
+  font-size: 1.12rem;
+  font-weight: 340;
+  color: var(--cream);
+}
+.cta-right dd a{
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease-silk), color var(--dur) var(--ease-silk);
+}
+.cta-right dd a:hover{ color: var(--sage); border-bottom-color: var(--sage); }
+.cta-right .note{
+  font-style: italic;
+  color: var(--stone-deep);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+@media (max-width: 860px){
+  .cta-plate{ grid-template-columns: 1fr; }
+  .cta-right{ border-left: none; border-top: 1px solid rgba(245,240,231,.16); }
+}
+
+/* ---------- FOOTER ---------- */
+.footer{
+  background: var(--cream-deep);
+  border-top: 1px solid var(--hairline);
+  padding: 2.8rem 0 3.4rem;
+  color: var(--umber-faint);
+  font-size: .84rem;
+}
+.footer-top{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.2rem 2.5rem;
+  margin-bottom: 1.8rem;
+}
+.footer .wordmark{ font-size: 1rem; color: var(--umber); }
+.footer-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.8rem;
+  list-style: none;
+}
+.footer-links a{
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur) var(--ease-silk), border-color var(--dur) var(--ease-silk);
+}
+.footer-links a:hover{ color: var(--umber); border-bottom-color: var(--sage); }
+.disclosure{
+  max-width: 88ch;
+  line-height: 1.8;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.6rem;
+  font-size: .8rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a class="wordmark" href="#top" aria-label="Inflection Capital Management — home">
+    Inflection <em>Capital</em><span class="co">Management</span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="nav-links">
+      <li><a href="#story">Who We Serve</a></li>
+      <li><a href="#approach">Services</a></li>
+      <li><a href="#partners">Team</a></li>
+      <li><a href="#principles">About</a></li>
+      <li><a href="#conversation">Contact</a></li>
+      <li><a class="login" href="#">Log in</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" aria-label="Introduction">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="presentation">
+      <defs>
+        <filter id="grainy" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.028" numOctaves="3" seed="7" result="w"/>
+          <feDisplacementMap in="SourceGraphic" in2="w" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <linearGradient id="skywash" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#F5F0E7"/>
+          <stop offset="1" stop-color="#EFE7D8"/>
+        </linearGradient>
+      </defs>
+
+      <!-- open air -->
+      <rect width="1440" height="900" fill="url(#skywash)"/>
+
+      <!-- topographic contour field, upper right -->
+      <g class="strata" data-depth="0.05" stroke="#C4B49C" stroke-width="1" fill="none" opacity=".55" filter="url(#grainy)">
+        <ellipse cx="1120" cy="180" rx="480" ry="150"/>
+        <ellipse cx="1120" cy="180" rx="410" ry="122"/>
+        <ellipse cx="1120" cy="180" rx="340" ry="96"/>
+        <ellipse cx="1120" cy="180" rx="272" ry="72"/>
+        <ellipse cx="1120" cy="180" rx="206" ry="50"/>
+        <ellipse cx="1120" cy="180" rx="142" ry="31"/>
+        <ellipse cx="1120" cy="180" rx="82" ry="15" stroke="#7E8F73" opacity=".9"/>
+      </g>
+
+      <!-- sediment strata rising from the base -->
+      <g filter="url(#grainy)">
+        <g class="strata" data-depth="0.10">
+          <path fill="#E5DCCC" d="M0,560 C240,528 420,588 700,556 C980,524 1180,584 1440,540 L1440,900 L0,900 Z"/>
+        </g>
+        <g class="strata" data-depth="0.16">
+          <path fill="#D6C9B4" d="M0,632 C300,596 520,664 820,624 C1080,590 1260,656 1440,616 L1440,900 L0,900 Z"/>
+        </g>
+        <g class="strata" data-depth="0.22">
+          <!-- the single sage thread -->
+          <path fill="none" stroke="#7E8F73" stroke-width="3" opacity=".85"
+                d="M-20,676 C300,640 540,708 840,668 C1100,634 1280,700 1460,660"/>
+        </g>
+        <g class="strata" data-depth="0.26">
+          <path fill="#C4B49C" d="M0,712 C260,678 500,744 780,706 C1060,668 1240,738 1440,700 L1440,900 L0,900 Z"/>
+        </g>
+        <g class="strata" data-depth="0.32">
+          <path fill="#A87E64" d="M0,784 C280,752 520,812 800,778 C1080,744 1260,808 1440,772 L1440,900 L0,900 Z"/>
+        </g>
+        <g class="strata" data-depth="0.38">
+          <path fill="#8E6650" d="M0,846 C300,820 560,872 860,844 C1120,820 1300,868 1440,838 L1440,900 L0,900 Z"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <p class="hero-meta rv" style="--d:4">San Francisco, California<br>A Multi-Family Office<br>Est. by its partners</p>
+
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow hero-kicker rv" style="--d:0"><span class="tick"></span>Inflection Capital Management</p>
+      <h1 class="rv" style="--d:1"><em>Wealth, tended the way land is tended —</em> patiently, in <span class="thread">layers</span>, for the people who come after.</h1>
+    </div>
+    <aside class="hero-aside rv" style="--d:2">
+      A partner-owned multi-family office serving wealth creators, families in transition, and single family offices — from Silicon Valley, for generations.
+      <br>
+      <a class="goto" href="#conversation">Begin a conversation</a>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= STORY ================= -->
+<section class="story" id="story" aria-labelledby="story-h">
+  <div class="shell story-grid">
+    <div class="story-label rv" style="--d:0">
+      <p class="eyebrow" id="story-h"><span class="tick"></span>Who We Are</p>
+      <span class="roman" aria-hidden="true">I.</span>
+    </div>
+    <div class="story-copy">
+      <p class="rv" style="--d:1">Inflection Capital Management is a partner-owned and operated multi-family office based in Silicon Valley, dedicated to working with clients to <em>preserve and grow their wealth and legacy</em>.</p>
+      <p class="rv" style="--d:2">Our careers have been dedicated to working with wealth creators, families navigating periods of transition, and family offices, including their foundations. With a commitment to personal connection and a deep understanding of our clients' unique goals, we serve as <em>trusted stewards for generations to come</em>.</p>
+      <p class="story-sig rv" style="--d:3">Partner-owned · Partner-operated · SEC-registered</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRINCIPLES ================= -->
+<section class="principles" id="principles" aria-labelledby="principles-h">
+  <svg class="contour-bg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#D6C9B4" stroke-width="1" fill="none">
+      <path d="M-40,120 C260,60 560,180 880,110 C1140,55 1340,140 1500,90"/>
+      <path d="M-40,220 C260,160 560,280 880,210 C1140,155 1340,240 1500,190"/>
+      <path d="M-40,320 C260,260 560,380 880,310 C1140,255 1340,340 1500,290"/>
+      <path d="M-40,420 C260,360 560,480 880,410 C1140,355 1340,440 1500,390"/>
+      <path d="M-40,520 C260,460 560,580 880,510 C1140,455 1340,540 1500,490"/>
+      <path d="M-40,620 C260,560 560,680 880,610 C1140,555 1340,640 1500,590"/>
+    </g>
+  </svg>
+  <div class="shell">
+    <div class="principles-head">
+      <div>
+        <p class="eyebrow rv" style="--d:0" id="principles-h"><span class="tick"></span>How We Hold Ourselves</p>
+      </div>
+      <h2 class="rv" style="--d:1">Three commitments, <em>kept quietly.</em></h2>
+    </div>
+
+    <article class="principle rv" style="--d:0">
+      <span class="num" aria-hidden="true">i.</span>
+      <h3>Our Clients Inspire Us</h3>
+      <p>The families we serve have built remarkable things. Our work is to give them back their <em>space</em> — room to focus on what matters most, while we attend to the rest with care and discretion.</p>
+    </article>
+
+    <article class="principle rv" style="--d:1">
+      <span class="num" aria-hidden="true">ii.</span>
+      <h3>Our Partnership</h3>
+      <p>We meet you at the <em>inflection point</em> of your legacy — bringing institutional-level expertise, and standing beside you as advocate rather than vendor.</p>
+    </article>
+
+    <article class="principle rv" style="--d:2">
+      <span class="num" aria-hidden="true">iii.</span>
+      <h3>Success Together</h3>
+      <p>Decades of experience with hundreds of single family offices taught us that clarity and direction compound. We steward what you have built <em>across generations</em>, not quarters.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= APPROACH ================= -->
+<section class="approach" id="approach" aria-labelledby="approach-h">
+  <div class="shell approach-grid">
+    <div class="approach-sticky">
+      <p class="eyebrow rv" style="--d:0" id="approach-h"><span class="tick"></span>Our Practice</p>
+      <h2 class="rv" style="--d:1">Order and intention for <em>meaningful wealth.</em></h2>
+      <p class="rv" style="--d:2">Twenty-five years and more advising single-family offices, foundations, and institutional allocators. Transparent fees, intuitive reporting, and education tailored to your needs — bringing order and intention to the complexity that comes with meaningful wealth.</p>
+      <div class="stat rv" style="--d:3">
+        <b>25<span aria-hidden="true">+</span></b>
+        <span>Years advising family offices &amp; institutions</span>
+      </div>
+    </div>
+
+    <ol class="practice-list">
+      <li class="rv" style="--d:0"><span class="p-name">Rising Generation</span><span class="p-tag">Education</span></li>
+      <li class="rv" style="--d:1"><span class="p-name">Philanthropy</span><span class="p-tag">Purpose</span></li>
+      <li class="rv" style="--d:2"><span class="p-name">Family Governance &amp; Succession</span><span class="p-tag">Continuity</span></li>
+      <li class="rv" style="--d:3"><span class="p-name">Lifecycle</span><span class="p-tag">Transitions</span></li>
+      <li class="rv" style="--d:4"><span class="p-name">Investment Process</span><span class="p-tag">Discipline</span></li>
+      <li class="rv" style="--d:5"><span class="p-name">Trust, Tax &amp; Estate Planning</span><span class="p-tag">Structure</span></li>
+      <li class="rv" style="--d:6"><span class="p-name">Financial Reporting</span><span class="p-tag">Clarity</span></li>
+      <li class="rv" style="--d:7"><span class="p-name">Pre-IPO &amp; Equity Planning</span><span class="p-tag">Liquidity</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PARTNERS ================= -->
+<section class="partners" id="partners" aria-labelledby="partners-h">
+  <div class="shell">
+    <div class="partners-head">
+      <p class="eyebrow rv" style="--d:0" id="partners-h"><span class="tick"></span>The Partners</p>
+      <h2 class="rv" style="--d:1">Owned by the people <em>who answer your calls.</em></h2>
+    </div>
+
+    <div class="partners-row">
+      <figure class="partner rv" style="--d:0">
+        <div class="frame" aria-hidden="true">
+          <svg viewBox="0 0 400 460" preserveAspectRatio="xMidYMid slice" role="presentation">
+            <defs>
+              <filter id="pgrain1"><feTurbulence type="fractalNoise" baseFrequency="0.015 0.03" numOctaves="3" seed="11" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="18"/></filter>
+            </defs>
+            <rect width="400" height="460" fill="#E5DCCC"/>
+            <g filter="url(#pgrain1)">
+              <path fill="#D6C9B4" d="M0,180 C90,160 160,196 260,176 C330,162 380,186 400,172 L400,460 L0,460 Z"/>
+              <path fill="#C4B49C" d="M0,262 C110,240 190,280 300,258 C350,248 385,266 400,256 L400,460 L0,460 Z"/>
+              <path fill="none" stroke="#7E8F73" stroke-width="2.5" opacity=".85" d="M-10,306 C110,284 200,322 310,300 C360,290 390,306 410,298"/>
+              <path fill="#A87E64" d="M0,344 C100,326 200,362 300,342 C355,332 385,350 400,340 L400,460 L0,460 Z"/>
+              <path fill="#8E6650" d="M0,414 C120,398 220,428 330,410 C365,404 390,416 400,410 L400,460 L0,460 Z"/>
+            </g>
+            <text x="34" y="112" font-family="Fraunces, serif" font-style="italic" font-weight="320" font-size="88" fill="#C4B49C">JK</text>
+          </svg>
+        </div>
+        <figcaption>
+          <div>
+            <span class="p-nm">Justin Kunz</span>
+            <span class="p-rl">CEO &amp; Founding Partner</span>
+          </div>
+          <span class="p-ix" aria-hidden="true">01 / 02</span>
+        </figcaption>
+      </figure>
+
+      <figure class="partner rv" style="--d:1">
+        <div class="frame" aria-hidden="true">
+          <svg viewBox="0 0 400 460" preserveAspectRatio="xMidYMid slice" role="presentation">
+            <defs>
+              <filter id="pgrain2"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.026" numOctaves="3" seed="23" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="18"/></filter>
+            </defs>
+            <rect width="400" height="460" fill="#EFE8DB"/>
+            <g filter="url(#pgrain2)">
+              <path fill="#D6C9B4" d="M0,150 C120,132 210,168 320,148 C360,142 390,154 400,148 L400,460 L0,460 Z"/>
+              <path fill="none" stroke="#7E8F73" stroke-width="2.5" opacity=".85" d="M-10,212 C120,192 220,226 330,206 C365,200 392,210 410,204"/>
+              <path fill="#C4B49C" d="M0,250 C110,232 200,266 310,246 C355,238 385,254 400,246 L400,460 L0,460 Z"/>
+              <path fill="#A87E64" d="M0,336 C100,320 210,352 310,334 C355,326 385,342 400,334 L400,460 L0,460 Z"/>
+              <path fill="#8E6650" d="M0,410 C120,396 230,424 340,408 C368,404 390,414 400,408 L400,460 L0,460 Z"/>
+            </g>
+            <text x="34" y="104" font-family="Fraunces, serif" font-style="italic" font-weight="320" font-size="88" fill="#C4B49C">KM</text>
+          </svg>
+        </div>
+        <figcaption>
+          <div>
+            <span class="p-nm">Katie Riley Mahany</span>
+            <span class="p-rl">Managing Partner</span>
+          </div>
+          <span class="p-ix" aria-hidden="true">02 / 02</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WRITING ================= -->
+<section class="writing" id="writing" aria-labelledby="writing-h">
+  <div class="shell">
+    <div class="writing-head">
+      <p class="eyebrow rv" style="--d:0" id="writing-h"><span class="tick"></span>Selected Writing</p>
+      <h2 class="rv" style="--d:1">Notes for <em>the long term.</em></h2>
+    </div>
+
+    <a class="essay rv" style="--d:0" href="#">
+      <span class="e-kind">Perspective · 12 min</span>
+      <span class="e-title">Planning After a Liquidity Event</span>
+      <span class="e-go" aria-hidden="true">Read &rarr;</span>
+    </a>
+    <a class="essay rv" style="--d:1" href="#">
+      <span class="e-kind">Primer · 8 min</span>
+      <span class="e-title">What to Expect from a Multi-Family Office</span>
+      <span class="e-go" aria-hidden="true">Read &rarr;</span>
+    </a>
+    <a class="essay rv" style="--d:2" href="#">
+      <span class="e-kind">Essay · 10 min</span>
+      <span class="e-title">Family Governance for the Long Term</span>
+      <span class="e-go" aria-hidden="true">Read &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="conversation" aria-labelledby="cta-h">
+  <div class="shell">
+    <div class="cta-plate rv" style="--d:0">
+      <div class="cta-left">
+        <svg class="cta-strata" viewBox="0 0 800 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <g fill="none" stroke="#D6C9B4" stroke-width="1">
+            <path d="M-20,340 C160,310 340,370 520,338 C660,314 760,352 820,330"/>
+            <path d="M-20,390 C160,360 340,420 520,388 C660,364 760,402 820,380"/>
+            <path d="M-20,440 C160,410 340,470 520,438 C660,414 760,452 820,430"/>
+          </g>
+          <path fill="none" stroke="#7E8F73" stroke-width="2" d="M-20,415 C160,385 340,445 520,413 C660,389 760,427 820,405"/>
+        </svg>
+        <p class="eyebrow" id="cta-h"><span class="tick"></span>An Invitation</p>
+        <h2>Every stewardship begins with <em>a conversation.</em></h2>
+        <p>No decks, no pressure, no obligation. An hour of honest talk about where you are, what you hold, and what you hope it becomes.</p>
+        <a class="cta-link" href="mailto:hello@inflectioncapital.com">Begin a conversation <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="cta-right">
+        <dl>
+          <div>
+            <dt>Telephone</dt>
+            <dd><a href="tel:+14154506556">(415) 450-6556</a></dd>
+          </div>
+          <div>
+            <dt>Office</dt>
+            <dd>San Francisco, California</dd>
+          </div>
+          <div>
+            <dt>For pre-IPO equity holders</dt>
+            <dd><a href="#">Equity &amp; liquidity planning &rarr;</a></dd>
+          </div>
+        </dl>
+        <p class="note">We keep our client roster deliberately small. When we meet, you will speak with a partner — never a relationship layer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-top">
+      <span class="wordmark">Inflection <em>Capital</em><span class="co">Management</span></span>
+      <ul class="footer-links">
+        <li>San Francisco, CA</li>
+        <li><a href="#">ADV Part 2A</a></li>
+        <li><a href="#">ADV Part 2B</a></li>
+        <li><a href="#">Form CRS</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="tel:+14154506556">(415) 450-6556</a></li>
+      </ul>
+    </div>
+    <p class="disclosure">Inflection Capital Management, LLC is a registered investment adviser. Registration does not imply a certain level of skill or training. Past performance is not indicative of future results. Investing involves risk, including possible loss of principal.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- staggered scroll reveals, once ---- */
+  var nodes = document.querySelectorAll('.rv');
+  if (reduced || !('IntersectionObserver' in window)) {
+    nodes.forEach(function(n){ n.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function(n){ io.observe(n); });
+  }
+
+  /* ---- nav hairline on scroll ---- */
+  var nav = document.getElementById('nav');
+  var onScrollNav = function(){
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+  onScrollNav();
+  window.addEventListener('scroll', onScrollNav, { passive: true });
+
+  /* ---- silk parallax drift on the hero strata ---- */
+  if (!reduced) {
+    var layers = document.querySelectorAll('.hero .strata');
+    var ticking = false;
+    var drift = function(){
+      var y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        layers.forEach(function(l){
+          var d = parseFloat(l.getAttribute('data-depth')) || 0;
+          l.style.transform = 'translateY(' + (y * d * 0.45) + 'px)';
+        });
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', function(){
+      if (!ticking) { ticking = true; requestAnimationFrame(drift); }
+    }, { passive: true });
+  }
+})();
+</script>
+</body>
+</html>

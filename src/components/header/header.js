@@ -1,246 +1,230 @@
-import React, { useState, useEffect } from "react";
-import './header.css';
+"use client";
 
-import wordmarkwL from '../../assets/logos/inflectionWML.svg'; //logo workmark and desc
-import whiteLogo from '../../assets/logos/logoWhite.png';
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const WHO_WE_SERVE_LINKS = [
-    { label: 'Wealth Creators', href: '/who-we-serve#wealth-creators' },
-    { label: 'Next Generation Families', href: '/who-we-serve#next-generation' },
-    { label: 'Single Family Offices', href: '/who-we-serve#single-family-offices' },
+const WHO_WE_SERVE = [
+  { href: "/who-we-serve", label: "Overview" },
+  { href: "/who-we-serve/wealth-creators", label: "Wealth Creators" },
+  { href: "/who-we-serve/next-generation-families", label: "Next Generation Families" },
+  { href: "/who-we-serve/single-family-offices", label: "Single Family Offices" },
 ];
 
-const HeaderComponent = ({ smoother }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const ABOUT = [
+  { href: "/about", label: "Overview" },
+  { href: "/about/insights", label: "Insights" },
+  { href: "/about/news", label: "News" },
+];
 
-    // Function to check scroll position and update header state
-    const checkScrollPosition = () => {
-        const target = document.querySelector('.main-content-container');
-        console.log("ACTIVATED")
-        if (target) {
-            const viewportHeight = window.innerHeight;
-            const rect = target.getBoundingClientRect();
-            const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-            const isTaking80Percent = visibleHeight / viewportHeight >= 0.7;
-            setIsScrolled(isTaking80Percent);
-        }
+const PORTAL = "https://inflection.addepar.com";
+const PORTAL_LABEL = "Client login — opens the Inflection portal in a new tab";
+
+const HeaderComponent = () => {
+  const pathname = usePathname() || "/";
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
+  const whoToggleRef = useRef(null);
+  const aboutToggleRef = useRef(null);
+
+  const current = (href) => (pathname === href ? "page" : undefined);
+  const inWhoWeServe = pathname.startsWith("/who-we-serve");
+  const inAbout = pathname.startsWith("/about");
+
+  // Hover opens the dropdown in CSS; this state is the authoritative
+  // keyboard/touch path. :focus-within is deliberately not used — it would pin
+  // the menu open while the toggle holds focus and make Escape look broken.
+  useEffect(() => {
+    if (!openDropdown) return undefined;
+    const onClick = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setOpenDropdown(null);
     };
-
-    // Check for stored scroll target on mount
-    useEffect(() => {
-        const scrollTarget = sessionStorage.getItem('scrollTarget');
-        if (scrollTarget && smoother) {
-            // Clear the stored target
-            sessionStorage.removeItem('scrollTarget');
-            // Wait for the page to be fully rendered
-            setTimeout(() => {
-                const target = document.querySelector(scrollTarget);
-                if (target) {
-                    smoother.scrollTo(target, true, "top");
-                    // Check scroll position after the scroll animation
-                    setTimeout(checkScrollPosition, 1000);
-                }
-            }, 500);
-        }
-    }, [smoother]);
-
-    // Check if the device is mobile
-    useEffect(() => {
-        const updateIsMobile = () => {
-            setIsMobile(window.innerWidth <= 768); // Adjust the breakpoint as needed
-        };
-
-        updateIsMobile(); // Check on mount
-        window.addEventListener('resize', updateIsMobile); // Update on resize
-
-        return () => {
-            window.removeEventListener('resize', updateIsMobile);
-        };
-    }, []);
-
-    useEffect(() => {
-        // Trigger on load and on scroll
-        checkScrollPosition(); // Initial check
-        window.addEventListener('scroll', checkScrollPosition);
-
-        return () => {
-            window.removeEventListener('scroll', checkScrollPosition);
-        };
-    }, []);
-
-
-    const smoothScrollTo = (sectionId) => {
-        if (window.location.pathname !== "/") {
-            // Store the target section in sessionStorage before navigation
-            sessionStorage.setItem('scrollTarget', sectionId);
-            window.location.href = "/";
-            return;
-        }
-
-        if (smoother) {
-            setTimeout(() => {
-                const target = document.querySelector(sectionId);
-                if (target) {
-                    smoother.scrollTo(target, true, "top");
-                    setMenuOpen(false);
-                    // Check scroll position after the scroll animation
-                    setTimeout(checkScrollPosition, 1000);
-                }
-            });
-        }
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        const toggle = openDropdown === "about" ? aboutToggleRef.current : whoToggleRef.current;
+        setOpenDropdown(null);
+        toggle?.focus();
+      }
     };
-
-    const handleWordmarkClick = (e) => {
-        if (isMobile) {
-            e.preventDefault();
-            setMobileMenuOpen(!mobileMenuOpen);
-        }
+    document.addEventListener("click", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("click", onClick);
+      document.removeEventListener("keydown", onKey);
     };
+  }, [openDropdown]);
 
-    const handleNavClick = (path) => {
-        setMobileMenuOpen(false);
-        window.location.href = path;
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
     };
+  }, [menuOpen]);
 
-    return (
-        <>
-            <header
-                className={`header-header-container ${isScrolled ? "scrolled" : ""}`}
-            >
-                <div className="wordmark-header">
-                    <a href="/" onClick={handleWordmarkClick}>
-                        <img
-                            src={isMobile ? whiteLogo : wordmarkwL}
-                            alt="Inflection Wordmark"
-                        />
-                    </a>
-                </div>
-                <div className='header-navLinks-container'>
-                    <button className="menu-toggle" onClick={() => setMenuOpen(true)}>
-                        <svg className="menu-icon" viewBox="0 0 50 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect y="3" width="50" height="3" rx="3" fill="#02231a"></rect>
-                            <rect y="13" width="50" height="3" rx="3" fill="#02231a"></rect>
-                            <rect y="23" width="50" height="3" rx="3" fill="#02231a"></rect>
-                        </svg>
-                    </button>
-                    <nav className={`nav ${menuOpen ? "open" : ""}`}>
-                        <button className="close-menu" onClick={() => setMenuOpen(false)}>
-                            <svg className="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <ul className="nav-list">
-                            {/* <li>
-                                <button onClick={() => (window.location.href = "/")} className="header-nav-link">Home</button>
-                            </li> */}
-                            {/* <li>
-                                <button onClick={() => smoothScrollTo('#services')} className="header-nav-link">Services</button>
-                            </li> */}
-                            <li className="header-nav-item header-nav-item--audiences">
-                                <button
-                                    onClick={() => handleNavClick('/who-we-serve')}
-                                    className="header-nav-link header-nav-link--audiences"
-                                    aria-haspopup="true"
-                                >
-                                    Who We Serve
-                                    <svg className="header-nav-chevron" viewBox="0 0 12 8" aria-hidden="true">
-                                        <path d="M1 1.25 6 6.25l5-5" />
-                                    </svg>
-                                </button>
-                                <ul className="header-audience-menu" aria-label="Who We Serve audiences">
-                                    {WHO_WE_SERVE_LINKS.map((item) => (
-                                        <li key={item.href}>
-                                            <a
-                                                className="header-audience-link"
-                                                href={item.href}
-                                                onClick={() => setMenuOpen(false)}
-                                            >
-                                                <span>{item.label}</span>
-                                                <svg viewBox="0 0 18 12" aria-hidden="true">
-                                                    <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </li>
-                            <li>
-                                <button onClick={() => (window.location.href = "/services")} className="header-nav-link">Services</button>
-                            </li>
-                            <li>
-                                <button onClick={() => (window.location.href = "/team")} className="header-nav-link">Team</button>
-                            </li>
-                            <li>
-                                <button onClick={() => smoothScrollTo('#about')} className="header-nav-link">About Us</button>
-                            </li>
-                            <li>
-                                <button onClick={() => smoothScrollTo('#contact')} className="header-nav-link">Contact</button>
-                            </li>
-                            <li>
-                                <button
-                                    onClick={() => window.open('https://inflection.addepar.com', '_blank', 'noopener,noreferrer')}
-                                    className="header-nav-link"
-                                >
-                                    Log In
-                                </button>
-                            </li>
+  useEffect(() => {
+    setOpenDropdown(null);
+    setMenuOpen(false);
+  }, [pathname]);
 
-                        </ul>
-                    </nav>
-                </div>
+  return (
+    <>
+      <header className="nav">
+        <div className="nav-inner hload" style={{ "--hd": ".05s" }}>
+          <Link href="/" className="wordmark" aria-label="Inflection Capital Management — home">
+            <img className="nav-mark" src="/media/brand/logoWhite.png" width={503} height={435} alt="" />
+            <span className="wm-text">
+              <span className="wm-serif">Inflection</span>
+              <span className="wm-sub">Capital Management</span>
+            </span>
+          </Link>
 
-                {/* Mobile Full Screen Menu */}
-                {isMobile && (
-                    <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-                        <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                        <nav className="mobile-menu-nav">
-                            <ul className="mobile-menu-list">
-                                <li>
-                                    <button onClick={() => handleNavClick('/')} className="mobile-menu-link">Home</button>
-                                </li>
-                                <li>
-                                    <button onClick={() => handleNavClick('/who-we-serve')} className="mobile-menu-link">Who We Serve</button>
-                                    <div className="mobile-menu-audience-links" aria-label="Who We Serve audiences">
-                                        {WHO_WE_SERVE_LINKS.map((item) => (
-                                            <button
-                                                type="button"
-                                                key={item.href}
-                                                onClick={() => handleNavClick(item.href)}
-                                                className="mobile-menu-audience-link"
-                                            >
-                                                {item.label}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </li>
-                                <li>
-                                    <button onClick={() => handleNavClick('/services')} className="mobile-menu-link">Services</button>
-                                </li>
-                                <li>
-                                    <button onClick={() => handleNavClick('/team')} className="mobile-menu-link">Team</button>
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={() => window.open('https://inflection.addepar.com', '_blank', 'noopener,noreferrer')}
-                                        className="mobile-menu-link"
-                                    >
-                                        Log In
-                                    </button>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                )}
-            </header>
-        </>
-    );
+          <ul className="nav-links" ref={navRef}>
+            <li className="nav-drop">
+              <Link href="/who-we-serve" aria-current={inWhoWeServe ? "page" : undefined}>
+                Who We Serve
+              </Link>
+              <button
+                ref={whoToggleRef}
+                className="nav-drop-t"
+                type="button"
+                aria-expanded={openDropdown === "who-we-serve"}
+                aria-controls="wws-menu"
+                aria-label="Show Who We Serve pages"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown((value) => value === "who-we-serve" ? null : "who-we-serve");
+                }}
+              >
+                <svg className="nav-drop-i" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+                  <path
+                    d="M1 1l4 4 4-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <ul className={`nav-drop-menu${openDropdown === "who-we-serve" ? " open" : ""}`} id="wws-menu">
+                {WHO_WE_SERVE.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} aria-current={current(item.href)}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li><Link href="/services" aria-current={current("/services")}>Services</Link></li>
+            <li><Link href="/team" aria-current={current("/team")}>Team</Link></li>
+            <li className="nav-drop">
+              <Link href="/about" aria-current={inAbout ? "page" : undefined}>
+                About Us
+              </Link>
+              <button
+                ref={aboutToggleRef}
+                className="nav-drop-t"
+                type="button"
+                aria-expanded={openDropdown === "about"}
+                aria-controls="about-menu"
+                aria-label="Show About pages"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenDropdown((value) => value === "about" ? null : "about");
+                }}
+              >
+                <svg className="nav-drop-i" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+                  <path
+                    d="M1 1l4 4 4-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <ul className={`nav-drop-menu${openDropdown === "about" ? " open" : ""}`} id="about-menu">
+                {ABOUT.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} aria-current={current(item.href)}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li><Link href="/contact" aria-current={current("/contact")}>Contact</Link></li>
+          </ul>
+
+          <a className="login" href={PORTAL} target="_blank" rel="noopener noreferrer" aria-label={PORTAL_LABEL}>
+            Log In
+          </a>
+          <button
+            className="menu-btn"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="menu-panel"
+            onClick={() => setMenuOpen(true)}
+          >
+            Menu
+          </button>
+        </div>
+      </header>
+
+      <div className={`menu-panel${menuOpen ? " open" : ""}`} id="menu-panel">
+        <div className="menu-head">
+          <span className="wm-serif">Inflection</span>
+          <button className="menu-close" type="button" onClick={() => setMenuOpen(false)}>
+            Close
+          </button>
+        </div>
+        <ul className="menu-links">
+          <li>
+            <Link href="/who-we-serve" aria-current={current("/who-we-serve")}>
+              Who We Serve
+            </Link>
+            <ul className="menu-sub">
+              {WHO_WE_SERVE.slice(1).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} aria-current={current(item.href)}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li><Link href="/services" aria-current={current("/services")}>Services</Link></li>
+          <li><Link href="/team" aria-current={current("/team")}>Team</Link></li>
+          <li>
+            <Link href="/about" aria-current={inAbout ? "page" : undefined}>About Us</Link>
+            <ul className="menu-sub">
+              {ABOUT.slice(1).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} aria-current={current(item.href)}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li><Link href="/contact" aria-current={current("/contact")}>Contact</Link></li>
+          <li>
+            <a href={PORTAL} target="_blank" rel="noopener noreferrer" aria-label={PORTAL_LABEL}>
+              Log In
+            </a>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
 };
 
 export default HeaderComponent;

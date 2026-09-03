@@ -1,8 +1,63 @@
+:root {
+  --bg-primary: #02231a;
+  --bg-secondary: #08241c;
+  --bg-elevated: #0c2f26;
+  --bg-deep: #011d15;
+  --type-strong: #f2f7f5;
+  --type-primary: #d2e9e4;
+  --type-secondary: #c5e6e1;
+  --type-muted: #75b2b2;
+  --rule: rgba(197, 230, 225, 0.22);
+  --accent: #5fb0af;
+  --accent-hover: #60b3b2;
+  --accent-soft: rgba(95, 176, 175, 0.28);
+  --neutral-brushed: #3c564d;
+  --signal-positive: #7dc4a0;
+  --signal-warning: #d9b87a;
+  --signal-error: #d88b8b;
+  --font-display: "GTM";
+  --font-display-italic: "GTMI";
+  --font-sans: "RoobertoR";
+  --font-sans-bold: "RoobertoB";
+  --font-sans-light: "RoobertoL";
+  --text-display: 4rem;
+  --text-h1: 3rem;
+  --text-h2: 2.25rem;
+  --text-h3: 1.5rem;
+  --text-h4: 1.25rem;
+  --text-lede: 1.375rem;
+  --text-body: 1.125rem;
+  --text-small: 0.9375rem;
+  --text-eyebrow: 0.75rem;
+  --text-disclosure: 0.8125rem;
+  --ease-quiet: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-primary);
+  color: var(--type-primary);
+}
+
 body {
   margin: 0;
-  font-family: 'RoobertoR';
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
+  color: var(--type-primary);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @font-face {
@@ -10,6 +65,7 @@ body {
   src: url('./assets/font/GT-Super-Display-Medium-Italic.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -17,6 +73,7 @@ body {
   src: url('./assets/font/GT-Super-Display-Medium.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -24,6 +81,7 @@ body {
   src: url('./assets/font/Roobert-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -31,6 +89,7 @@ body {
   src: url('./assets/font/Roobert-Light.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -38,4 +97,5 @@ body {
   src: url('./assets/font/Roobert-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
